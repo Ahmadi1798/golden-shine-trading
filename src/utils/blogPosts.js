@@ -1,0 +1,363 @@
+const BLOG_POST_SECTION_TOKENS = new Set(['blogposts', 'posts', 'blog']);
+
+const normalizeSectionToken = (value = '') =>
+  String(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '');
+
+export const slugifyBlogTitle = (value = '') =>
+  String(value)
+    .toLowerCase()
+    .trim()
+    .replace(/[^\p{L}\p{N}\s-]/gu, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+
+const getSlugFromLink = (value = '') => {
+  const trimmed = String(value || '').trim();
+  if (!trimmed) return '';
+
+  const withoutQuery = trimmed.split('?')[0].split('#')[0];
+  const normalized = withoutQuery.endsWith('/') ? withoutQuery.slice(0, -1) : withoutQuery;
+  const blogPrefix = '/blog/';
+
+  if (!normalized.startsWith(blogPrefix)) return '';
+
+  return normalized.slice(blogPrefix.length).trim().toLowerCase();
+};
+
+export const DEFAULT_BLOG_POSTS = [
+  {
+    slug: 'the-power-of-purposeful-design',
+    title: 'The Power of Purposeful Design',
+    excerpt: 'How intentional design choices improve user engagement and brand trust.',
+    content:
+      'Intentional design creates clarity, reduces friction, and builds trust across every step of the customer journey. When design is purposeful, users complete tasks faster and feel more confident about your brand.',
+    keyInsights:
+      'Align visual choices with business goals\nDesign for clarity before decoration\nContinuously test and refine key user flows',
+    nextSteps:
+      'Audit your top conversion journeys, simplify key interactions, and iterate based on measurable outcomes.',
+    image: '/blogs/1.jpg',
+    datePublished: '2025-05-01',
+    date: 'May 2025',
+    link: '/blog/the-power-of-purposeful-design',
+  },
+  {
+    slug: 'top-5-tools-we-use-to-build-scalable-websites',
+    title: 'Top 5 Tools We Use to Build Scalable Websites',
+    excerpt: 'From design to deployment, here is our go-to tech stack in 2025.',
+    content:
+      'Scalability is less about one magic tool and more about combining the right stack with disciplined engineering practices. Our toolchain prioritizes reliability, maintainability, and delivery speed.',
+    keyInsights:
+      'Choose tools that fit your team skill set\nAutomate quality checks early\nStandardize architecture patterns across projects',
+    nextSteps:
+      'Review your stack bottlenecks, document standards, and automate repetitive workflows first.',
+    image: '/blogs/2.jpg',
+    datePublished: '2025-04-01',
+    date: 'April 2025',
+    link: '/blog/top-5-tools-we-use-to-build-scalable-websites',
+  },
+  {
+    slug: 'why-every-brand-needs-a-design-system',
+    title: 'Why Every Brand Needs a Design System',
+    excerpt: 'A design system is more than visuals - it is your brand\'s operating manual.',
+    content:
+      'A strong design system improves consistency, speeds delivery, and helps teams scale without losing quality. It aligns product, design, and engineering around reusable standards.',
+    keyInsights:
+      'Consistency builds trust\nReusable patterns reduce delivery time\nShared standards improve cross-team collaboration',
+    nextSteps:
+      'Start with core UI tokens and components, then document usage rules and governance workflows.',
+    image: '/blogs/3.jpg',
+    datePublished: '2025-03-01',
+    date: 'March 2025',
+    link: '/blog/why-every-brand-needs-a-design-system',
+  },
+  {
+    slug: 'dark-mode-design-tips-for-better-ux',
+    title: 'Dark Mode Design: Tips for Better UX',
+    excerpt: 'How to design inclusive, legible, and stylish dark interfaces in 2025.',
+    content:
+      'Dark interfaces require careful contrast management, typography tuning, and semantic color mapping to remain readable and comfortable.',
+    keyInsights:
+      'Use semantic color roles\nValidate accessibility contrast ratios\nTest across device brightness levels',
+    nextSteps:
+      'Run accessibility audits in both light and dark themes and fix low-contrast patterns first.',
+    image: '/blogs/4.jpg',
+    datePublished: '2025-02-01',
+    date: 'February 2025',
+    link: '/blog/dark-mode-design-tips-for-better-ux',
+  },
+  {
+    slug: 'how-we-approach-mobile-first-design',
+    title: 'How We Approach Mobile-First Design',
+    excerpt: 'Learn why starting with mobile changes the way we build for the web.',
+    content:
+      'Mobile-first pushes teams to focus on essentials. It improves hierarchy, forces clarity, and often leads to better desktop experiences too.',
+    keyInsights:
+      'Prioritize essential actions\nDesign for touch ergonomics\nProgressively enhance for larger screens',
+    nextSteps:
+      'Map your mobile critical path and remove low-value UI distractions from early screens.',
+    image: '/blogs/5.jpg',
+    datePublished: '2025-01-01',
+    date: 'January 2025',
+    link: '/blog/how-we-approach-mobile-first-design',
+  },
+  {
+    slug: 'web-performance-in-2025-what-actually-matters',
+    title: 'Web Performance in 2025: What Actually Matters',
+    excerpt: 'Speed, accessibility, and user flow - the new performance checklist.',
+    content:
+      'Performance today is user-perceived responsiveness across the full journey. Fast rendering, stable layouts, and smooth interactions all contribute to conversion and retention.',
+    keyInsights:
+      'Track real-user metrics, not only lab scores\nOptimize critical rendering path\nEliminate layout shifts and interaction delays',
+    nextSteps:
+      'Measure Core Web Vitals in production and prioritize fixes by business impact.',
+    image: '/blogs/6.jpg',
+    datePublished: '2024-12-01',
+    date: 'December 2024',
+    link: '/blog/web-performance-in-2025-what-actually-matters',
+  },
+];
+
+const RTL_BLOG_POST_FALLBACKS = {
+  fa: {
+    'the-power-of-purposeful-design': {
+      title: 'قدرت طراحی هدفمند',
+      excerpt: 'چگونه تصمیم های طراحی آگاهانه تعامل کاربر و اعتماد به برند را افزایش می دهد.',
+      content: 'طراحی هدفمند یعنی هر تصمیم بصری و تجربه ای باید به یک نتیجه مشخص کسب وکار وصل باشد. وقتی مسیر کاربر واضح و بدون اصطکاک طراحی شود، نرخ تکمیل اقدام ها بالا می رود و اعتماد به برند تقویت می شود. این رویکرد باعث می شود محصول هم زیبا باشد و هم عملکرد واقعی بهتری ارائه دهد.',
+      keyInsights: 'طراحی را با هدف کسب وکار همسو کنید\nقبل از زیباسازی، وضوح مسیر کاربر را تضمین کنید\nبا آزمایش مداوم، تصمیم های طراحی را بهینه کنید',
+      nextSteps: 'مسیرهای کلیدی کاربر را ممیزی کنید، گلوگاه ها را حذف کنید و تغییرات را با شاخص های قابل اندازه گیری ارزیابی کنید.',
+      date: 'می ۲۰۲۵',
+    },
+    'top-5-tools-we-use-to-build-scalable-websites': {
+      title: '۵ ابزار اصلی ما برای ساخت وب سایت های مقیاس پذیر',
+      excerpt: 'از طراحی تا استقرار، این ها ابزارهای اصلی ما در ۲۰۲۵ هستند.',
+      content: 'مقیاس پذیری نتیجه ترکیب ابزار درست و فرآیند مهندسی منظم است. ما برای طراحی، توسعه، کنترل کیفیت و استقرار، زنجیره ای از ابزارهای مکمل انتخاب می کنیم تا تیم سریع تر و با خطای کمتر خروجی بدهد. هدف این است که رشد محصول بدون افت کیفیت اتفاق بیفتد.',
+      keyInsights: 'ابزار را متناسب با توان تیم انتخاب کنید\nکنترل کیفیت را از ابتدای مسیر خودکار کنید\nالگوهای معماری را در تیم یکدست نگه دارید',
+      nextSteps: 'فهرست ابزارهای فعلی را بازبینی کنید، نقاط کندی را شناسایی کنید و از اتوماسیون کارهای تکراری شروع کنید.',
+      date: 'آوریل ۲۰۲۵',
+    },
+    'why-every-brand-needs-a-design-system': {
+      title: 'چرا هر برند به سیستم طراحی نیاز دارد',
+      excerpt: 'سیستم طراحی فقط ظاهر نیست؛ راهنمای عملیاتی برند شماست.',
+      content: 'سیستم طراحی، زبان مشترک بین طراحی، محصول و توسعه ایجاد می کند. با داشتن اجزای قابل استفاده مجدد و قوانین روشن، سرعت تحویل بالا می رود و کیفیت تجربه کاربر یکدست می ماند. این ساختار به تیم کمک می کند در مقیاس بزرگ هم هماهنگ بماند.',
+      keyInsights: 'یکپارچگی ظاهری اعتماد می سازد\nاجزای قابل استفاده مجدد زمان تحویل را کم می کند\nاستاندارد مشترک، همکاری بین تیمی را بهتر می کند',
+      nextSteps: 'از توکن های اصلی و کامپوننت های پرکاربرد شروع کنید و برای استفاده از آن ها مستندات عملی بنویسید.',
+      date: 'مارس ۲۰۲۵',
+    },
+    'dark-mode-design-tips-for-better-ux': {
+      title: 'طراحی حالت تاریک: نکته هایی برای UX بهتر',
+      excerpt: 'چگونه رابط های تاریک فراگیر، خوانا و زیبا طراحی کنیم.',
+      content: 'طراحی حالت تاریک فقط تغییر رنگ پس زمینه نیست. برای خوانایی پایدار باید نسبت کنتراست، نقش رنگ ها و رفتار تایپوگرافی دقیق تنظیم شود. وقتی این اصول رعایت شود، تجربه کاربر در محیط های مختلف نوری بهتر و خستگی چشم کمتر می شود.',
+      keyInsights: 'برای رنگ ها نقش معنایی تعریف کنید\nکنتراست دسترس پذیری را همیشه بررسی کنید\nنمایش را روی دستگاه ها و روشنایی های مختلف تست کنید',
+      nextSteps: 'تمام صفحات کلیدی را در حالت روشن و تاریک بررسی کنید و الگوهای کم کنتراست را در اولویت اصلاح قرار دهید.',
+      date: 'فوریه ۲۰۲۵',
+    },
+    'how-we-approach-mobile-first-design': {
+      title: 'رویکرد ما به طراحی موبایل-اول',
+      excerpt: 'ببینید چرا شروع از موبایل، شیوه ساخت برای وب را تغییر می دهد.',
+      content: 'طراحی موبایل-اول تیم را مجبور می کند روی مهم ترین نیاز کاربر تمرکز کند. این روش سلسله مراتب محتوا را شفاف تر می کند و از شلوغی رابط جلوگیری می کند. در بسیاری از پروژه ها، همین سادگی اولیه کیفیت نسخه دسکتاپ را هم بهتر کرده است.',
+      keyInsights: 'اقدام های اصلی را در اولویت قرار دهید\nرابط را با ارگونومی لمس طراحی کنید\nبرای نمایشگرهای بزرگ تر تدریجی توسعه دهید',
+      nextSteps: 'مسیر حیاتی موبایل را مشخص کنید و عناصر کم ارزش را از صفحه های اولیه حذف کنید.',
+      date: 'ژانویه ۲۰۲۵',
+    },
+    'web-performance-in-2025-what-actually-matters': {
+      title: 'عملکرد وب در ۲۰۲۵: چه چیز واقعاً مهم است',
+      excerpt: 'سرعت، دسترس پذیری و جریان کاربر؛ چک لیست جدید عملکرد.',
+      content: 'عملکرد وب امروز فقط امتیاز ابزارها نیست، بلکه تجربه واقعی کاربر در مسیر کامل استفاده از محصول است. رندر سریع، پایداری چیدمان و پاسخ دهی روان تعامل، مستقیما روی نرخ تبدیل و نگهداشت اثر می گذارد. تمرکز باید روی معیارهایی باشد که کاربر واقعا حس می کند.',
+      keyInsights: 'معیارهای واقعی کاربران را پایش کنید\nمسیر رندر اولیه را بهینه کنید\nلرزش چیدمان و تاخیر تعامل را حذف کنید',
+      nextSteps: 'Core Web Vitals را در محیط واقعی اندازه گیری کنید و اصلاحات را بر اساس اثر کسب وکار اولویت بندی کنید.',
+      date: 'دسامبر ۲۰۲۴',
+    },
+  },
+  ps: {
+    'the-power-of-purposeful-design': {
+      title: 'د هدفمند ډیزاین ځواک',
+      excerpt: 'قصدي ډیزاین څنګه د کاروونکي تعامل او د برانډ باور زیاتوي.',
+      content: 'هدفمند ډیزاین دا معنا لري چې هر بصري او تجربوي تصمیم باید د سوداګرۍ له واضح هدف سره تړلی وي. کله چې د کاروونکي مسیر ساده او روښانه وي، کاروونکي ژر اقدام کوي او پر برانډ باور زیاتېږي. دا چلند محصول هم ښکلی او هم اغېزمن کوي.',
+      keyInsights: 'ډیزاین د سوداګریز هدف سره همغږی کړئ\nله ښکلا مخکې د کاروونکي وضاحت یقیني کړئ\nپرله پسې ازموینې د تصمیم کیفیت لوړوي',
+      nextSteps: 'د کاروونکي مهم مسیرونه وارزوی، خنډونه کم کړئ او بدلونونه د اندازه کېدونکو شاخصونو له مخې تعقیب کړئ.',
+      date: 'مې ۲۰۲۵',
+    },
+    'top-5-tools-we-use-to-build-scalable-websites': {
+      title: 'د پراخېدونکو وېبپاڼو لپاره زموږ ۵ مهم ابزار',
+      excerpt: 'له ډیزاین تر ډیپلویمنت پورې، دا زموږ د ۲۰۲۵ مهم ټېک سټاک دی.',
+      content: 'پراخېدنه یوازې په یوه وسیله نه تر لاسه کېږي؛ مهمه ده چې سم ابزارونه له منظم انجنیرۍ بهیر سره یو ځای شي. موږ د ډیزاین، پراختیا، کیفیت او خپرونې لپاره همغږی ټوول چین کاروو تر څو ټیم چټک او باوري پایله ورکړي. هدف دا دی چې د ودې پر مهال کیفیت ثابت پاتې شي.',
+      keyInsights: 'وسیلې د ټیم د وړتیا له مخې وټاکئ\nکیفیتي کنټرول له لومړي پړاو څخه اتومات کړئ\nد معمارۍ الګوګانې په ټیم کې یو شان وساتئ',
+      nextSteps: 'اوسنی ټېک سټاک وارزوی، د ځنډ نقاط وپېژنئ او د تکراري کارونو له اتومات کولو پیل وکړئ.',
+      date: 'اپریل ۲۰۲۵',
+    },
+    'why-every-brand-needs-a-design-system': {
+      title: 'ولې هر برانډ د ډیزاین سیسټم ته اړتیا لري',
+      excerpt: 'ډیزاین سیسټم یوازې لیدیز نه دی؛ دا د برانډ کاري لارښود دی.',
+      content: 'ډیزاین سیسټم د ډیزاین، محصول او پراختیا ترمنځ ګډه ژبه رامنځته کوي. د بیا کارېدونکو اجزاوو او روښانه قواعدو له لارې د کار سرعت لوړېږي او د کاروونکي تجربه یو شان پاتې کېږي. دا چوکاټ ټیم ته اجازه ورکوي چې په پراخېدو کې هم منظم او همغږی پاتې شي.',
+      keyInsights: 'یو شان تجربه باور جوړوي\nبیا کارېدونکي الګوګانې د سپارلو وخت کموي\nګډ معیار د ټیمونو همکاري ښه کوي',
+      nextSteps: 'له بنسټیزو UI توکنونو او عامو کامپوننټونو پیل وکړئ او د کارونې واضح مستندات جوړ کړئ.',
+      date: 'مارچ ۲۰۲۵',
+    },
+    'dark-mode-design-tips-for-better-ux': {
+      title: 'ډارک موډ ډیزاین: د غوره UX لپاره لارښوونې',
+      excerpt: 'څنګه ټول-شمول، لوستلو وړ او ښکلي تیاره انٹرفېسونه ډیزاین کړو.',
+      content: 'ډارک موډ یوازې د شالید رنګ بدلول نه دي. د لوستلو وړتیا لپاره د رنګ کنتراست، د رنګونو معنوي رولونه او تایپوګرافي باید په دقت تنظیم شي. د دې اصولو په مراعت سره تجربه په بېلابېلو رڼا چاپېریالونو کې هم راحته او اغېزمنه پاتې کېږي.',
+      keyInsights: 'رنګونو ته معنوي رولونه وټاکئ\nد لاسرسي کنتراست تل تایید کړئ\nپه مختلفو وسیلو او رڼا کچو کې ازموینه وکړئ',
+      nextSteps: 'کلیدي پاڼې په روښانه او تیاره حالت کې وازمویئ او ټیټ کنتراست الګوګانې لومړی اصلاح کړئ.',
+      date: 'فبروري ۲۰۲۵',
+    },
+    'how-we-approach-mobile-first-design': {
+      title: 'موږ موبایل-اول ډیزاین څنګه ترسره کوو',
+      excerpt: 'وګورئ چې له موبایل څخه پیل کول څنګه د وېب جوړولو طریقه بدلوي.',
+      content: 'موبایل-اول چلند ټیم اړ کوي چې د کاروونکي پر اساسي اړتیاوو تمرکز وکړي. دا طریقه د محتوا سلسله روښانه کوي او غیر ضروري ګډوډي کموي. په ډېرو پروژو کې همدا ساده پیل د ډسکټاپ نسخې کیفیت هم لوړ کړی دی.',
+      keyInsights: 'اصلي اقدامات لومړیتوب کړئ\nانٹرفېس د لمس کارونې له مخې طرحه کړئ\nد لویو سکرینونو لپاره تدریجي پرمختګ وکړئ',
+      nextSteps: 'د موبایل حیاتي مسیر وټاکئ او له لومړیو سکرینونو څخه کم ارزښت عناصر لرې کړئ.',
+      date: 'جنوري ۲۰۲۵',
+    },
+    'web-performance-in-2025-what-actually-matters': {
+      title: 'په ۲۰۲۵ کې د وېب فعالیت: څه واقعاً مهم دي',
+      excerpt: 'چټکتیا، لاسرسی او د کاروونکي جریان - نوی چک لېسټ.',
+      content: 'نننی وېب فعالیت یوازې د لابراتواري نمرې موضوع نه ده، بلکې د کاروونکي واقعي تجربه ده. چټک رینډر، ثابت لې اوټ او روان تعامل د بدلون او ساتنې پر کچې مستقیم اغېز لري. تمرکز باید پر هغو شاخصونو وي چې کاروونکي یې په عمل کې احساسوي.',
+      keyInsights: 'د حقیقي کاروونکو معیارونه تعقیب کړئ\nد لومړني رینډر مسیر ښه کړئ\nد لې اوټ لړزېدنه او تعامل ځنډ له منځه یوسئ',
+      nextSteps: 'Core Web Vitals په تولید چاپېریال کې اندازه کړئ او اصلاحات د سوداګریز اثر له مخې لومړیتوب کړئ.',
+      date: 'دسمبر ۲۰۲۴',
+    },
+  },
+};
+
+const hasArabicScript = (value = '') => typeof value === 'string' && /[\u0600-\u06FF]/.test(value);
+
+const shouldUseRtlFallback = (value, locale) => {
+  if (locale !== 'fa' && locale !== 'ps') return false;
+  if (typeof value !== 'string' || !value.trim()) return true;
+  return !hasArabicScript(value);
+};
+
+export const applyLocalizedBlogPostFallback = (post = {}, locale = 'en') => {
+  if (!post || typeof post !== 'object') return post;
+
+  const localizedBySlug = RTL_BLOG_POST_FALLBACKS[locale] || null;
+  if (!localizedBySlug) return post;
+
+  const fallback = localizedBySlug[post.slug];
+  if (!fallback) return post;
+
+  return {
+    ...post,
+    title: shouldUseRtlFallback(post.title, locale) ? fallback.title : post.title,
+    excerpt: shouldUseRtlFallback(post.excerpt, locale) ? fallback.excerpt : post.excerpt,
+    description: shouldUseRtlFallback(post.description, locale) ? fallback.excerpt : post.description,
+    content: shouldUseRtlFallback(post.content, locale) ? fallback.content : post.content,
+    keyInsights: shouldUseRtlFallback(post.keyInsights, locale) ? fallback.keyInsights : post.keyInsights,
+    nextSteps: shouldUseRtlFallback(post.nextSteps, locale) ? fallback.nextSteps : post.nextSteps,
+    date: shouldUseRtlFallback(post.date, locale) ? fallback.date : post.date,
+  };
+};
+
+export const applyLocalizedBlogPostFallbackList = (posts = [], locale = 'en') => {
+  if (!Array.isArray(posts)) return [];
+  return posts.map((post) => applyLocalizedBlogPostFallback(post, locale));
+};
+
+const normalizePostItem = (item, index) => {
+  const fallbackSlug = DEFAULT_BLOG_POSTS[index % DEFAULT_BLOG_POSTS.length]?.slug || `post-${index + 1}`;
+  if (typeof item === 'string') {
+    const title = item;
+    return {
+      title,
+      excerpt: '',
+      description: '',
+      content: '',
+      keyInsights: '',
+      nextSteps: '',
+      image: '',
+      date: '',
+      datePublished: '',
+      link: '',
+      slug: fallbackSlug || slugifyBlogTitle(title),
+    };
+  }
+
+  const title = item?.title || `Post ${index + 1}`;
+  const providedSlug = slugifyBlogTitle(item?.slug || '');
+  const linkSlug = getSlugFromLink(item?.link || '');
+  const slug = providedSlug || linkSlug || fallbackSlug || slugifyBlogTitle(title);
+
+  return {
+    title,
+    excerpt: item?.excerpt || item?.description || '',
+    description: item?.description || item?.excerpt || '',
+    content: item?.content || '',
+    keyInsights: item?.keyInsights || item?.insights || '',
+    nextSteps: item?.nextSteps || '',
+    image: item?.image || '',
+    date: item?.date || '',
+    datePublished: item?.datePublished || '',
+    link: item?.link || '',
+    slug,
+  };
+};
+
+export const extractBlogPostsFromSections = (sections = []) => {
+  if (!Array.isArray(sections)) return [];
+
+  let sectionWithPosts = null;
+
+  for (const section of sections) {
+    const key = normalizeSectionToken(section?.sectionKey || '');
+    const type = normalizeSectionToken(section?.sectionType || '');
+    const isBlogPostsSection =
+      BLOG_POST_SECTION_TOKENS.has(key) || BLOG_POST_SECTION_TOKENS.has(type);
+
+    if (!isBlogPostsSection) continue;
+
+    const posts = section?.content?.content?.posts;
+    if (Array.isArray(posts) && posts.length) {
+      sectionWithPosts = posts;
+      break;
+    }
+  }
+
+  if (!sectionWithPosts) {
+    sectionWithPosts = DEFAULT_BLOG_POSTS;
+  }
+
+  const usedSlugs = new Set();
+  return sectionWithPosts.map((item, index) => {
+    const normalized = normalizePostItem(item, index);
+    let uniqueSlug = normalized.slug;
+
+    if (usedSlugs.has(uniqueSlug)) {
+      let suffix = 2;
+      while (usedSlugs.has(`${uniqueSlug}-${suffix}`)) suffix += 1;
+      uniqueSlug = `${uniqueSlug}-${suffix}`;
+    }
+
+    usedSlugs.add(uniqueSlug);
+
+    return {
+      ...normalized,
+      slug: uniqueSlug,
+    };
+  });
+};
+
+export const resolveBlogPostHref = (post) => {
+  const rawLink = String(post?.link || '').trim();
+  if (rawLink === '/blogs') return '/blog';
+  if (rawLink && rawLink !== '#' && rawLink !== '/blog') {
+    return rawLink;
+  }
+
+  const slug = String(post?.slug || slugifyBlogTitle(post?.title || '')).trim();
+  return slug ? `/blog/${slug}` : '/blog';
+};
+
+export const findBlogPostBySlug = (sections = [], slug = '') => {
+  const normalizedSlug = String(slug || '').trim().toLowerCase();
+  if (!normalizedSlug) return null;
+
+  const posts = extractBlogPostsFromSections(sections);
+  return (
+    posts.find((post) => post.slug === normalizedSlug || getSlugFromLink(post.link) === normalizedSlug) ||
+    null
+  );
+};
