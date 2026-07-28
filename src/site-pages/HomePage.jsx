@@ -4,15 +4,13 @@ import { Suspense } from 'react';
 import BlogTeaser from '../Components/Home/BlogTeaser';
 import HomeFAQ from '../Components/Home/HomeFAQ';
 import OurProcess from '../Components/Home/OurProcess';
-import { CTA, Hero, Portfolio, Services, Testimonials } from '../Components/sections';
+import { CTA, Portfolio, Testimonials } from '../Components/sections';
 import HeroSlider from '../Components/sections/HeroSlider';
 import { useLanguage } from '../context/LanguageContext';
 import { resolveLocalizedContent } from '../lib/localized-content';
 
 const sectionRegistry = {
-  hero: Hero,
   heroSlider: HeroSlider,
-  services: Services,
   testimonials: Testimonials,
   process: OurProcess,
   portfolio: Portfolio,
@@ -22,14 +20,11 @@ const sectionRegistry = {
 };
 
 const sectionAliases = {
-  homehero: 'hero',
-  herosection: 'hero',
+  homehero: 'heroSlider',
+  herosection: 'heroSlider',
   homeheroslider: 'heroSlider',
   heroslider: 'heroSlider',
   sliderhero: 'heroSlider',
-  service: 'services',
-  homeservices: 'services',
-  servicespreview: 'services',
   features: 'testimonials',
   testimonial: 'testimonials',
   testimonails: 'testimonials',
@@ -43,7 +38,7 @@ const sectionAliases = {
   homefaq: 'faq',
 };
 
-const defaultOrder = ['hero', 'services', 'testimonials', 'process', 'portfolio', 'blog', 'faq', 'cta'];
+const defaultOrder = ['heroSlider', 'services', 'testimonials', 'process', 'portfolio', 'blog', 'faq', 'cta'];
 
 const normalizeSectionId = (value = '') => {
   const normalized = String(value).toLowerCase().replace(/[^a-z0-9]+/g, '');
@@ -69,10 +64,7 @@ const HomePage = ({ sections = [] }) => {
     : [];
 
   const finalOrder = dbOrder.length
-    ? [...new Set([
-        ...dbOrder,
-        ...defaultOrder.filter((id) => !(id === 'hero' && dbOrder.includes('heroSlider'))),
-      ])]
+    ? [...new Set([...dbOrder])]
     : defaultOrder;
 
   return (

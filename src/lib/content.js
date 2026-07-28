@@ -1,7 +1,7 @@
 import { cache } from 'react';
 import { prisma } from './prisma';
 
-export const DEFAULT_TENANT_SLUG = 'karfamsoft-default';
+export const DEFAULT_TENANT_SLUG = 'golden-shine-default';
 const hasDatabaseUrl = Boolean(globalThis.process?.env?.DATABASE_URL);
 
 const DEFAULT_TEAM_SECTIONS = [

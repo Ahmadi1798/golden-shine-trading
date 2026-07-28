@@ -2,328 +2,162 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-const TENANT_SLUG = 'karfamsoft-default';
+const TENANT_SLUG = 'golden-shine-default';
 
 const pages = [
-  { slug: 'home', title: 'Home', seoTitle: 'KarFamSoft | Home', seoDescription: 'Digital agency home page.' },
-  { slug: 'about', title: 'About', seoTitle: 'KarFamSoft | About', seoDescription: 'About KarFamSoft agency.' },
-  { slug: 'services', title: 'Services', seoTitle: 'KarFamSoft | Services', seoDescription: 'Agency services list.' },
-  { slug: 'portfolio', title: 'Portfolio', seoTitle: 'KarFamSoft | Portfolio', seoDescription: 'Recent client projects.' },
-  { slug: 'blog', title: 'Blog', seoTitle: 'KarFamSoft | Blog', seoDescription: 'Insights and updates.' },
-  { slug: 'contact', title: 'Contact', seoTitle: 'KarFamSoft | Contact', seoDescription: 'Get in touch.' },
-  {
-    slug: 'team',
-    title: 'Team',
-    seoTitle: 'KarFamSoft | Team',
-    seoDescription: 'Meet the KarFamSoft team of strategists, designers, and engineers.',
-  },
+  { slug: 'home', title: 'Home', seoTitle: 'Golden Shine Trading | Premium Trading Solutions', seoDescription: 'Golden Shine Trading — your trusted partner for wholesale distribution and trading solutions across Malaysia.' },
+  { slug: 'about', title: 'About', seoTitle: 'Golden Shine Trading | About Us', seoDescription: 'Learn about Golden Shine Trading — our mission, values, and commitment to quality trading services.' },
+  { slug: 'portfolio', title: 'Products', seoTitle: 'Golden Shine Trading | Our Products', seoDescription: 'Explore Golden Shine Trading\'s diverse product portfolio — quality goods for every industry.' },
+  { slug: 'blog', title: 'Latest News', seoTitle: 'Golden Shine Trading | Latest News', seoDescription: 'Stay updated with the latest news, announcements, and industry insights from Golden Shine Trading.' },
+  { slug: 'contact', title: 'Contact', seoTitle: 'Golden Shine Trading | Contact Us', seoDescription: 'Get in touch with Golden Shine Trading for inquiries, partnerships, and quotations.' },
 ];
 
 async function main() {
   const tenant = await prisma.tenant.upsert({
     where: { slug: TENANT_SLUG },
-    update: { name: 'KarFamSoft Agency' },
-    create: { slug: TENANT_SLUG, name: 'KarFamSoft Agency' },
+    update: { name: 'Golden Shine Trading' },
+    create: { slug: TENANT_SLUG, name: 'Golden Shine Trading' },
   });
 
   await prisma.siteSettings.upsert({
     where: { tenantId: tenant.id },
-    update: {
-      brandName: 'KarFamSoft Agency',
-      primaryColor: '#4F46E5',
-      secondaryColor: '#7C3AED',
-      accentColor: '#EC4899',
-      fontHeading: 'Poppins',
-      fontBody: 'Poppins',
-      contactEmail: 'support@karfamsoft.com',
-      contactPhone: '+1 (555) 123-4567',
-      contactAddress: '703 Bartley-Chester Rd, Virginia, USA',
-    },
+    update: {},
     create: {
       tenantId: tenant.id,
-      brandName: 'KarFamSoft Agency',
-      primaryColor: '#4F46E5',
-      secondaryColor: '#7C3AED',
-      accentColor: '#EC4899',
-      fontHeading: 'Poppins',
-      fontBody: 'Poppins',
-      contactEmail: 'support@karfamsoft.com',
-      contactPhone: '+1 (555) 123-4567',
-      contactAddress: '703 Bartley-Chester Rd, Virginia, USA',
+      brandName: 'Golden Shine Trading',
+      primaryColor: '#D4A017',
+      secondaryColor: '#1A1A2E',
+      accentColor: '#C7920E',
+      fontHeading: 'Inter',
+      fontBody: 'Inter',
+      contactEmail: 'info@goldenshine.com',
+      contactPhone: '+60 12-345 6789',
+      contactAddress: 'Kuala Lumpur, Malaysia',
     },
   });
 
+  // Create pages
   const pageMap = new Map();
-
-  for (const page of pages) {
+  for (const pageDef of pages) {
     const row = await prisma.page.upsert({
-      where: {
-        tenantId_slug: {
-          tenantId: tenant.id,
-          slug: page.slug,
-        },
-      },
-      update: {
-        title: page.title,
-        seoTitle: page.seoTitle,
-        seoDescription: page.seoDescription,
-      },
-      create: {
-        tenantId: tenant.id,
-        slug: page.slug,
-        title: page.title,
-        seoTitle: page.seoTitle,
-        seoDescription: page.seoDescription,
-      },
+      where: { tenantId_slug: { tenantId: tenant.id, slug: pageDef.slug } },
+      update: { title: pageDef.title, seoTitle: pageDef.seoTitle, seoDescription: pageDef.seoDescription },
+      create: { tenantId: tenant.id, slug: pageDef.slug, title: pageDef.title, seoTitle: pageDef.seoTitle, seoDescription: pageDef.seoDescription },
     });
-
-    pageMap.set(page.slug, row.id);
+    pageMap.set(pageDef.slug, row.id);
   }
 
+  // Clean up any old sections before seeding
+  for (const pageSlug of pages.map(p => p.slug)) {
+    const pageId = pageMap.get(pageSlug);
+    if (pageId) {
+      await prisma.pageSection.deleteMany({ where: { pageId } });
+      await prisma.publishedPageSnapshot.deleteMany({ where: { pageId } });
+      await prisma.publishedPageRevision.deleteMany({ where: { pageId } });
+    }
+  }
+
+  // Section definitions
   const sectionRows = [
-    { pageSlug: 'home', sectionKey: 'hero', sectionType: 'Hero', orderIndex: 1, content: { heading: 'Elevate Your Brand with Exceptional Digital Experiences', ctaPrimary: { label: 'View Portfolio', href: '/portfolio' } } },
-    { pageSlug: 'home', sectionKey: 'services', sectionType: 'Services', orderIndex: 2, content: { heading: 'Our Services' } },
-    { pageSlug: 'home', sectionKey: 'testimonials', sectionType: 'Testimonials', orderIndex: 3, content: { heading: 'Why Choose Us' } },
-    { pageSlug: 'home', sectionKey: 'process', sectionType: 'OurProcess', orderIndex: 4, content: { heading: 'Our Process' } },
-    { pageSlug: 'home', sectionKey: 'portfolio', sectionType: 'Portfolio', orderIndex: 5, content: { heading: 'Featured Projects' } },
-    { pageSlug: 'home', sectionKey: 'blog', sectionType: 'BlogTeaser', orderIndex: 6, content: { heading: 'Latest Insights' } },
-    { pageSlug: 'home', sectionKey: 'cta', sectionType: 'CTA', orderIndex: 7, content: { heading: 'Let us build your next digital product.' } },
-    { pageSlug: 'about', sectionKey: 'abouthero', sectionType: 'abouthero', orderIndex: 1, content: { heading: 'A Creative Partner for the Ambitious', description: 'We craft powerful digital experiences that help brands grow, connect, and stand out in today\'s competitive landscape.' } },
-    { pageSlug: 'about', sectionKey: 'whoweare', sectionType: 'story', orderIndex: 2, content: { heading: 'Who We Are', description: 'KarFamSoft is a forward-thinking agency that blends creativity with technology. We partner with startups and enterprises to design, build, and scale digital products that make a real impact.', imageUrl: '/images/heroImage.webp' } },
-    { pageSlug: 'about', sectionKey: 'corevalues', sectionType: 'values', orderIndex: 3, content: { heading: 'Our Core Values', values: [{ title: 'Integrity', description: 'We build trust through transparency, honesty, and delivering on every promise.' }, { title: 'Innovation', description: 'We push boundaries with cutting-edge technology and creative problem-solving.' }, { title: 'Collaboration', description: 'We believe the best work happens when teams and clients work as one.' }, { title: 'Excellence', description: 'Every pixel, every line of code, every interaction reflects our commitment to quality.' }] } },
-    { pageSlug: 'about', sectionKey: 'ourapproach', sectionType: 'process', orderIndex: 4, content: { heading: 'Our Approach', steps: [{ title: 'Discover', description: 'We dive deep into your business goals, target audience, and competitive landscape.' }, { title: 'Design', description: 'Our designers craft intuitive, pixel-perfect interfaces that delight your users.' }, { title: 'Develop', description: 'We build robust, scalable solutions using modern technologies and best practices.' }, { title: 'Deliver', description: 'We launch, monitor, and iterate — supporting you long after the initial release.' }] } },
-    { pageSlug: 'about', sectionKey: 'aboutcta', sectionType: 'cta', orderIndex: 5, content: { heading: 'Ready to Build Something Great?', ctaPrimary: { label: 'Start a Project', href: '/contact' }, ctaSecondary: { label: 'View Our Work', href: '/portfolio' } } },
-    { pageSlug: 'services', sectionKey: 'services-list', sectionType: 'Services', orderIndex: 1, content: { heading: 'What We Offer' } },
-    { pageSlug: 'portfolio', sectionKey: 'projects-gallery', sectionType: 'Portfolio', orderIndex: 1, content: { heading: 'Our Work' } },
-    { pageSlug: 'blog', sectionKey: 'blog-posts', sectionType: 'BlogPosts', orderIndex: 1, content: { heading: 'Insights and Ideas' } },
-    { pageSlug: 'contact', sectionKey: 'contact-form', sectionType: 'Contact', orderIndex: 1, content: { heading: 'Let\'s Connect' } },
-    {
-      pageSlug: 'team',
-      sectionKey: 'teamhero',
-      sectionType: 'teamhero',
-      orderIndex: 1,
-      content: {
-        eyebrow: 'Our Team',
-        heading: 'Meet the People Behind the Work',
-        description:
-          'We are a focused team of strategists, designers, and engineers building modern digital products that feel effortless and perform reliably.',
-      },
-    },
-    {
-      pageSlug: 'team',
-      sectionKey: 'teamstats',
-      sectionType: 'teamstats',
-      orderIndex: 2,
-      content: {
-        projectsDelivered: '120+',
-        clientRating: '4.9/5',
-        yearsBuilding: '8+',
-      },
-    },
-    {
-      pageSlug: 'team',
-      sectionKey: 'teammembers',
-      sectionType: 'teammembers',
-      orderIndex: 3,
-      content: {
-        membersHeading: 'Meet Our Team',
-        members: [
-          {
-            name: 'Rafi Ullah Ahmadi',
-            role: 'Founder & Product Strategist',
-            imageUrl: '/images/heroImage.webp',
-            bio: 'Leads product vision, discovery workshops, and roadmap planning for client projects.',
-            facebookUrl: 'https://facebook.com',
-            xUrl: 'https://twitter.com',
-            instagramUrl: 'https://instagram.com',
-          },
-          {
-            name: 'Ariana Wells',
-            role: 'Lead UI Engineer',
-            imageUrl: '/images/heroImage.webp',
-            bio: 'Builds polished, high-performance interfaces with a strong focus on accessibility and UX.',
-            facebookUrl: 'https://facebook.com',
-            xUrl: 'https://twitter.com',
-            instagramUrl: 'https://instagram.com',
-          },
-          {
-            name: 'Omar Rahimi',
-            role: 'Backend Architect',
-            imageUrl: '/images/heroImage.webp',
-            bio: 'Designs secure APIs, scalable systems, and reliable integrations that power business workflows.',
-            facebookUrl: 'https://facebook.com',
-            xUrl: 'https://twitter.com',
-            instagramUrl: 'https://instagram.com',
-          },
-        ],
-      },
-    },
-    {
-      pageSlug: 'team',
-      sectionKey: 'teamvalues',
-      sectionType: 'teamvalues',
-      orderIndex: 4,
-      content: {
-        valuesHeading: 'How We Work',
-        values: [
-          {
-            title: 'Build With Clarity',
-            description: 'We simplify complex requirements into practical phases with visible milestones.',
-          },
-          {
-            title: 'Design For Humans',
-            description: 'Every decision is made around usability, accessibility, and real user behavior.',
-          },
-          {
-            title: 'Ship With Confidence',
-            description: 'Quality and delivery discipline are built into every sprint from day one.',
-          },
-        ],
-      },
-    },
-  ];
+    // HOME
+    { pageSlug: 'home', sectionKey: 'heroSlider', sectionType: 'heroSlider', orderIndex: 1, content: { autoplayDelay: 6000, slides: [{ eyebrow: 'Malaysia\'s Trusted Distributor', heading: 'Premium Products, Reliable Delivery', description: 'Golden Shine Trading connects quality manufacturers with businesses across Malaysia through efficient wholesale distribution and supply chain management.', imageUrl: '/images/heroImage.webp', ctaLabel: 'Explore Products', ctaHref: '/services', secondaryCtaLabel: 'Contact Us', secondaryCtaHref: '/contact', statLabel: 'Years in Business', statValue: '15+' }, { eyebrow: 'Wide Product Range', heading: 'Everything Your Business Needs Under One Roof', description: 'From consumer goods to industrial supplies, we source and deliver comprehensive product ranges tailored to your market.', imageUrl: '/images/heroImage.webp', ctaLabel: 'View Categories', ctaHref: '/services', secondaryCtaLabel: 'Request Quote', secondaryCtaHref: '/contact', statLabel: 'Product Lines', statValue: '500+' }, { eyebrow: 'Nationwide Coverage', heading: 'Serving Businesses Across All of Malaysia', description: 'With reliable logistics and strong supplier partnerships, we ensure your orders arrive on time — from Penang to Johor, Sabah to Sarawak.', imageUrl: '/images/heroImage.webp', ctaLabel: 'Get Started', ctaHref: '/contact', secondaryCtaLabel: 'About Us', secondaryCtaHref: '/about', statLabel: 'Cities Served', statValue: '50+' }] } },
+    { pageSlug: 'home', sectionKey: 'whychooseus', sectionType: 'Testimonials', orderIndex: 2, content: { heading: 'Why Choose Golden Shine', description: 'We bring reliability, quality, and competitive pricing to every partnership.', features: ['Consistent on-time deliveries across Malaysia', 'Direct sourcing keeps your costs competitive', 'Rigorous quality checks on every shipment', 'Dedicated account support for every client'] } },
+    { pageSlug: 'home', sectionKey: 'cta', sectionType: 'CTA', orderIndex: 3, content: { heading: 'Ready to Partner with Golden Shine?', ctaPrimary: { label: 'Contact Us', href: '/contact' }, ctaSecondary: { label: 'View Products', href: '/services' } } },
 
-  // Clean up old about page sections before seeding new ones
-  const aboutPageId = pageMap.get('about');
-  if (aboutPageId) {
-    await prisma.pageSection.deleteMany({ where: { pageId: aboutPageId } });
-    await prisma.publishedPageSnapshot.deleteMany({ where: { pageId: aboutPageId } });
-    await prisma.publishedPageRevision.deleteMany({ where: { pageId: aboutPageId } });
-  }
+    // ABOUT
+    { pageSlug: 'about', sectionKey: 'abouthero', sectionType: 'abouthero', orderIndex: 1, content: { heading: 'A Legacy of Trust in Trading', description: 'Golden Shine Trading was founded with a simple goal — to bridge quality products with businesses that need them most.' } },
+    { pageSlug: 'about', sectionKey: 'whoweare', sectionType: 'story', orderIndex: 2, content: { heading: 'Who We Are', description: 'We are a Malaysian-based trading company specializing in wholesale distribution of high-quality goods. Our deep network of suppliers and logistics partners enables us to serve clients across diverse industries with speed and reliability.', imageUrl: '/images/heroImage.webp' } },
+    { pageSlug: 'about', sectionKey: 'corevalues', sectionType: 'values', orderIndex: 3, content: { heading: 'Our Values', values: [{ title: 'Integrity', description: 'We operate with transparency and honesty in every transaction.' }, { title: 'Excellence', description: 'We hold ourselves to the highest standards in product quality and service.' }, { title: 'Partnership', description: 'Your success is our success — we invest in long-term relationships.' }, { title: 'Innovation', description: 'We constantly improve our sourcing, logistics, and customer experience.' }] } },
+    { pageSlug: 'about', sectionKey: 'ourapproach', sectionType: 'process', orderIndex: 4, content: { heading: 'How We Work', steps: [{ title: 'Source', description: 'We identify and vet premium suppliers to ensure consistent quality.' }, { title: 'Quality Check', description: 'Every shipment is inspected and verified before dispatch.' }, { title: 'Distribute', description: 'Efficient logistics deliver your orders on time, every time.' }, { title: 'Support', description: 'Ongoing after-sales support and account management.' }] } },
+    { pageSlug: 'about', sectionKey: 'aboutcta', sectionType: 'cta', orderIndex: 5, content: { heading: 'Let\'s Build Something Together', ctaPrimary: { label: 'Get in Touch', href: '/contact' } } },
+
+    // PRODUCTS (portfolio slug)
+    { pageSlug: 'portfolio', sectionKey: 'projects-gallery', sectionType: 'Portfolio', orderIndex: 1, content: { heading: 'Our Product Range', description: 'Explore our comprehensive range of quality products across multiple categories.', projects: [{ title: 'Consumer Goods', description: 'Household essentials, personal care, and everyday consumables.' }, { title: 'Food & Beverage', description: 'Packaged foods, beverages, and specialty ingredients.' }, { title: 'Industrial Supplies', description: 'Raw materials, packaging, and operational supplies.' }, { title: 'Electronics', description: 'Consumer electronics and accessories at wholesale pricing.' }] } },
+
+    // LATEST NEWS (blog slug)
+    { pageSlug: 'blog', sectionKey: 'blog-posts', sectionType: 'BlogPosts', orderIndex: 1, content: { heading: 'Latest News & Updates', description: 'Stay informed with announcements, industry insights, and company updates.' } },
+  ];
 
   for (const row of sectionRows) {
     const pageId = pageMap.get(row.pageSlug);
     if (!pageId) continue;
 
     const section = await prisma.pageSection.upsert({
-      where: {
-        pageId_sectionKey: {
-          pageId,
-          sectionKey: row.sectionKey,
-        },
-      },
-      update: {
-        sectionType: row.sectionType,
-        orderIndex: row.orderIndex,
-        isVisible: true,
-      },
-      create: {
-        pageId,
-        sectionKey: row.sectionKey,
-        sectionType: row.sectionType,
-        orderIndex: row.orderIndex,
-        isVisible: true,
-      },
+      where: { pageId_sectionKey: { pageId, sectionKey: row.sectionKey } },
+      update: { sectionType: row.sectionType, orderIndex: row.orderIndex, isVisible: true },
+      create: { pageId, sectionKey: row.sectionKey, sectionType: row.sectionType, orderIndex: row.orderIndex, isVisible: true },
     });
 
     await prisma.sectionContent.upsert({
       where: { pageSectionId: section.id },
       update: { content: row.content },
-      create: {
-        pageSectionId: section.id,
-        content: row.content,
-      },
+      create: { pageSectionId: section.id, content: row.content },
     });
   }
 
-  for (const page of pages) {
-    const pageId = pageMap.get(page.slug);
+  // Create published snapshots for all pages
+  for (const pageDef of pages) {
+    const pageId = pageMap.get(pageDef.slug);
     if (!pageId) continue;
 
-    const pageSections = await prisma.pageSection.findMany({
-      where: { pageId },
+    const sections = await prisma.pageSection.findMany({
+      where: { pageId, isVisible: true },
       orderBy: { orderIndex: 'asc' },
       include: { content: true },
     });
 
-    const sections = pageSections.map((section, index) => ({
-      sectionKey: section.sectionKey,
-      sectionType: section.sectionType,
-      orderIndex: section.orderIndex ?? index + 1,
-      isVisible: section.isVisible,
-      content: section.content?.content || {},
+    const serialized = sections.map((s, i) => ({
+      sectionKey: s.sectionKey,
+      sectionType: s.sectionType,
+      orderIndex: s.orderIndex ?? i + 1,
+      isVisible: s.isVisible ?? true,
+      content: s.content?.content || {},
     }));
 
-    await prisma.publishedPageSnapshot.upsert({
+    const snapshot = await prisma.publishedPageSnapshot.upsert({
       where: { pageId },
-      update: {
-        title: page.title,
-        seoTitle: page.seoTitle,
-        seoDescription: page.seoDescription,
-        sections,
-        publishedAt: new Date(),
-      },
-      create: {
-        pageId,
-        title: page.title,
-        seoTitle: page.seoTitle,
-        seoDescription: page.seoDescription,
-        sections,
-      },
+      update: { title: pageDef.title, seoTitle: pageDef.seoTitle, seoDescription: pageDef.seoDescription, sections: serialized, publishedAt: new Date() },
+      create: { pageId, title: pageDef.title, seoTitle: pageDef.seoTitle, seoDescription: pageDef.seoDescription, sections: serialized },
     });
 
     await prisma.page.update({
       where: { id: pageId },
-      data: { lastPublishedAt: new Date() },
+      data: { lastPublishedAt: snapshot.publishedAt },
     });
   }
 
+  // Navigation
   await prisma.navigationItem.deleteMany({ where: { tenantId: tenant.id } });
+  const navItems = [
+    { label: 'Home', href: '/', orderIndex: 1 },
+    { label: 'About', href: '/about', orderIndex: 2 },
+    { label: 'Products', href: '/portfolio', orderIndex: 3 },
+    { label: 'Latest News', href: '/blog', orderIndex: 4 },
+  ];
+  for (const item of navItems) {
+    await prisma.navigationItem.create({
+      data: { tenantId: tenant.id, label: item.label, href: item.href, orderIndex: item.orderIndex, isVisible: true },
+    });
+  }
+
+  // Footer
   await prisma.footerItem.deleteMany({ where: { tenantId: tenant.id } });
-
-  await prisma.navigationItem.createMany({
-    data: [
-      { tenantId: tenant.id, label: 'Home', href: '/', orderIndex: 1 },
-      { tenantId: tenant.id, label: 'About', href: '/about', orderIndex: 2 },
-      { tenantId: tenant.id, label: 'Services', href: '/services', orderIndex: 3 },
-      { tenantId: tenant.id, label: 'Portfolio', href: '/portfolio', orderIndex: 4 },
-      { tenantId: tenant.id, label: 'Blog', href: '/blog', orderIndex: 5 },
-      { tenantId: tenant.id, label: 'Team', href: '/team', orderIndex: 6 },
-    ],
-  });
-
-  await prisma.footerItem.createMany({
-    data: [
-      { tenantId: tenant.id, columnKey: 'company', label: 'About', href: '/about', orderIndex: 1 },
-      { tenantId: tenant.id, columnKey: 'company', label: 'Services', href: '/services', orderIndex: 2 },
-      { tenantId: tenant.id, columnKey: 'company', label: 'Portfolio', href: '/portfolio', orderIndex: 3 },
-      { tenantId: tenant.id, columnKey: 'company', label: 'Meet the Team', href: '/team', orderIndex: 4 },
-      { tenantId: tenant.id, columnKey: 'connect', label: 'Blog', href: '/blog', orderIndex: 1 },
-      { tenantId: tenant.id, columnKey: 'connect', label: 'Contact', href: '/contact', orderIndex: 2 },
-    ],
-  });
-
-  await prisma.mediaAsset.deleteMany({ where: { tenantId: tenant.id } });
-
-  await prisma.mediaAsset.createMany({
-    data: [
-      {
-        tenantId: tenant.id,
-        name: 'Hero Image',
-        url: '/images/heroImage.webp',
-        type: 'image',
-        mimeType: 'image/webp',
-        altText: 'Creative agency team collaborating on digital project',
-      },
-      {
-        tenantId: tenant.id,
-        name: 'Agency Background Video',
-        url: '/videos/agency.mp4',
-        type: 'video',
-        mimeType: 'video/mp4',
-        altText: 'Agency showcase reel',
-      },
-    ],
-  });
+  const footerItems = [
+    { columnKey: 'company', label: 'About', href: '/about', orderIndex: 1 },
+    { columnKey: 'company', label: 'Products', href: '/services', orderIndex: 2 },
+    { columnKey: 'company', label: 'Photos', href: '/portfolio', orderIndex: 3 },
+    { columnKey: 'connect', label: 'Latest News', href: '/blog', orderIndex: 1 },
+    { columnKey: 'connect', label: 'Contact', href: '/contact', orderIndex: 2 },
+  ];
+  for (const item of footerItems) {
+    await prisma.footerItem.create({
+      data: { tenantId: tenant.id, columnKey: item.columnKey, label: item.label, href: item.href, orderIndex: item.orderIndex, isVisible: true },
+    });
+  }
 
   console.log('Seed completed for tenant:', TENANT_SLUG);
 }
 
 main()
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+  .catch((e) => { console.error(e); process.exit(1); })
+  .finally(() => prisma.$disconnect());

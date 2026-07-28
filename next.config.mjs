@@ -10,6 +10,14 @@ const nextConfig = {
   turbopack: {
     root: __dirname,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/media/:path*',
+        destination: 'http://127.0.0.1:9000/golden-shine-media/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

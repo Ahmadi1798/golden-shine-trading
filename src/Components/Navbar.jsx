@@ -9,7 +9,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 import BrandMark from './ui/BrandMark';
 
-const Navbar = ({ navigationItems = [], brandName = 'KarFamSoft', logoUrl = null }) => {
+const Navbar = ({ navigationItems = [], brandName = 'Golden Shine', logoUrl = null }) => {
   const pathname = usePathname();
   const { isDark, toggleTheme } = useTheme();
   const { language, languages, setLanguage, isRTL, t, translateNavLabel } = useLanguage();
@@ -17,225 +17,120 @@ const Navbar = ({ navigationItems = [], brandName = 'KarFamSoft', logoUrl = null
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef(null);
-
-  const isAboutPage = pathname.startsWith('/about');
+  const isHomePage = pathname === '/';
 
   const navItems = navigationItems.length
-    ? navigationItems.map((item) => ({
-        text: translateNavLabel(item.label, item.href),
-        path: item.href,
-      }))
-    : links.map((item) => ({
-        ...item,
-        text: translateNavLabel(item.text, item.path),
-      }));
+    ? navigationItems.map((item) => ({ text: translateNavLabel(item.label, item.href), path: item.href }))
+    : links;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
+  useEffect(() => { setIsMenuOpen(false); }, [pathname]);
   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false);
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    const h = (e) => { if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false); };
+    document.addEventListener('mousedown', h);
+    return () => document.removeEventListener('mousedown', h);
   }, []);
 
-  const atHero = isAboutPage && !scrolled;
-  const textColor = atHero
-    ? 'color-mix(in srgb, white 85%, transparent)'
-    : 'color-mix(in srgb, var(--theme-primary) 54%, var(--text-base))';
-  const subtleBg = atHero
-    ? 'color-mix(in srgb, white 8%, transparent)'
-    : 'color-mix(in srgb, var(--theme-primary) 6%, var(--surface))';
-  const borderColor = atHero
-    ? 'transparent'
-    : 'color-mix(in srgb, var(--theme-primary) 14%, var(--surface))';
-  const panelBg = atHero
-    ? 'color-mix(in srgb, #000 88%, var(--theme-primary) 4%)'
-    : 'color-mix(in srgb, var(--surface) 94%, var(--theme-primary) 2%)';
+  const atTop = !scrolled && isHomePage;
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-[140] w-full transition-colors duration-300 ${
-        scrolled ? 'dark:bg-[#0f172a]/60' : ''
-      }`}
-      aria-label="Main Navigation"
-    >
-      <nav className="mx-auto max-w-screen-2xl px-4 py-3 sm:px-6 lg:px-8" role="navigation">
-        <div
-          className={`flex items-center justify-between rounded-xl px-4 py-2 backdrop-blur-xl transition-all duration-300 ${
-            atHero ? 'bg-transparent shadow-none backdrop-blur-none' : ''
-          } ${scrolled && !atHero ? 'shadow-lg' : 'shadow-sm'}`}
-          style={
-            atHero
-              ? { backgroundColor: 'transparent' }
-              : { backgroundColor: 'color-mix(in srgb, var(--surface, #fff) 78%, transparent)' }
-          }
-        >
-          <Link href="/" aria-label={`${brandName} Home`} className="flex shrink-0 items-center">
+    <>
+      {/* Main Navbar */}
+      <header className={`fixed top-0 left-0 right-0 z-[140] w-full transition-all duration-300 ${
+        atTop ? 'bg-transparent' : 'bg-white/90 shadow-sm backdrop-blur-xl dark:bg-[#0a0a14]/90'
+      }`} aria-label="Main Navigation">
+        <div className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="flex shrink-0 items-center">
             <BrandMark logoUrl={logoUrl} brandName={brandName} size="sm" />
           </Link>
 
-          <ul
-            className="hidden items-center gap-0.5 rounded-full border px-1.5 py-1 md:flex"
-            style={{ borderColor }}
-          >
+          <nav className="hidden items-center gap-1 md:flex">
             {navItems.map(({ text, path }) => {
               const isActive = pathname === path;
               return (
-                <li key={text}>
-                  <Link
-                    href={path}
-                    className="inline-flex rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors duration-200 sm:text-sm"
-                    style={
-                      isActive
-                        ? { color: atHero ? '#000' : 'white', backgroundColor: atHero ? 'white' : 'var(--theme-primary)' }
-                        : { color: textColor }
-                    }
-                  >
-                    {text}
-                  </Link>
-                </li>
+                <Link key={text} href={path}
+                  className={`relative px-3.5 py-2 text-[13px] font-medium transition-colors ${atTop ? 'text-white/80 hover:text-white' : 'hover:text-[var(--theme-primary)]'}`}
+                  style={!atTop && isActive ? { color: 'var(--theme-primary)' } : undefined}
+                >
+                  {text}
+                  {isActive && <span className={`absolute bottom-0 left-1/2 h-[2px] w-5 -translate-x-1/2 rounded-full ${atTop ? 'bg-white' : ''}`} style={!atTop ? { backgroundColor: 'var(--theme-primary)' } : undefined} />}
+                </Link>
               );
             })}
-          </ul>
+          </nav>
 
-          <div className="flex items-center gap-1.5">
-            {/* Language */}
+          <div className="flex items-center gap-1">
             <div className="relative" ref={langRef}>
-              <button
-                onClick={() => setLangOpen((prev) => !prev)}
-                className="hidden rounded-full p-1.5 transition md:flex items-center gap-1"
-                style={{ color: textColor }}
-                aria-label={t('nav.selectLanguage', 'Select language')}
-              >
-                <Globe size={14} />
+              <button onClick={() => setLangOpen((prev) => !prev)}
+                className={`flex items-center gap-1 rounded-full p-1.5 transition md:flex ${atTop ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-[var(--theme-primary)] dark:text-gray-300'}`}>
+                <Globe size={15} />
                 <span className="text-[11px] font-semibold uppercase">{language}</span>
-                <ChevronDown size={10} className={`transition-transform duration-200 ${langOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown size={10} className={`transition-transform ${langOpen ? 'rotate-180' : ''}`} />
               </button>
               {langOpen && (
-                <div
-                  className={`absolute top-full mt-1.5 min-w-[140px] rounded-xl border p-1.5 shadow-lg backdrop-blur-xl ${isRTL ? 'left-0' : 'right-0'}`}
-                  style={{ backgroundColor: panelBg, borderColor }}
-                >
+                <div className={`absolute top-full mt-1.5 min-w-[130px] rounded-xl border bg-white p-1.5 shadow-lg dark:bg-[#111] ${isRTL ? 'left-0' : 'right-0'}`}
+                  style={{ borderColor: 'color-mix(in srgb, var(--theme-primary) 18%, #e5e7eb)' }}>
                   {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
-                      className={`flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-sm transition ${isRTL ? 'text-right' : 'text-left'}`}
+                    <button key={lang.code} onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
+                      className="flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-sm"
                       style={{
-                        color: language === lang.code ? (atHero ? 'white' : 'var(--theme-primary)') : textColor,
-                        backgroundColor: language === lang.code ? subtleBg : 'transparent',
-                      }}
-                    >
+                        color: language === lang.code ? 'var(--theme-primary)' : undefined,
+                        backgroundColor: language === lang.code ? 'color-mix(in srgb, var(--theme-primary) 8%, transparent)' : undefined,
+                      }}>
                       <span className="text-xs font-semibold uppercase">{lang.code}</span>
-                      <span className="text-xs" style={{ opacity: 0.6 }}>{lang.native}</span>
+                      <span className="text-xs text-gray-400">{lang.native}</span>
                     </button>
                   ))}
                 </div>
               )}
             </div>
 
-            {/* Theme */}
-            <button
-              onClick={toggleTheme}
-              className="hidden rounded-full p-1.5 transition md:inline-flex"
-              style={{ color: atHero ? 'white' : isDark ? 'color-mix(in srgb, var(--theme-accent) 84%, var(--text-base))' : textColor }}
-              aria-label={isDark ? t('nav.switchToLight', 'Switch to light mode') : t('nav.switchToDark', 'Switch to dark mode')}
-            >
-              {isDark ? <Sun size={15} /> : <Moon size={15} />}
+            <button onClick={toggleTheme}
+              className={`rounded-full p-1.5 transition md:flex ${atTop ? 'text-white/70 hover:text-white' : 'text-gray-500 hover:text-[var(--theme-primary)] dark:text-gray-300'}`}>
+              {isDark ? <Sun size={16} /> : <Moon size={16} />}
             </button>
 
-            {/* Contact */}
-            <Link
-              href="/contact"
-              className="hidden rounded-full px-4 py-1.5 text-xs font-semibold text-white shadow transition hover:brightness-105 sm:text-sm md:inline-flex"
-              style={{ background: 'linear-gradient(90deg, var(--theme-primary), var(--theme-secondary))' }}
-            >
+            <Link href="/contact" className="ml-1.5 hidden rounded-full px-5 py-2 text-xs font-semibold text-white shadow transition hover:brightness-110 md:inline-flex"
+              style={{ background: 'linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))' }}>
               {t('nav.contact', 'Contact')}
             </Link>
 
-            {/* Mobile toggle */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="rounded-full p-1.5 md:hidden"
-              style={{ color: textColor }}
-              aria-label={isMenuOpen ? t('nav.closeMenu', 'Close menu') : t('nav.openMenu', 'Open menu')}
-            >
-              {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`rounded-full p-1.5 md:hidden ${atTop ? 'text-white' : ''}`}>
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile menu */}
         {isMenuOpen && (
-          <div
-            className="mx-auto mt-2 w-full max-w-screen-2xl rounded-xl border p-3 shadow-lg backdrop-blur-xl md:hidden"
-            style={{ backgroundColor: panelBg, borderColor }}
-          >
+          <div className="border-t bg-white px-4 py-4 shadow-lg md:hidden dark:bg-[#0a0a14]" style={{ borderColor: 'color-mix(in srgb, var(--theme-primary) 14%, #e5e7eb)' }}>
             <div className="space-y-1">
               {navItems.map(({ text, path }) => {
                 const isActive = pathname === path;
                 return (
-                  <Link
-                    key={text}
-                    href={path}
-                    className="block rounded-lg px-3 py-2 text-sm font-medium transition"
-                    style={
-                      isActive
-                        ? { color: atHero ? '#000' : 'white', backgroundColor: atHero ? 'white' : 'var(--theme-primary)' }
-                        : { color: textColor }
-                    }
-                  >
+                  <Link key={text} href={path} className="block rounded-lg px-4 py-2.5 text-sm font-medium"
+                    style={isActive ? { color: 'var(--theme-primary)', backgroundColor: 'color-mix(in srgb, var(--theme-primary) 8%, transparent)' } : {}}>
                     {text}
                   </Link>
                 );
               })}
             </div>
-            <div className="mt-3 flex items-center gap-2">
-              <Link
-                href="/contact"
-                className="flex-1 rounded-lg px-4 py-2 text-center text-sm font-semibold text-white"
-                style={{ background: 'linear-gradient(90deg, var(--theme-primary), var(--theme-secondary))' }}
-              >
-                {t('nav.contact', 'Contact')}
-              </Link>
-              <button
-                onClick={toggleTheme}
-                className="rounded-lg p-2"
-                style={{ color: textColor, backgroundColor: subtleBg }}
-              >
-                {isDark ? <Sun size={16} /> : <Moon size={16} />}
-              </button>
-            </div>
-            <div className="mt-2 flex flex-wrap gap-1.5">
+            <div className="mt-3 flex items-center gap-3">
               {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => { setLanguage(lang.code); setIsMenuOpen(false); }}
-                  className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold"
-                  style={{
-                    color: language === lang.code ? (atHero ? 'white' : 'var(--theme-primary)') : textColor,
-                    backgroundColor: language === lang.code ? subtleBg : 'transparent',
-                  }}
-                >
-                  <Globe size={10} />
-                  <span className="uppercase">{lang.code}</span>
+                <button key={lang.code} onClick={() => { setLanguage(lang.code); setIsMenuOpen(false); }}
+                  className="rounded-lg px-3 py-1.5 text-xs font-semibold uppercase"
+                  style={{ color: language === lang.code ? 'var(--theme-primary)' : undefined }}>
+                  {lang.code}
                 </button>
               ))}
             </div>
           </div>
         )}
-      </nav>
-    </header>
+      </header>
+    </>
   );
 };
 

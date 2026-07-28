@@ -10,11 +10,9 @@ import BrandMark from './ui/BrandMark';
 
 const fallbackFooterItems = [
   { columnKey: 'company', label: 'About', href: '/about' },
-  { columnKey: 'company', label: 'Services', href: '/services' },
-  { columnKey: 'company', label: 'Portfolio', href: '/portfolio' },
-  { columnKey: 'company', label: 'Team', href: '/team' },
-  { columnKey: 'connect', label: 'Blog', href: '/blog' },
-  { columnKey: 'connect', label: 'Contact', href: '/contact' },
+  { columnKey: 'company', label: 'Products', href: '/services' },
+  { columnKey: 'company', label: 'Contact', href: '/contact' },
+  { columnKey: 'connect', label: 'Home', href: '/' },
 ];
 
 const columnTitles = {
@@ -24,7 +22,7 @@ const columnTitles = {
 
 const Footer = ({
   footerItems = [],
-  brandName = 'KarFamSoft',
+  brandName = 'Golden Shine',
   logoUrl = null,
   contactEmail = '',
   contactPhone = '',

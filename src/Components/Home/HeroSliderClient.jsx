@@ -5,169 +5,176 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import Button from '../ui/Button';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-export default function HeroSliderClient({ slides, autoplayDelay, copy, isRTL }) {
+const slideData = [
+  {
+    eyebrow: "Malaysia's Trusted Distributor",
+    heading: 'Premium Products,\nReliable Delivery',
+    description: 'Golden Shine Trading connects quality manufacturers with businesses across Malaysia through efficient wholesale distribution and supply chain management.',
+    ctaLabel: 'Explore Products',
+    ctaHref: '/services',
+    secondaryCtaLabel: 'Contact Us',
+    secondaryCtaHref: '/contact',
+    stat1: '15+', stat1Label: 'Years',
+    stat2: '500+', stat2Label: 'Products',
+    stat3: '50+', stat3Label: 'Cities',
+  },
+  {
+    eyebrow: 'Comprehensive Range',
+    heading: 'Everything Your Business\nNeeds in One Place',
+    description: 'From consumer goods to industrial supplies, we source and deliver complete product ranges tailored to your market demands.',
+    ctaLabel: 'View Categories',
+    ctaHref: '/services',
+    secondaryCtaLabel: 'Request Quote',
+    secondaryCtaHref: '/contact',
+    stat1: '24/7', stat1Label: 'Support',
+    stat2: '98%', stat2Label: 'On-Time',
+    stat3: '200+', stat3Label: 'Partners',
+  },
+  {
+    eyebrow: 'Nationwide Reach',
+    heading: 'Delivering Across\nPeninsular & East Malaysia',
+    description: 'With reliable logistics and strong supplier partnerships, your orders arrive on time — every time, anywhere.',
+    ctaLabel: 'Get Started',
+    ctaHref: '/contact',
+    secondaryCtaLabel: 'About Us',
+    secondaryCtaHref: '/about',
+    stat1: 'East MY', stat1Label: 'Coverage',
+    stat2: '99%', stat2Label: 'Satisfaction',
+    stat3: '15+', stat3Label: 'Industries',
+  },
+];
+
+function StatBadge({ value, label }) {
+  return (
+    <div className="text-center">
+      <div className="text-2xl font-bold text-white sm:text-3xl">{value}</div>
+      <div className="mt-0.5 text-[11px] font-medium uppercase tracking-wider text-white/50">{label}</div>
+    </div>
+  );
+}
+
+export default function HeroSliderClient({ slides: customSlides, autoplayDelay = 6000 }) {
+  const slides = Array.isArray(customSlides) && customSlides.length ? customSlides : slideData;
+
   return (
     <>
       <Swiper
         modules={[Autoplay, Navigation, Pagination]}
         loop={slides.length > 1}
-        speed={760}
-        autoplay={{
-          delay: autoplayDelay,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-        pagination={{
-          el: '.home-hero-slider-pagination',
-          clickable: true,
-          bulletClass: 'home-hero-slider-bullet',
-          bulletActiveClass: 'home-hero-slider-bullet-active',
-        }}
-        navigation={{
-          prevEl: '.home-hero-slider-prev',
-          nextEl: '.home-hero-slider-next',
-        }}
-        className="overflow-visible"
+        speed={900}
+        effect="fade"
+        autoplay={{ delay: autoplayDelay, disableOnInteraction: false, pauseOnMouseEnter: true }}
+        pagination={{ el: '.hero-pagination', clickable: true }}
+        navigation={{ prevEl: '.hero-prev', nextEl: '.hero-next' }}
+        className="w-full"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={`${slide.heading}-${index}`}>
-            <article
-              className="relative overflow-hidden rounded-[2rem] border shadow-xl"
-              style={{
-                borderColor: 'color-mix(in srgb, var(--theme-primary) 18%, var(--surface))',
-                backgroundColor: 'color-mix(in srgb, var(--surface) 72%, var(--theme-primary) 5%)',
-              }}
-            >
-              <div className="absolute inset-0">
-                <img
-                  src={slide.imageUrl}
-                  alt={slide.imageAlt}
-                  className="h-full w-full object-cover"
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  fetchPriority={index === 0 ? 'high' : 'auto'}
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      'linear-gradient(96deg, color-mix(in srgb, #020617 78%, var(--theme-primary) 18%) 0%, color-mix(in srgb, #020617 56%, transparent) 48%, color-mix(in srgb, #020617 12%, transparent) 100%)',
-                  }}
-                />
-              </div>
+            <div className="relative flex min-h-screen w-full items-center overflow-hidden bg-[#080810]">
+              <img
+                src={slide.imageUrl || '/images/heroImage.webp'}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover opacity-40"
+                loading={index === 0 ? 'eager' : 'lazy'}
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: 'linear-gradient(180deg, #080810 0%, #08081080 40%, #080810e0 85%, #080810 100%)',
+                }}
+              />
+              <div
+                className="absolute inset-0 opacity-[0.12]"
+                style={{
+                  background: 'radial-gradient(ellipse 50% 60% at 20% 40%, var(--theme-primary) 0%, transparent 70%)',
+                }}
+              />
 
-              <div className="relative z-10 grid min-h-[min(78vh,680px)] grid-cols-1 items-end gap-6 px-5 py-7 sm:px-7 sm:py-9 lg:grid-cols-[1.12fr_0.88fr] lg:items-center lg:px-10 lg:py-10">
+              <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-4 sm:px-8 lg:px-12">
                 <motion.div
-                  initial={{ opacity: 0, y: 28 }}
+                  initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.56 }}
-                  className="max-w-2xl"
+                  transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="max-w-3xl"
                 >
                   <span
-                    className="inline-flex rounded-full border px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em]"
-                    style={{
-                      borderColor: 'color-mix(in srgb, var(--surface) 56%, var(--theme-primary) 24%)',
-                      backgroundColor: 'color-mix(in srgb, var(--theme-primary) 22%, transparent)',
-                      color: 'white',
-                    }}
+                    className="inline-block text-xs font-semibold uppercase tracking-[0.22em]"
+                    style={{ color: 'var(--theme-primary)' }}
                   >
                     {slide.eyebrow}
                   </span>
 
-                  <h1 className="mt-4 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+                  <h1 className="mt-4 text-4xl font-bold leading-[1.15] text-white sm:text-5xl lg:text-6xl whitespace-pre-line">
                     {slide.heading}
                   </h1>
 
-                  <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-100 sm:text-lg">
+                  <p className="mt-5 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg">
                     {slide.description}
                   </p>
 
                   <div className="mt-8 flex flex-wrap items-center gap-3">
-                    <Link href={slide.ctaHref || '/contact'}>
-                      <Button variant="primary" size="md" className="!rounded-full px-7">
-                        {slide.ctaLabel}
-                      </Button>
+                    <Link
+                      href={slide.ctaHref || '/services'}
+                      className="rounded-full px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110"
+                      style={{ background: 'linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))' }}
+                    >
+                      {slide.ctaLabel || 'Explore'}
                     </Link>
-                    <Link href={slide.secondaryCtaHref || '/portfolio'}>
-                      <Button
-                        variant="outline"
-                        size="md"
-                        className="!rounded-full border-white/65 bg-white/10 px-7 !text-white backdrop-blur"
-                        style={{ '--tw-ring-color': 'white' }}
-                      >
-                        {slide.secondaryCtaLabel}
-                      </Button>
+                    <Link
+                      href={slide.secondaryCtaHref || '/contact'}
+                      className="rounded-full border px-7 py-3 text-sm font-semibold text-white/80 transition hover:bg-white/5 hover:text-white"
+                      style={{ borderColor: 'color-mix(in srgb, var(--theme-primary) 35%, white)' }}
+                    >
+                      {slide.secondaryCtaLabel || 'Contact'}
                     </Link>
                   </div>
-                </motion.div>
 
-                <div className={`self-end justify-self-end rounded-2xl border border-white/35 bg-white/12 px-5 py-4 text-white backdrop-blur md:px-6 md:py-5 ${isRTL ? 'text-left' : 'text-right'}`}>
-                  <p className="text-xs uppercase tracking-[0.16em] text-white/80">{slide.statLabel}</p>
-                  <p className="mt-2 text-3xl font-bold md:text-4xl">{slide.statValue}</p>
-                </div>
+                  <div className="mt-12 flex items-center gap-0 divide-x divide-white/10">
+                    <StatBadge value={slide.stat1} label={slide.stat1Label} />
+                    <div className="mx-5 h-10 w-px bg-white/10" />
+                    <StatBadge value={slide.stat2} label={slide.stat2Label} />
+                    <div className="mx-5 h-10 w-px bg-white/10" />
+                    <StatBadge value={slide.stat3} label={slide.stat3Label} />
+                  </div>
+                </motion.div>
               </div>
-            </article>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      <div className="mt-5 flex items-center justify-between gap-4">
-        <div className="home-hero-slider-pagination flex items-center gap-2" />
-
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            className="home-hero-slider-prev inline-flex h-10 w-10 items-center justify-center rounded-full border transition hover:-translate-x-0.5"
-            style={{
-              borderColor: 'color-mix(in srgb, var(--theme-primary) 24%, var(--surface))',
-              backgroundColor: 'color-mix(in srgb, var(--surface) 86%, var(--theme-primary) 6%)',
-              color: 'color-mix(in srgb, var(--theme-primary) 70%, var(--text-base))',
-            }}
-            aria-label={copy.prev}
-          >
-            <ChevronLeft size={18} />
-          </button>
-          <button
-            type="button"
-            className="home-hero-slider-next inline-flex h-10 w-10 items-center justify-center rounded-full border transition hover:translate-x-0.5"
-            style={{
-              borderColor: 'color-mix(in srgb, var(--theme-primary) 24%, var(--surface))',
-              backgroundColor: 'color-mix(in srgb, var(--surface) 86%, var(--theme-primary) 6%)',
-              color: 'color-mix(in srgb, var(--theme-primary) 70%, var(--text-base))',
-            }}
-            aria-label={copy.next}
-          >
-            <ChevronRight size={18} />
-          </button>
-        </div>
+      <div className="absolute bottom-8 right-4 z-20 flex items-center gap-3 sm:right-8 lg:right-12">
+        <button
+          type="button"
+          className="hero-prev inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/50 transition hover:border-white/30 hover:text-white"
+        >
+          <ChevronLeft size={18} />
+        </button>
+        <div className="hero-pagination flex items-center gap-2" />
+        <button
+          type="button"
+          className="hero-next inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/50 transition hover:border-white/30 hover:text-white"
+        >
+          <ChevronRight size={18} />
+        </button>
       </div>
 
       <style>{`
-        .home-hero-slider-bullet {
-          width: 9px;
-          height: 9px;
+        .hero-pagination .swiper-pagination-bullet {
+          width: 6px; height: 6px;
           border-radius: 9999px;
-          border: 1px solid color-mix(in srgb, var(--theme-primary) 45%, var(--surface));
-          background: color-mix(in srgb, var(--theme-primary) 22%, var(--surface));
-          opacity: 0.55;
-          transition: all 0.25s ease;
-          display: inline-block;
-        }
-
-        .home-hero-slider-bullet:hover {
-          opacity: 0.9;
-          transform: translateY(-1px);
-        }
-
-        .home-hero-slider-bullet-active {
-          width: 26px;
+          background: rgba(255,255,255,0.25);
           opacity: 1;
-          background: linear-gradient(90deg, var(--theme-primary), var(--theme-secondary));
-          border-color: transparent;
+          transition: all 0.3s ease;
+          margin: 0 4px;
+        }
+        .hero-pagination .swiper-pagination-bullet-active {
+          width: 24px;
+          background: var(--theme-primary);
         }
       `}</style>
     </>

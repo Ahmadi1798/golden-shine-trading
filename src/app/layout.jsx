@@ -3,8 +3,8 @@ import NextLayoutShell from '../Components/NextLayoutShell';
 import { getSiteData } from '../lib/content';
 
 export const metadata = {
-  title: 'KarFamSoft Agency',
-  description: 'KarFamSoft crafts scalable, user-focused digital experiences.',
+  title: 'Golden Shine Trading | Premium Trading Solutions',
+  description: 'Golden Shine Trading — your trusted partner for wholesale distribution and trading solutions across Malaysia.',
 };
 
 function normalizeFontStack(value, fallback = 'sans-serif') {
@@ -49,7 +49,7 @@ export default async function RootLayout({ children }) {
         <NextLayoutShell
           navigationItems={siteData?.navigationItems || []}
           footerItems={siteData?.footerItems || []}
-          brandName={siteData?.siteSettings?.brandName || siteData?.name || 'KarFamSoft'}
+          brandName={siteData?.siteSettings?.brandName || siteData?.name || 'Golden Shine'}
           logoUrl={siteSettings?.logoUrl || null}
           contactEmail={siteSettings?.contactEmail || ''}
           contactPhone={siteSettings?.contactPhone || ''}
