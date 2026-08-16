@@ -1,6 +1,6 @@
-# KarFamSoft Agency Website
+# Golden Shine Trading website
 
-A modern, responsive, and professional agency website built with **React** and **Next.js App Router**. This project showcases KarFamSoft’s digital services, portfolio, blog, and contact options, designed for high performance, accessibility, and SEO.
+A modern, responsive, and professional agency website built with **React** and **Next.js App Router**. This project showcases Golden Shine’s digital services, portfolio, blog, and contact options, designed for high performance, accessibility, and SEO.
 
 ## Features
 
