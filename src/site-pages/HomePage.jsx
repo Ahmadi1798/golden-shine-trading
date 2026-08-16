@@ -1,22 +1,17 @@
 'use client';
 
-import { Suspense } from 'react';
-import BlogTeaser from '../Components/Home/BlogTeaser';
-import HomeFAQ from '../Components/Home/HomeFAQ';
-import OurProcess from '../Components/Home/OurProcess';
-import { CTA, Portfolio, Testimonials } from '../Components/sections';
+import { Brands, HomeAbout, Quote, Services, Testimonials } from '../Components/sections';
 import HeroSlider from '../Components/sections/HeroSlider';
 import { useLanguage } from '../context/LanguageContext';
 import { resolveLocalizedContent } from '../lib/localized-content';
 
 const sectionRegistry = {
   heroSlider: HeroSlider,
+  services: Services,
+  about: HomeAbout,
+  brands: Brands,
   testimonials: Testimonials,
-  process: OurProcess,
-  portfolio: Portfolio,
-  blog: BlogTeaser,
-  faq: HomeFAQ,
-  cta: CTA,
+  quote: Quote,
 };
 
 const sectionAliases = {
@@ -25,20 +20,17 @@ const sectionAliases = {
   homeheroslider: 'heroSlider',
   heroslider: 'heroSlider',
   sliderhero: 'heroSlider',
+  homeservices: 'services',
+  homeabout: 'about',
+  homebrands: 'brands',
   features: 'testimonials',
   testimonial: 'testimonials',
   testimonails: 'testimonials',
   whychooseus: 'testimonials',
-  ourapproach: 'process',
-  ourprocess: 'process',
-  homeportfolio: 'portfolio',
-  projectsteaser: 'portfolio',
-  homeblog: 'blog',
-  blogteaser: 'blog',
-  homefaq: 'faq',
+  homequote: 'quote',
 };
 
-const defaultOrder = ['heroSlider', 'services', 'testimonials', 'process', 'portfolio', 'blog', 'faq', 'cta'];
+const defaultOrder = ['heroSlider', 'services', 'about', 'brands', 'testimonials', 'quote'];
 
 const normalizeSectionId = (value = '') => {
   const normalized = String(value).toLowerCase().replace(/[^a-z0-9]+/g, '');
@@ -63,24 +55,29 @@ const HomePage = ({ sections = [] }) => {
         .filter((id) => sectionRegistry[id])
     : [];
 
-  const finalOrder = dbOrder.length
-    ? [...new Set([...dbOrder])]
-    : defaultOrder;
+  const finalOrder = (() => {
+    if (!dbOrder.length) return defaultOrder;
+    const merged = [...dbOrder];
+    for (const id of defaultOrder) {
+      if (!merged.includes(id)) {
+        let insertIdx = 0;
+        const prevIdx = defaultOrder.indexOf(id) - 1;
+        if (prevIdx >= 0) {
+          const prevInMerged = merged.indexOf(defaultOrder[prevIdx]);
+          if (prevInMerged >= 0) insertIdx = prevInMerged + 1;
+        }
+        merged.splice(insertIdx, 0, id);
+      }
+    }
+    return merged;
+  })();
 
   return (
     <div className="home-page-theme-bg">
       {finalOrder.map((id) => {
         const Component = sectionRegistry[id];
         if (!Component) return null;
-        const element = <Component key={id} content={contentMap[id]} />;
-        if (id === 'blog') {
-          return (
-            <Suspense key={id} fallback={null}>
-              {element}
-            </Suspense>
-          );
-        }
-        return element;
+        return <Component key={id} content={contentMap[id]} />;
       })}
     </div>
   );

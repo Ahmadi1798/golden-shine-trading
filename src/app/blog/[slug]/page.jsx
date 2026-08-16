@@ -6,8 +6,8 @@ import { getAdminSessionFromCookies } from '../../../lib/admin-auth';
 import { extractBlogPostsFromSections, findBlogPostBySlug } from '../../../utils/blogPosts';
 
 const FALLBACK_META = {
-  title: 'KarFamSoft | Blog Post',
-  description: 'Read insights and practical ideas from KarFamSoft.',
+  title: 'Golden Shine Trading | News',
+  description: 'Company announcements and updates from Golden Shine Trading.',
 };
 
 async function fetchBlogSections(preview = false) {
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }) {
     if (!post) return FALLBACK_META;
 
     return {
-      title: `${post.title} | KarFamSoft Blog`,
+      title: `${post.title} | Golden Shine Trading`,
       description: post.excerpt || post.description || FALLBACK_META.description,
     };
   } catch {

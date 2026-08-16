@@ -7,15 +7,15 @@ export async function generateMetadata() {
   try {
     const page = await getPublicPageWithContent('home');
     return {
-      title: page?.seoTitle || page?.title || 'KarFamSoft | Home',
+      title: page?.seoTitle || page?.title || 'Golden Shine Trading | Home',
       description:
         page?.seoDescription ||
-        'Explore KarFamSoft services, portfolio, process, and insights.',
+        'Golden Shine Trading — your trusted partner for Japanese used automobile parts.',
     };
   } catch {
     return {
-      title: 'KarFamSoft | Home',
-      description: 'Explore KarFamSoft services, portfolio, process, and insights.',
+      title: 'Golden Shine Trading | Home',
+      description: 'Golden Shine Trading — your trusted partner for Japanese used automobile parts.',
     };
   }
 }

@@ -1,6 +1,9 @@
 export { default as Hero } from './Hero';
-export { default as Portfolio } from './Portfolio';
+export { default as Services } from './Services';
+export { default as HomeAbout } from './HomeAbout';
+export { default as Brands } from './Brands';
 export { default as Testimonials } from './Testimonials';
+export { default as Quote } from './Quote';
 export { default as CTA } from './CTA';
 export { default as Contact } from './Contact';
 export { default as FooterSection } from './Footer';

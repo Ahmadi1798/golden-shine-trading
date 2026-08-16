@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&family=Vazirmatn:wght@400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Almarai:wght@300;400;700;800&family=Lalezar:wght@400&family=Cairo:wght@200;300;400;500;600;700;800;900&family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 @plugin "flowbite-react/plugin/tailwindcss";
 @source "../.flowbite-react/class-list.json";
@@ -6,9 +6,9 @@
 
 /* Set variables for light & dark mode */
 :root {
-  --theme-primary: #4f46e5;
-  --theme-secondary: #7c3aed;
-  --theme-accent: #ec4899;
+  --theme-primary: #1e3a8a;
+  --theme-secondary: #2563eb;
+  --theme-accent: #eab308;
   --theme-font-heading: "Poppins", sans-serif;
   --theme-font-body: "Poppins", sans-serif;
   --font-sans: var(--theme-font-body, "Poppins", sans-serif);

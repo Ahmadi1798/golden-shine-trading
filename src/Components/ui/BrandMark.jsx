@@ -4,37 +4,36 @@ function getInitials(name) {
   return (words[0]?.[0] || '').toUpperCase();
 }
 
-export default function BrandMark({ logoUrl, brandName, size = 'sm' }) {
+const LOGO_SIZES = {
+  sm: { image: 'h-8 w-auto object-contain', badge: 'h-8 w-8 text-[11px]', text: 'text-sm font-semibold' },
+  md: { image: 'h-10 sm:h-12 w-auto object-contain', badge: 'h-10 w-10 text-sm', text: 'text-base sm:text-lg font-bold' },
+  lg: { image: 'h-14 sm:h-16 w-auto object-contain', badge: 'h-14 w-14 text-base', text: 'text-lg sm:text-xl font-bold' },
+  xl: { image: 'h-16 sm:h-20 w-auto object-contain', badge: 'h-16 w-16 text-lg', text: 'text-xl sm:text-2xl font-extrabold' },
+};
+
+export default function BrandMark({ logoUrl, brandName, size = 'md', light = false }) {
   const initials = getInitials(brandName);
+  const sizes = LOGO_SIZES[size] || LOGO_SIZES.md;
 
   if (logoUrl) {
-    const imgClasses = size === 'sm' ? 'h-7 sm:h-8 w-auto object-contain' : 'h-9 w-auto object-contain';
     return (
       <img
         src={logoUrl}
         alt={`${brandName} logo`}
-        className={imgClasses}
+        className={`${sizes.image} shrink-0`}
       />
     );
   }
 
-  const badgeDims = size === 'sm' ? 'h-7 w-7 text-[10px] sm:h-8 sm:w-8 sm:text-xs' : 'h-9 w-9 text-xs';
-  const textClass = size === 'sm' ? 'text-sm font-semibold sm:text-base' : 'text-lg font-bold';
-
   return (
-    <div className="flex items-center gap-2.5">
+    <div className="flex items-center gap-3">
       <span
-        className={`${badgeDims} flex shrink-0 items-center justify-center rounded-lg font-bold text-white`}
-        style={{
-          background: 'linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))',
-        }}
+        className={`${sizes.badge} flex shrink-0 items-center justify-center rounded-xl font-bold text-white`}
+        style={{ background: 'linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))' }}
       >
         {initials}
       </span>
-      <span
-        className={`${textClass} tracking-tight`}
-        style={{ color: 'color-mix(in srgb, var(--theme-primary) 85%, var(--text-base))' }}
-      >
+      <span className={`${sizes.text} tracking-tight ${light ? 'text-white' : 'text-gray-900 dark:text-white'}`}>
         {brandName}
       </span>
     </div>

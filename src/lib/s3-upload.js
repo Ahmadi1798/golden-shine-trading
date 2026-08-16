@@ -59,13 +59,18 @@ export async function uploadFileToS3(file) {
 
   const bytes = new Uint8Array(await file.arrayBuffer());
 
+  // Cloudflare R2 doesn't support object-level ACLs by default. Make the
+  // object public either via a public bucket / custom domain (S3_PUBLIC_BASE_URL)
+  // or by enabling ACLs and setting S3_ACL="public-read".
+  const acl = globalThis.process?.env?.S3_ACL || undefined;
+
   await client.send(
     new PutObjectCommand({
       Bucket: config.bucket,
       Key: key,
       Body: bytes,
       ContentType: file.type || 'application/octet-stream',
-      ACL: 'public-read',
+      ...(acl ? { ACL: acl } : {}),
     })
   );
 

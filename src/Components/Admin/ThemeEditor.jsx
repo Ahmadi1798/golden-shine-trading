@@ -10,12 +10,6 @@ const FONT_OPTIONS = [
   'Montserrat, sans-serif',
   'DM Sans, sans-serif',
   'Lora, serif',
-  'Vazirmatn, sans-serif',
-  'Noto Sans Arabic, sans-serif',
-  'Almarai, sans-serif',
-  'Lalezar, sans-serif',
-  'Cairo, sans-serif',
-  'Alexandria, sans-serif',
 ];
 
 const normalizeFontStack = (value, fallback = 'sans-serif') => {
@@ -32,9 +26,10 @@ const ThemeEditor = ({ siteSettings }) => {
   const [form, setForm] = useState({
     brandName: siteSettings?.brandName || '',
     logoUrl: siteSettings?.logoUrl || '',
-    primaryColor: siteSettings?.primaryColor || '#4F46E5',
-    secondaryColor: siteSettings?.secondaryColor || '#7C3AED',
-    accentColor: siteSettings?.accentColor || '#EC4899',
+    logoSize: siteSettings?.logoSize || 'md',
+    primaryColor: siteSettings?.primaryColor || '#1E3A8A',
+    secondaryColor: siteSettings?.secondaryColor || '#2563EB',
+    accentColor: siteSettings?.accentColor || '#EAB308',
     fontHeading: siteSettings?.fontHeading || 'Poppins, sans-serif',
     fontBody: siteSettings?.fontBody || 'Poppins, sans-serif',
   });
@@ -57,6 +52,7 @@ const ThemeEditor = ({ siteSettings }) => {
       brandName: 'Brand Name',
       brandNamePlaceholder: 'Your Agency Name',
       logo: 'Logo',
+      logoSize: 'Logo Size',
       noLogo: 'No logo (show brand text)',
       brandColors: 'Brand Colors',
       appliesGlobally: 'Applies globally',
@@ -73,66 +69,6 @@ const ThemeEditor = ({ siteSettings }) => {
       previewTitle: 'Modern Theme System',
       previewDescription: 'This preview reflects your selected logo, colors, and fonts before saving.',
       previewAction: 'Primary Action',
-    },
-    fa: {
-      failedLoadAssets: 'بارگذاری رسانه ها ناموفق بود',
-      savingTheme: 'در حال ذخیره قالب...',
-      saveFailed: 'ذخیره قالب ناموفق بود.',
-      saveSuccess: 'قالب ذخیره شد. برای مشاهده تغییرات، صفحات عمومی را تازه سازی کنید.',
-      sectionLabel: 'شخصی سازی',
-      title: 'استودیوی قالب',
-      subtitle: 'هویت برند را یک بار تنظیم کنید و در کل وب سایت اعمال کنید.',
-      saveTheme: 'ذخیره قالب',
-      saving: 'در حال ذخیره...',
-      brandName: 'نام برند',
-      brandNamePlaceholder: 'نام آژانس شما',
-      logo: 'لوگو',
-      noLogo: 'بدون لوگو (نمایش نام برند)',
-      brandColors: 'رنگ های برند',
-      appliesGlobally: 'اعمال در کل سایت',
-      primary: 'اصلی',
-      secondary: 'ثانویه',
-      accent: 'تاکیدی',
-      headingFont: 'فونت عنوان',
-      bodyFont: 'فونت متن',
-      loadingAssets: 'در حال بارگذاری رسانه ها...',
-      noImageAsset: 'هیچ تصویری در کتابخانه رسانه یافت نشد. ابتدا از بخش رسانه یک تصویر آپلود کنید.',
-      livePreview: 'پیش نمایش زنده',
-      previewHint: 'انتخاب های شما را قبل از ذخیره نمایش می دهد.',
-      previewBrand: 'برند شما',
-      previewTitle: 'سیستم قالب مدرن',
-      previewDescription: 'این پیش نمایش لوگو، رنگ ها و فونت های انتخابی شما را قبل از ذخیره نشان می دهد.',
-      previewAction: 'اقدام اصلی',
-    },
-    ps: {
-      failedLoadAssets: 'د میډیا فایلونو بارول ناکام شول',
-      savingTheme: 'تیم خوندي کېږي...',
-      saveFailed: 'د تیم خوندي کول ناکام شول.',
-      saveSuccess: 'تیم خوندي شو. د بدلونونو لیدلو لپاره عامه پاڼې بیا تازه کړئ.',
-      sectionLabel: 'تنظیمول',
-      title: 'د تیم سټوډیو',
-      subtitle: 'د برانډ هویت یو ځل تنظیم کړئ او ټولې وېبپاڼې ته یې پلي کړئ.',
-      saveTheme: 'تیم خوندي کړئ',
-      saving: 'خوندي کېږي...',
-      brandName: 'د برانډ نوم',
-      brandNamePlaceholder: 'ستاسې د اژانس نوم',
-      logo: 'لوګو',
-      noLogo: 'لوګو نشته (د برانډ نوم ښکاره شي)',
-      brandColors: 'د برانډ رنګونه',
-      appliesGlobally: 'په ټول سایټ پلي کېږي',
-      primary: 'اصلي',
-      secondary: 'ثانوي',
-      accent: 'ټینګار',
-      headingFont: 'د سرلیک فونټ',
-      bodyFont: 'د متن فونټ',
-      loadingAssets: 'میډیا فایلونه بارېږي...',
-      noImageAsset: 'د میډیا کتابتون کې انځور ونه موندل شو. لومړی له میډیا برخې انځور پورته کړئ.',
-      livePreview: 'ژوندۍ مخکتنه',
-      previewHint: 'له خوندي کولو مخکې ستاسو ټاکنې ښيي.',
-      previewBrand: 'ستاسې برانډ',
-      previewTitle: 'عصري تیم سیستم',
-      previewDescription: 'دا مخکتنه له خوندي کولو مخکې ستاسو ټاکل شوی لوګو، رنګونه او فونټونه ښيي.',
-      previewAction: 'اصلي عمل',
     },
   };
 
@@ -290,37 +226,21 @@ const ThemeEditor = ({ siteSettings }) => {
             </label>
           </div>
 
-          <div className="mt-4 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-4">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">{copy.brandColors}</h2>
-              <span className="text-xs text-slate-500 dark:text-slate-400">{copy.appliesGlobally}</span>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-3">
-              {[
-                { label: copy.primary, key: 'primaryColor', value: form.primaryColor },
-                { label: copy.secondary, key: 'secondaryColor', value: form.secondaryColor },
-                { label: copy.accent, key: 'accentColor', value: form.accentColor },
-              ].map((color) => (
-                <label key={color.key} className="space-y-1.5 text-sm font-medium">
-                  <span className="text-slate-700 dark:text-slate-300">{color.label}</span>
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="color"
-                      className="h-9 w-10 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-gray-950 cursor-pointer"
-                      value={color.value}
-                      onChange={(event) => updateField(color.key, event.target.value)}
-                    />
-                    <input
-                      className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-gray-950 px-3 py-2 text-sm text-slate-900 dark:text-white outline-none transition-all duration-200 focus:border-transparent focus:ring-2 font-mono"
-                      style={{ '--tw-ring-color': 'var(--theme-primary)' }}
-                      value={color.value}
-                      onChange={(event) => updateField(color.key, event.target.value)}
-                    />
-                  </div>
-                </label>
-              ))}
-            </div>
+          <div className="mt-3">
+            <label className="space-y-1.5 text-sm font-medium">
+              <span className="text-slate-700 dark:text-slate-300">{copy.logoSize}</span>
+              <select
+                className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-gray-950 px-3 py-2 text-sm text-slate-900 dark:text-white outline-none transition-all duration-200 focus:border-transparent focus:ring-2"
+                style={{ '--tw-ring-color': 'var(--theme-primary)' }}
+                value={form.logoSize}
+                onChange={(event) => updateField('logoSize', event.target.value)}
+              >
+                <option value="sm">Small</option>
+                <option value="md">Medium</option>
+                <option value="lg">Large</option>
+                <option value="xl">Extra Large</option>
+              </select>
+            </label>
           </div>
 
           <div className="mt-4 grid gap-3 md:grid-cols-2">

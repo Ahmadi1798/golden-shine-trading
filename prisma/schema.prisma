@@ -27,6 +27,7 @@ model SiteSettings {
   tenantId         String   @unique
   brandName        String
   logoUrl          String?
+  logoSize         String?   @default("md")
   primaryColor     String?
   secondaryColor   String?
   accentColor      String?

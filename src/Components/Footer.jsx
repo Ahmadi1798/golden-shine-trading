@@ -3,29 +3,35 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { FaFacebookF, FaInstagram, FaXTwitter, FaWhatsapp } from 'react-icons/fa6';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import BrandMark from './ui/BrandMark';
 
 const fallbackFooterItems = [
-  { columnKey: 'company', label: 'About', href: '/about' },
-  { columnKey: 'company', label: 'Products', href: '/services' },
-  { columnKey: 'company', label: 'Contact', href: '/contact' },
-  { columnKey: 'connect', label: 'Home', href: '/' },
+  { columnKey: 'discover', label: 'Home', href: '/' },
+  { columnKey: 'discover', label: 'About', href: '/about' },
+  { columnKey: 'discover', label: 'Products', href: '/products' },
+  { columnKey: 'discover', label: 'Contact', href: '/contact' },
+  { columnKey: 'information', label: 'Used Engines', href: '/products' },
+  { columnKey: 'information', label: 'Used Half Cuts', href: '/products' },
+  { columnKey: 'information', label: 'Used Transmissions', href: '/products' },
+  { columnKey: 'information', label: 'Used Spare Parts', href: '/products' },
 ];
 
 const columnTitles = {
-  company: 'Company',
-  connect: 'Connect',
+  discover: 'Discover',
+  information: 'Information',
 };
 
 const Footer = ({
   footerItems = [],
   brandName = 'Golden Shine',
   logoUrl = null,
+  logoSize = 'md',
   contactEmail = '',
   contactPhone = '',
+  contactAddress = '',
   facebookUrl = '',
   instagramUrl = '',
   twitterUrl = '',
@@ -81,77 +87,89 @@ const Footer = ({
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="relative overflow-hidden border-t"
+      className="relative overflow-hidden border-t bg-gray-950 dark:bg-[#080810]"
       style={{
-        borderColor: 'color-mix(in srgb, var(--theme-primary) 12%, transparent)',
-        background:
-          'linear-gradient(180deg, color-mix(in srgb, var(--theme-primary) 4%, var(--surface)), color-mix(in srgb, var(--theme-secondary) 5%, var(--surface)))',
+        borderColor: 'color-mix(in srgb, var(--theme-primary) 18%, #1e1e2e)',
       }}
       aria-label="Site Footer"
     >
       <div
         className="pointer-events-none absolute -top-24 left-0 h-48 w-48 rounded-full blur-3xl"
-        style={{ backgroundColor: 'color-mix(in srgb, var(--theme-primary) 20%, transparent)' }}
+        style={{ backgroundColor: 'color-mix(in srgb, var(--theme-primary) 8%, transparent)' }}
       />
       <div
         className="pointer-events-none absolute -bottom-24 right-0 h-56 w-56 rounded-full blur-3xl"
-        style={{ backgroundColor: 'color-mix(in srgb, var(--theme-accent) 16%, transparent)' }}
+        style={{ backgroundColor: 'color-mix(in srgb, var(--theme-accent) 6%, transparent)' }}
       />
 
-      <div className="relative mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12">
-          <div className={`space-y-5 lg:col-span-3 text-center ${isRTL ? 'sm:text-right' : 'sm:text-left'}`}>
-            <Link
-              href="/"
-              aria-label={`${brandName} Home`}
-              className={`inline-flex items-center gap-3 justify-center ${
-                isRTL ? 'sm:justify-end' : 'sm:justify-start'
-              }`}
-            >
-              <BrandMark logoUrl={logoUrl} brandName={brandName} size="md" />
+      <div className="relative mx-auto max-w-screen-2xl px-4 py-14 md:py-20 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-12">
+          <div className={`space-y-5 lg:col-span-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <Link href="/" aria-label={`${brandName} Home`} className="inline-flex items-center gap-3">
+              <BrandMark logoUrl={logoUrl} brandName={brandName} size={logoSize} />
             </Link>
 
-            <p
-              className="text-sm leading-relaxed max-w-xs mx-auto sm:mx-0"
-              style={{ color: 'color-mix(in srgb, var(--theme-primary) 38%, var(--text-base))' }}
-            >
+            <p className="text-sm leading-relaxed max-w-sm text-gray-400">
               {t(
                 'footer.footerSummary',
-                'We craft scalable, user-focused digital experiences that help brands grow and connect with their audience.',
+                'Golden Shine Trading specializes in import, export, and wholesale of Japanese used automobile engines and spare parts, serving customers across Malaysia and worldwide.',
               )}
             </p>
 
+            <div className="space-y-2.5 pt-1">
+              {contactPhone && (
+                <a
+                  href={`tel:${contactPhone}`}
+                  dir="ltr"
+                  className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  <Phone size={14} strokeWidth={1.5} className="shrink-0" style={{ color: 'var(--theme-primary)' }} />
+                  {contactPhone}
+                </a>
+              )}
+              {contactEmail && (
+                <a
+                  href={`mailto:${contactEmail}`}
+                  dir="ltr"
+                  className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  <Mail size={14} strokeWidth={1.5} className="shrink-0" style={{ color: 'var(--theme-primary)' }} />
+                  {contactEmail}
+                </a>
+              )}
+              {contactAddress && (
+                <p className="flex items-start gap-2.5 text-sm text-gray-400" dir="ltr">
+                  <MapPin size={14} strokeWidth={1.5} className="shrink-0 mt-0.5" style={{ color: 'var(--theme-primary)' }} />
+                  {contactAddress}
+                </p>
+              )}
+            </div>
+
             {socialLinks.length > 0 && (
-            <nav aria-label="Social Media">
-              <ul dir="ltr" className={`flex items-center gap-2 justify-center ${isRTL ? 'sm:justify-end' : 'sm:justify-start'}`}>
-                {socialLinks.map(({ href, label, icon: Icon }) => (
-                  <li key={label}>
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:brightness-90"
-                      style={{
-                        color: 'color-mix(in srgb, var(--theme-primary) 56%, var(--text-base))',
-                        backgroundColor: 'color-mix(in srgb, var(--theme-primary) 10%, var(--surface))',
-                      }}
-                      aria-label={label}
-                    >
-                      <Icon size={14} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+              <nav aria-label="Social Media">
+                <ul dir="ltr" className="flex items-center gap-2">
+                  {socialLinks.map(({ href, label, icon: Icon }) => (
+                    <li key={label}>
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:bg-white/10"
+                        style={{ color: 'color-mix(in srgb, var(--theme-primary) 70%, #9ca3af)' }}
+                        aria-label={label}
+                      >
+                        <Icon size={14} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             )}
           </div>
 
-          {['company', 'connect'].map((columnKey, idx) => (
-            <div key={columnKey} className={`${idx === 0 ? 'lg:col-span-2' : 'lg:col-span-3'} text-center ${isRTL ? 'sm:text-right' : 'sm:text-left'}`}>
-              <h4
-                className="mb-4 text-xs font-bold uppercase tracking-[0.1em]"
-                style={{ color: 'color-mix(in srgb, var(--theme-primary) 60%, var(--text-base))' }}
-              >
+          {['discover', 'information'].map((columnKey) => (
+            <div key={columnKey} className={`${columnKey === 'discover' ? 'lg:col-span-2' : 'lg:col-span-2'} ${isRTL ? 'text-right' : 'text-left'}`}>
+              <h4 className="mb-5 text-xs font-bold uppercase tracking-[0.12em] text-gray-300">
                 {t(`footer.${columnKey}`, columnTitles[columnKey])}
               </h4>
               <ul className="space-y-3">
@@ -159,58 +177,22 @@ const Footer = ({
                   <li key={`${columnKey}-${item.label}`}>
                     <Link
                       href={item.href}
-                      className="text-sm transition-colors duration-200 hover:underline"
-                      style={{
-                        color: 'color-mix(in srgb, var(--theme-primary) 40%, var(--text-base))',
-                      }}
+                      className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       {item.label}
                     </Link>
                   </li>
                 ))}
               </ul>
-
-              {columnKey === 'connect' && (contactEmail || contactPhone) && (
-                <div className="mt-5 space-y-2.5">
-                  {contactEmail && (
-                    <a
-                      href={`mailto:${contactEmail}`}
-                      dir="ltr"
-                      className={`flex items-center gap-2 text-sm transition-colors duration-200 hover:underline justify-center ${isRTL ? 'sm:justify-end' : 'sm:justify-start'}`}
-                      style={{ color: 'color-mix(in srgb, var(--theme-primary) 40%, var(--text-base))' }}
-                    >
-                      <Mail size={13} strokeWidth={1.5} />
-                      {contactEmail}
-                    </a>
-                  )}
-                  {contactPhone && (
-                    <a
-                      href={`tel:${contactPhone}`}
-                      dir="ltr"
-                      className={`flex items-center gap-2 text-sm transition-colors duration-200 hover:underline justify-center ${isRTL ? 'sm:justify-end' : 'sm:justify-start'}`}
-                      style={{ color: 'color-mix(in srgb, var(--theme-primary) 40%, var(--text-base))' }}
-                    >
-                      <Phone size={13} strokeWidth={1.5} />
-                      {contactPhone}
-                    </a>
-                  )}
-                </div>
-              )}
             </div>
           ))}
 
-          <div className={`lg:col-span-4 text-center ${isRTL ? 'sm:text-right' : 'sm:text-left'}`}>
-            <h4
-              className="mb-4 text-xs font-bold uppercase tracking-[0.1em]"
-              style={{ color: 'color-mix(in srgb, var(--theme-primary) 60%, var(--text-base))' }}
-            >
-              {t('footer.newsletter', 'Newsletter')}
+          <div className={`lg:col-span-4 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.12em] text-gray-300">
+              {t('footer.newsletter', 'Subscribe News')}
             </h4>
-            <p
-              className="mb-4 text-sm leading-relaxed"
-              style={{ color: 'color-mix(in srgb, var(--theme-primary) 38%, var(--text-base))' }}
-            >
-              {t('footer.newsletterSummary', 'Get updates on our latest work and insights.')}
+            <p className="mb-4 text-sm text-gray-400">
+              {t('footer.newsletterSummary', 'Please enter your email address to receive updates.')}
             </p>
             <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
               <div className="flex">
@@ -220,24 +202,15 @@ const Footer = ({
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t('footer.yourEmail', 'Your email')}
                   required
-                  className={`w-full min-w-0 border px-3 py-2.5 text-sm focus:outline-none ${
-                    isRTL ? 'rounded-r-lg' : 'rounded-l-lg'
-                  }`}
-                  style={{
-                    borderColor: 'color-mix(in srgb, var(--theme-primary) 18%, var(--surface))',
-                    color: 'color-mix(in srgb, var(--theme-primary) 48%, var(--text-base))',
-                  }}
+                  className="w-full min-w-0 bg-white/5 border border-white/10 px-3 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:border-white/20 rounded-l-lg"
                   aria-label={t('footer.yourEmail', 'Email address')}
                 />
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-105 disabled:opacity-60 shrink-0 ${
-                    isRTL ? 'rounded-l-lg' : 'rounded-r-lg'
-                  }`}
+                  className="px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:opacity-60 shrink-0 rounded-r-lg"
                   style={{
-                    background:
-                      'linear-gradient(90deg, var(--theme-primary), var(--theme-secondary))',
+                    background: 'linear-gradient(90deg, var(--theme-primary), var(--theme-secondary))',
                   }}
                   aria-label={t('footer.subscribe', 'Subscribe')}
                 >
@@ -245,32 +218,15 @@ const Footer = ({
                 </button>
               </div>
               {status && (
-                <p
-                  className="text-xs"
-                  style={{
-                    color: status.includes('already') || status.includes('Thank you')
-                      ? 'color-mix(in srgb, var(--theme-primary) 60%, var(--text-base))'
-                      : '#dc2626',
-                  }}
-                >
-                  {status}
-                </p>
+                <p className="text-xs text-gray-400">{status}</p>
               )}
             </form>
           </div>
         </div>
 
-        <div
-          className="mx-auto mt-12 w-full max-w-xs h-px"
-          style={{
-            background: 'linear-gradient(90deg, transparent, color-mix(in srgb, var(--theme-primary) 20%, transparent), transparent)',
-          }}
-        />
+        <div className="mx-auto mt-12 w-full h-px bg-white/5" />
 
-        <p
-          className="mt-6 text-center text-xs"
-          style={{ color: 'color-mix(in srgb, var(--theme-primary) 24%, var(--text-base))' }}
-        >
+        <p className="mt-6 text-center text-xs text-gray-500">
           &copy; {new Date().getFullYear()} {brandName}. {t('footer.rightsReserved', 'All rights reserved.')}
         </p>
       </div>

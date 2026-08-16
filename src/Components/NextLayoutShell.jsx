@@ -13,8 +13,10 @@ const NextLayoutShell = ({
   footerItems = [],
   brandName = 'KarFamSoft',
   logoUrl = null,
+  logoSize = 'md',
   contactEmail = '',
   contactPhone = '',
+  contactAddress = '',
   facebookUrl = '',
   instagramUrl = '',
   twitterUrl = '',
@@ -28,10 +30,10 @@ const NextLayoutShell = ({
       <LanguageProvider>
         {!isAdminRoute ? <BackToTop /> : null}
         {!isAdminRoute ? (
-          <Navbar navigationItems={navigationItems} brandName={brandName} logoUrl={logoUrl} />
+          <Navbar navigationItems={navigationItems} brandName={brandName} logoUrl={logoUrl} logoSize={logoSize} />
         ) : null}
         {children}
-        {!isAdminRoute ? <Footer footerItems={footerItems} brandName={brandName} logoUrl={logoUrl} contactEmail={contactEmail} contactPhone={contactPhone} facebookUrl={facebookUrl} instagramUrl={instagramUrl} twitterUrl={twitterUrl} whatsappUrl={whatsappUrl} /> : null}
+        {!isAdminRoute ? <Footer footerItems={footerItems} brandName={brandName} logoUrl={logoUrl} logoSize={logoSize} contactEmail={contactEmail} contactPhone={contactPhone} contactAddress={contactAddress} facebookUrl={facebookUrl} instagramUrl={instagramUrl} twitterUrl={twitterUrl} whatsappUrl={whatsappUrl} /> : null}
       </LanguageProvider>
     </ThemeProvider>
   );

@@ -116,15 +116,16 @@ const sectionKindLabelTranslations = {
     homehero: 'هیروی خانه',
     homeheroslider: 'اسلایدر هیروی خانه',
     homeservices: 'پیش نمایش خدمات',
+    homeabout: 'درباره ما',
+    homebrands: 'برندهای ما',
+    homequote: 'نقل قول اعتماد',
     features: 'چرا ما / ویژگی ها',
     process: 'فرایند',
-    homeportfolio: 'تیزر نمونه کار',
-    homeblog: 'تیزر وبلاگ',
-    homefaq: 'پرسش های متداول',
     cta: 'فراخوان اقدام',
     abouthero: 'هیروی درباره',
-    story: 'داستان ما',
-    values: 'ارزش های اصلی',
+    aboutstory: 'داستان ما',
+    aboutfeatures: 'چرا ما را انتخاب کنید',
+    aboutreach: 'دسترسی جهانی',
     serviceshero: 'هیروی خدمات',
     serviceslist: 'فهرست خدمات',
     portfoliohero: 'هیروی نمونه کار',
@@ -141,15 +142,16 @@ const sectionKindLabelTranslations = {
     homehero: 'د کور هیرو',
     homeheroslider: 'د کور هیرو سلایډر',
     homeservices: 'د خدمتونو لنډه بڼه',
+    homeabout: 'زموږ په اړه',
+    homebrands: 'زموږ برانډونه',
+    homequote: 'د باور بیان',
     features: 'ولې موږ / ځانګړتیاوې',
     process: 'بهیر',
-    homeportfolio: 'د پروژو ټیزر',
-    homeblog: 'د بلاګ ټیزر',
-    homefaq: 'ډېرې پوښتنې',
     cta: 'د اقدام بلنه',
     abouthero: 'د زموږ په اړه هیرو',
-    story: 'موږ څوک یو',
-    values: 'اصلي ارزښتونه',
+    aboutstory: 'زموږ کیسه',
+    aboutfeatures: 'ولې موږ غوره کړئ',
+    aboutreach: 'نړیوال لاسرسی',
     serviceshero: 'د خدمتونو هیرو',
     serviceslist: 'د خدمتونو لست',
     portfoliohero: 'د پروژو هیرو',
@@ -169,15 +171,16 @@ const sectionKindDescriptionTranslations = {
     homehero: 'تیتر اصلی، متن پشتیبان و دکمه های اقدام.',
     homeheroslider: 'هیروی اسلایدی تمام عرض با متن، دکمه ها و آمار هر اسلاید.',
     homeservices: 'شبکه معرفی خدمات با دکمه اقدام اختیاری.',
+    homeabout: 'معرفی شرکت با تصویر و دکمه اطلاعات بیشتر.',
+    homebrands: 'نمایشگر برندها با لوگوهای قابل کلیک.',
+    homequote: 'بیانیه اعتماد و کیفیت با دکمه تماس اختیاری.',
     features: 'نکات ارزش پیشنهادی و متن پشتیبان.',
     process: 'بخش مراحل کار به صورت گام به گام.',
-    homeportfolio: 'کارت های پروژه های منتخب با لینک.',
-    homeblog: 'کارت های پیش نمایش تازه ترین نوشته ها.',
-    homefaq: 'پرسش های متداول با حالت آکاردئونی.',
     cta: 'بلاک فراخوان اقدام برای تبدیل بهتر.',
     abouthero: 'مقدمه صفحه درباره با رسانه اختیاری.',
-    story: 'روایت ما با تصویر.',
-    values: 'کارت های ارزش های اصلی.',
+    aboutstory: 'تاریخچه شرکت و ماموریت با تصویر پشتیبان.',
+    aboutfeatures: 'کارت های ویژگی که نشان می دهد چرا مشتریان ما را انتخاب می کنند.',
+    aboutreach: 'شبکه توزیع جهانی و قابلیت ها.',
     serviceshero: 'هیروی معرفی خدمات با اقدام.',
     serviceslist: 'فهرست ساختاریافته خدمات.',
     portfoliohero: 'معرفی صفحه نمونه کار.',
@@ -194,15 +197,16 @@ const sectionKindDescriptionTranslations = {
     homehero: 'اصلي سرلیک، مرسته کوونکی متن او د اقدام بټنونه.',
     homeheroslider: 'پراخ هیرو سلایډر له متن، اقدام او احصایې سره.',
     homeservices: 'د خدمتونو گرېډ له اختیاري اقدام سره.',
+    homeabout: 'د شرکت پېژندنه له انځور او نور معلوماتو تڼۍ سره.',
+    homebrands: 'د برانډونو ښودنه د لوګو او شبکې سره.',
+    homequote: 'د باور او کیفیت بیان د اختیاري اړیکې تڼۍ سره.',
     features: 'د ارزښت مهم ټکي او مرسته کوونکی متن.',
     process: 'د کار بهیر په ګام په ګام بڼه.',
-    homeportfolio: 'د غوره پروژو کارتونه له لینکونو سره.',
-    homeblog: 'د وروستیو لیکنو لنډ کارتونه.',
-    homefaq: 'د پوښتنو ځوابونو اکارډیوني برخه.',
     cta: 'د تبدیلاتو لپاره د اقدام بلاک.',
     abouthero: 'د About پاڼې پېژندنه له اختیاري رسنۍ سره.',
-    story: 'موږ څوک یو کیسه له انځور سره.',
-    values: 'د اصلي ارزښتونو کارتونه.',
+    aboutstory: 'د شرکت تاریخ او ماموریت له انځور سره.',
+    aboutfeatures: 'د ځانګړتیاوو کارتونه چې ښیي ولې پیرودونکي موږ غوره کوي.',
+    aboutreach: 'د نړیوال ویش شبکه او وړتیاوې.',
     serviceshero: 'د خدمتونو د پاڼې هیرو او اقدام.',
     serviceslist: 'د خدمتونو منظم لست.',
     portfoliohero: 'د پروژو پاڼې پېژندنه.',
@@ -232,24 +236,27 @@ const SECTION_ALIASES = {
   sliderherosection: 'homeheroslider',
   services: 'homeservices',
   servicespreview: 'homeservices',
+  homeabout: 'homeabout',
+  brands: 'homebrands',
+  homebrands: 'homebrands',
+  homequote: 'homequote',
+  quote: 'homequote',
   testimonials: 'features',
   testimonial: 'features',
   testimonails: 'features',
   whychooseus: 'features',
   process: 'process',
   ourprocess: 'process',
-  portfolio: 'homeportfolio',
-  projectsteaser: 'homeportfolio',
-  blog: 'homeblog',
-  blogteaser: 'homeblog',
   cta: 'cta',
   contact: 'contact',
   abouthero: 'abouthero',
   about: 'abouthero',
-  whoweare: 'story',
-  whowearesection: 'story',
-  corevalues: 'values',
-  values: 'values',
+  whoweare: 'aboutstory',
+  story: 'aboutstory',
+  corevalues: 'aboutfeatures',
+  aboutfeatures: 'aboutfeatures',
+  values: 'aboutfeatures',
+  aboutreach: 'aboutreach',
   ourapproach: 'process',
   serviceshero: 'serviceshero',
   serviceslist: 'serviceslist',
@@ -276,17 +283,17 @@ const SECTION_ALIASES = {
 };
 
 const EXPECTED_SECTION_KINDS_BY_SLUG = {
-  home: ['homehero', 'homeservices', 'features', 'process', 'homeportfolio', 'homeblog', 'cta'],
-  about: ['abouthero', 'story', 'values', 'process', 'cta'],
-  services: ['serviceshero', 'serviceslist', 'cta'],
-  portfolio: ['portfoliohero', 'projectsgallery', 'cta'],
+  home: ['homeheroslider', 'homeservices', 'homeabout', 'homebrands', 'features', 'homequote'],
+  about: ['abouthero', 'aboutstory', 'aboutfeatures', 'aboutreach', 'aboutcta'],
+  products: ['productshero', 'productcategories', 'productscta'],
+  photos: ['photoshero', 'photogallery'],
   blog: ['bloghero', 'blogposts', 'cta'],
   contact: ['contact'],
   team: ['teamhero', 'teamstats', 'teammembers', 'teamvalues'],
 };
 
 const OPTIONAL_SECTION_LIBRARY_KINDS_BY_SLUG = {
-  home: ['homeheroslider', 'homefaq'],
+  home: [],
 };
 
 const CANONICAL_SECTION_KEY_BY_SLUG_AND_KIND = {
@@ -294,29 +301,26 @@ const CANONICAL_SECTION_KEY_BY_SLUG_AND_KIND = {
     homehero: 'hero',
     homeheroslider: 'hero-slider',
     homeservices: 'services',
+    homeabout: 'about',
+    homebrands: 'brands',
+    homequote: 'quote',
     features: 'testimonials',
-    process: 'process',
-    homeportfolio: 'portfolio',
-    homeblog: 'blog',
-    homefaq: 'faq',
-    cta: 'cta',
   },
   about: {
     abouthero: 'abouthero',
-    story: 'whoweare',
-    values: 'corevalues',
-    process: 'ourapproach',
-    cta: 'aboutcta',
+    aboutstory: 'aboutstory',
+    aboutfeatures: 'aboutfeatures',
+    aboutreach: 'aboutreach',
+    aboutcta: 'aboutcta',
   },
-  services: {
-    serviceshero: 'serviceshero',
-    serviceslist: 'serviceslist',
-    cta: 'servicescta',
+  products: {
+    productshero: 'productshero',
+    productcategories: 'productcategories',
+    productscta: 'productscta',
   },
-  portfolio: {
-    portfoliohero: 'portfoliohero',
-    projectsgallery: 'projectsgallery',
-    cta: 'portfoliocta',
+  photos: {
+    photoshero: 'photoshero',
+    photogallery: 'photogallery',
   },
   blog: {
     bloghero: 'bloghero',
@@ -351,6 +355,28 @@ const ITEM_FIELD_SCHEMAS = {
     { key: 'description', label: 'Description', type: 'textarea' },
   ],
   services: [
+    { key: 'title', label: 'Title' },
+    { key: 'subtitle', label: 'Subtitle' },
+    { key: 'description', label: 'Description', type: 'textarea' },
+    { key: 'image', label: 'Image URL', mediaType: 'image' },
+    { key: 'href', label: 'Link URL' },
+  ],
+  brands: [
+    { key: 'name', label: 'Brand Name' },
+    { key: 'logo', label: 'Logo URL', mediaType: 'image' },
+  ],
+  products: [
+    { key: 'title', label: 'Title' },
+    { key: 'category', label: 'Category', type: 'select', selectOptionsKey: 'categories' },
+    { key: 'image', label: 'Image', mediaType: 'image' },
+    { key: 'description', label: 'Short Description', type: 'textarea' },
+    { key: 'content', label: 'Full Details', type: 'textarea' },
+  ],
+  photos: [
+    { key: 'image', label: 'Image', mediaType: 'image' },
+    { key: 'caption', label: 'Caption', type: 'text' },
+  ],
+  featureCards: [
     { key: 'title', label: 'Title' },
     { key: 'description', label: 'Description', type: 'textarea' },
   ],
@@ -413,10 +439,25 @@ const SECTION_FIELD_SCHEMAS = {
   abouthero: [
     { key: 'heading', label: 'Heading', type: 'text' },
     { key: 'description', label: 'Description', type: 'textarea' },
-    { key: 'videoUrl', label: 'Background Video URL', type: 'text', mediaType: 'video' },
-    { key: 'videoPoster', label: 'Background Video Poster URL', type: 'text', mediaType: 'image' },
+    { key: 'imageUrl', label: 'Hero Image', type: 'text', mediaType: 'image' },
     { key: 'ctaLabel', label: 'CTA Label', type: 'text' },
     { key: 'ctaHref', label: 'CTA URL', type: 'text' },
+  ],
+  aboutstory: [
+    { key: 'heading', label: 'Heading', type: 'text' },
+    { key: 'paragraphOne', label: 'Paragraph One', type: 'textarea' },
+    { key: 'paragraphTwo', label: 'Paragraph Two', type: 'textarea' },
+    { key: 'imageUrl', label: 'Image', type: 'text', mediaType: 'image' },
+    { key: 'imageAlt', label: 'Image Alt Text', type: 'text' },
+  ],
+  aboutfeatures: [
+    { key: 'heading', label: 'Heading', type: 'text' },
+    { key: 'description', label: 'Description', type: 'textarea' },
+    { key: 'features', label: 'Feature Items', type: 'items', itemType: 'featureCards' },
+  ],
+  aboutreach: [
+    { key: 'heading', label: 'Heading', type: 'text' },
+    { key: 'description', label: 'Description', type: 'textarea' },
   ],
   serviceshero: [
     { key: 'heading', label: 'Heading', type: 'text' },
@@ -434,22 +475,55 @@ const SECTION_FIELD_SCHEMAS = {
   serviceslist: [
     { key: 'services', label: 'Service Items', type: 'items', itemType: 'services' },
   ],
-  homeportfolio: [
+  productshero: [
     { key: 'heading', label: 'Heading', type: 'text' },
     { key: 'description', label: 'Description', type: 'textarea' },
-    { key: 'projects', label: 'Project Items', type: 'items', itemType: 'projects' },
+    { key: 'imageUrl', label: 'Hero Image', type: 'text', mediaType: 'image' },
+    { key: 'ctaLabel', label: 'CTA Label', type: 'text' },
+    { key: 'ctaHref', label: 'CTA URL', type: 'text' },
+  ],
+  productcategories: [
+    { key: 'heading', label: 'Heading', type: 'text' },
+    { key: 'description', label: 'Description', type: 'textarea' },
+    { key: 'categories', label: 'Categories (one per line)', type: 'list' },
+    { key: 'products', label: 'Product Items', type: 'items', itemType: 'products' },
+  ],
+  productscta: [
+    { key: 'heading', label: 'Heading', type: 'text' },
+    { key: 'description', label: 'Description', type: 'textarea' },
+    { key: 'ctaLabel', label: 'CTA Label', type: 'text' },
+    { key: 'ctaHref', label: 'CTA URL', type: 'text' },
+  ],
+  photoshero: [
+    { key: 'heading', label: 'Heading', type: 'text' },
+    { key: 'description', label: 'Description', type: 'textarea' },
+    { key: 'imageUrl', label: 'Hero Image', type: 'text', mediaType: 'image' },
+  ],
+  photogallery: [
+    { key: 'heading', label: 'Heading', type: 'text' },
+    { key: 'description', label: 'Description', type: 'textarea' },
+    { key: 'images', label: 'Photos', type: 'items', itemType: 'photos' },
+  ],
+  homeabout: [
+    { key: 'heading', label: 'Heading', type: 'text' },
+    { key: 'description', label: 'Description', type: 'textarea' },
+    { key: 'imageUrl', label: 'Image URL', type: 'text', mediaType: 'image' },
+    { key: 'imageAlt', label: 'Image Alt Text', type: 'text' },
+    { key: 'ctaLabel', label: 'CTA Label', type: 'text' },
+    { key: 'ctaHref', label: 'CTA URL', type: 'text' },
+  ],
+  homebrands: [
+    { key: 'heading', label: 'Heading', type: 'text' },
+    { key: 'brands', label: 'Brand Items', type: 'items', itemType: 'brands' },
+  ],
+  homequote: [
+    { key: 'quote', label: 'Quote Text', type: 'textarea' },
+    { key: 'author', label: 'Author / Company Name', type: 'text' },
     { key: 'ctaLabel', label: 'CTA Label', type: 'text' },
     { key: 'ctaHref', label: 'CTA URL', type: 'text' },
   ],
   projectsgallery: [
     { key: 'projects', label: 'Project Items', type: 'items', itemType: 'projects' },
-  ],
-  homeblog: [
-    { key: 'heading', label: 'Heading', type: 'text' },
-    { key: 'description', label: 'Description', type: 'textarea' },
-    { key: 'posts', label: 'Post Items', type: 'items', itemType: 'posts' },
-    { key: 'ctaLabel', label: 'CTA Label', type: 'text' },
-    { key: 'ctaHref', label: 'CTA URL', type: 'text' },
   ],
   blogposts: [
     { key: 'posts', label: 'Post Items', type: 'items', itemType: 'posts' },
@@ -462,27 +536,10 @@ const SECTION_FIELD_SCHEMAS = {
     { key: 'heading', label: 'Heading', type: 'text' },
     { key: 'description', label: 'Description', type: 'textarea' },
   ],
-  story: [
-    { key: 'heading', label: 'Heading', type: 'text' },
-    { key: 'paragraphOne', label: 'Paragraph One', type: 'textarea' },
-    { key: 'paragraphTwo', label: 'Paragraph Two', type: 'textarea' },
-    { key: 'imageUrl', label: 'Team Image URL', type: 'text', mediaType: 'image' },
-    { key: 'imageAlt', label: 'Team Image Alt Text', type: 'text' },
-  ],
-  values: [
-    { key: 'heading', label: 'Heading', type: 'text' },
-    { key: 'description', label: 'Description', type: 'textarea' },
-    { key: 'values', label: 'Value Items', type: 'items', itemType: 'values' },
-  ],
   features: [
     { key: 'heading', label: 'Heading', type: 'text' },
     { key: 'description', label: 'Description', type: 'textarea' },
-    { key: 'features', label: 'Features (one per line)', type: 'list' },
-  ],
-  homefaq: [
-    { key: 'heading', label: 'Heading', type: 'text' },
-    { key: 'description', label: 'Description', type: 'textarea' },
-    { key: 'faqs', label: 'FAQ Items', type: 'items', itemType: 'faqs' },
+    { key: 'features', label: 'Feature Items', type: 'items', itemType: 'featureCards' },
   ],
   process: [
     { key: 'heading', label: 'Heading', type: 'text' },
@@ -552,7 +609,11 @@ const createEmptyItem = (itemType) => {
     };
   }
 
-  if (itemType === 'services' || itemType === 'steps' || itemType === 'values') {
+  if (itemType === 'services') {
+    return { title: '', subtitle: '', description: '', image: '', href: '' };
+  }
+
+  if (itemType === 'steps' || itemType === 'values') {
     return {
       title: '',
       description: '',
@@ -593,6 +654,22 @@ const createEmptyItem = (itemType) => {
       xUrl: '',
       instagramUrl: '',
     };
+  }
+
+  if (itemType === 'brands') {
+    return { name: '', logo: '' };
+  }
+
+  if (itemType === 'products') {
+    return { title: '', category: '', image: '', description: '', content: '' };
+  }
+
+  if (itemType === 'photos') {
+    return { image: '', caption: '' };
+  }
+
+  if (itemType === 'featureCards') {
+    return { title: '', description: '' };
   }
 
   return {};
@@ -667,213 +744,159 @@ const humanizeLabel = (value = '') =>
 
 const DEFAULT_SECTION_CONTENT_BY_KIND = {
   homeheroslider: {
-    eyebrow: 'Featured Highlights',
-    autoplayDelay: '5000',
+    eyebrow: "Malaysia's Trusted Distributor",
+    autoplayDelay: '6000',
     slides: [
       {
-        eyebrow: 'Creative Digital Studio',
-        heading: 'Web Experiences That Look Bold and Convert Better',
+        eyebrow: "Malaysia's Trusted Distributor",
+        heading: 'Premium Products,\nReliable Delivery',
         description:
-          'We design and build modern websites with strong storytelling, clean UX, and measurable performance gains.',
+          'Golden Shine Trading connects quality manufacturers with businesses across Malaysia through efficient wholesale distribution and supply chain management.',
         imageUrl: '/images/heroImage.webp',
-        imageAlt: 'Creative team planning a digital campaign',
-        ctaLabel: 'Explore Work',
-        ctaHref: '/portfolio',
-        secondaryCtaLabel: 'Start Project',
-        secondaryCtaHref: '/contact',
-        statLabel: 'Projects Delivered',
-        statValue: '120+',
-      },
-      {
-        eyebrow: 'Strategy + Design + Build',
-        heading: 'From Discovery to Launch, We Build with Precision',
-        description:
-          'Every sprint combines brand thinking, interaction design, and robust engineering to move your business forward.',
-        imageUrl: '/images/heroImage.webp',
-        imageAlt: 'Design system wireframes and UI components on desk',
-        ctaLabel: 'See Services',
-        ctaHref: '/services',
-        secondaryCtaLabel: 'Book a Call',
-        secondaryCtaHref: '/contact',
-        statLabel: 'Client Rating',
-        statValue: '4.9/5',
-      },
-      {
-        eyebrow: 'Built for Growth',
-        heading: 'Launch Faster with a Team That Cares About Detail',
-        description:
-          'We help ambitious teams ship polished digital products without sacrificing accessibility, speed, or maintainability.',
-        imageUrl: '/images/heroImage.webp',
-        imageAlt: 'Laptop showing analytics dashboard with growth chart',
-        ctaLabel: 'Read Insights',
-        ctaHref: '/blog',
+        imageAlt: 'Golden Shine Trading distribution and logistics',
+        ctaLabel: 'Explore Products',
+        ctaHref: '/products',
         secondaryCtaLabel: 'Contact Us',
         secondaryCtaHref: '/contact',
-        statLabel: 'Years Building',
-        statValue: '8+',
+        statLabel: 'Years',
+        statValue: '15+',
+      },
+      {
+        eyebrow: 'Comprehensive Range',
+        heading: 'Everything Your Business\nNeeds in One Place',
+        description:
+          'From consumer goods to industrial supplies, we source and deliver complete product ranges tailored to your market demands.',
+        imageUrl: '/images/heroImage.webp',
+        imageAlt: 'Wide range of products in warehouse',
+        ctaLabel: 'View Categories',
+        ctaHref: '/products',
+        secondaryCtaLabel: 'Request Quote',
+        secondaryCtaHref: '/contact',
+        statLabel: 'Products',
+        statValue: '500+',
+      },
+      {
+        eyebrow: 'Nationwide Reach',
+        heading: 'Delivering Across\nPeninsular & East Malaysia',
+        description:
+          'With reliable logistics and strong supplier partnerships, your orders arrive on time — every time, anywhere.',
+        imageUrl: '/images/heroImage.webp',
+        imageAlt: 'Golden Shine Trading nationwide delivery coverage',
+        ctaLabel: 'Get Started',
+        ctaHref: '/contact',
+        secondaryCtaLabel: 'About Us',
+        secondaryCtaHref: '/about',
+        statLabel: 'Cities',
+        statValue: '50+',
       },
     ],
   },
   homehero: {
-    eyebrow: 'Creative Digital Studio',
-    heading: 'Web Experiences That Look Bold and Convert Better',
+    eyebrow: 'Golden Shine Trading',
+    heading: 'Your Trusted Distribution Partner in Malaysia',
     description:
-      'We design and build modern websites with strong storytelling, clean UX, and measurable performance gains.',
+      'Golden Shine Trading connects quality manufacturers with businesses across Malaysia through efficient wholesale distribution and supply chain management.',
     imageUrl: '/images/heroImage.webp',
-    imageAlt: 'Creative team planning a digital campaign',
-    ctaLabel: 'Explore Work',
-    ctaHref: '/portfolio',
-    secondaryCtaLabel: 'Start Project',
+    imageAlt: 'Golden Shine Trading operations',
+    ctaLabel: 'Explore Products',
+    ctaHref: '/products',
+    secondaryCtaLabel: 'Contact Us',
     secondaryCtaHref: '/contact',
   },
   homeservices: {
-    heading: 'What We Do',
+    heading: 'Our Products',
     description:
-      'We help brands build user-focused digital experiences with scalable design and code.',
+      'We specialize in import, export, and wholesale of Japanese used automobile engines and spare parts.',
     services: [
-      {
-        title: 'Web Development',
-        description:
-          'High-performance websites using modern stacks like React and Tailwind.',
-      },
-      {
-        title: 'UI/UX Design',
-        description: 'User-first designs that balance aesthetics and functionality.',
-      },
-      {
-        title: 'Digital Strategy',
-        description: 'Clear and actionable strategies to launch and grow your product.',
-      },
-      {
-        title: 'Performance Optimization',
-        description: 'Speed, accessibility, and measurable improvements across your site.',
-      },
+      { title: 'Used Japanese Car Engines', subtitle: 'Diesel & Gasoline', image: '/images/products/engine.jpg' },
+      { title: 'Used Japanese Truck Engines', subtitle: '', image: '/images/products/truck-engine.jpg' },
+      { title: 'Used Cabin', subtitle: '', image: '/images/products/cabin.jpg' },
+      { title: 'Used Half Cuts', subtitle: 'Front cut / Rear cut', image: '/images/products/halfcut.jpg' },
+      { title: 'Used Transmissions', subtitle: '', image: '/images/products/transmission.jpg' },
+      { title: 'Used Spare Parts', subtitle: '', image: '/images/products/spareparts.jpg' },
     ],
-    ctaLabel: 'View All Services',
-    ctaHref: '/services',
+    ctaLabel: 'View All Products',
+    ctaHref: '/products',
   },
   features: {
-    heading: 'Why Choose KarFamSoft?',
-    description:
-      'We bring clarity, design, and code together to help you build experiences that matter.',
+    heading: 'Satisfaction Priority',
+    description: 'The reason that we are trusted by our customers:',
     features: [
-      'Proven experience with modern tech stacks',
-      'Human-centered, design-first thinking',
-      'Speed, responsiveness, and clean code',
-      'Collaborative and transparent communication',
+      { title: 'High Level of Stock', description: 'We maintain extensive inventory levels to ensure parts are always available when you need them most.' },
+      { title: 'Wide Range of Models', description: 'From passenger cars to heavy-duty trucks, we cover a comprehensive range of Japanese vehicle models and makes.' },
+      { title: 'Local & Worldwide Fast Shipping', description: 'Reliable logistics network delivering orders promptly across Peninsular Malaysia, East Malaysia, and globally.' },
+      { title: 'Well Trained & Professional Staff', description: 'Our knowledgeable team ensures accurate part matching, quality inspection, and responsive customer support.' },
+      { title: 'Sufficient & Quality Materials', description: 'Every component undergoes rigorous quality checks to meet international standards before reaching our customers.' },
+      { title: 'Container Loading Facilities', description: 'On-site container loading capabilities for bulk export orders with secure packing and efficient turnaround.' },
     ],
   },
-  homeportfolio: {
-    heading: 'Featured Projects',
-    description: "A quick look at the work we've done for forward-thinking brands.",
-    projects: [
-      {
-        title: 'TechNova Redesign',
-        image: '/images/1.jpg',
-        description: 'We helped TechNova boost engagement by 48% with a new brand and platform.',
-      },
-      {
-        title: 'GlowCare Mobile App',
-        image: '/images/2.jpg',
-        description: 'Designed a smooth, wellness-first mobile app experience with React Native.',
-      },
-      {
-        title: 'NovaFin Dashboard UI',
-        image: '/images/3.jpg',
-        description: 'Created a dashboard interface with real-time charts for a fintech client.',
-      },
-    ],
-    ctaLabel: 'View Full Portfolio',
-    ctaHref: '/portfolio',
+  homeabout: {
+    heading: 'Ultimate Used Automobile Parts',
+    description:
+      'Golden Shine Trading was established in year 1992. We are specialized in import, export, and wholesale Japanese used automobile engines and spare parts. We have wide international network and currently export to more than 30 countries covering Asia, Middle East, Africa, USA, Australia, New Zealand, South America, and Europe.',
+    imageUrl: '/images/about/about-preview.jpg',
+    imageAlt: 'Golden Shine Trading warehouse and operations',
+    ctaLabel: 'Read More',
+    ctaHref: '/about',
   },
-  homeblog: {
-    heading: 'From the Blog',
-    description: 'Insights and ideas from the KarFamSoft team to inspire your next project.',
-    posts: [
-      {
-        title: 'The Power of Purposeful Design',
-        image: '/blogs/1.jpg',
-        date: 'May 2025',
-        link: '/blog/the-power-of-purposeful-design',
-        excerpt:
-          'Discover how intentional design choices drive business growth and user engagement.',
-        content:
-          'Intentional design creates clarity, reduces friction, and builds trust across every step of the customer journey. When design is purposeful, users complete tasks faster and feel more confident about your brand.',
-        keyInsights:
-          'Align visual choices with business goals\nDesign for clarity before decoration\nContinuously test and refine key user flows',
-        nextSteps:
-          'Audit your top conversion journeys, simplify key interactions, and iterate based on measurable outcomes.',
-      },
-      {
-        title: 'Top 5 Tools We Use to Build Scalable Websites',
-        image: '/blogs/2.jpg',
-        date: 'April 2025',
-        link: '/blog/top-5-tools-we-use-to-build-scalable-websites',
-        excerpt: 'Explore our favorite tools for building robust, scalable digital products.',
-        content:
-          'Scalability is less about one magic tool and more about combining the right stack with disciplined engineering practices. Our toolchain prioritizes reliability, maintainability, and delivery speed.',
-        keyInsights:
-          'Choose tools that fit your team skill set\nAutomate quality checks early\nStandardize architecture patterns across projects',
-        nextSteps:
-          'Review your stack bottlenecks, document standards, and automate repetitive workflows first.',
-      },
-      {
-        title: 'Why Every Brand Needs a Design System',
-        image: '/blogs/3.jpg',
-        date: 'March 2025',
-        link: '/blog/why-every-brand-needs-a-design-system',
-        excerpt: 'Learn why a unified design system is essential for brand consistency and speed.',
-        content:
-          'A strong design system improves consistency, speeds delivery, and helps teams scale without losing quality. It aligns product, design, and engineering around reusable standards.',
-        keyInsights:
-          'Consistency builds trust\nReusable patterns reduce delivery time\nShared standards improve cross-team collaboration',
-        nextSteps:
-          'Start with core UI tokens and components, then document usage rules and governance workflows.',
-      },
+  homebrands: {
+    heading: 'Our Brands',
+    brands: [
+      { name: 'Toyota', logo: '/images/brands/toyota.svg' },
+      { name: 'Honda', logo: '/images/brands/honda.svg' },
+      { name: 'Nissan', logo: '/images/brands/nissan.svg' },
+      { name: 'Mitsubishi', logo: '/images/brands/mitsubishi.svg' },
+      { name: 'Isuzu', logo: '/images/brands/isuzu.svg' },
+      { name: 'Mazda', logo: '/images/brands/mazda.svg' },
+      { name: 'Subaru', logo: '/images/brands/subaru.svg' },
+      { name: 'Suzuki', logo: '/images/brands/suzuki.svg' },
+      { name: 'Daihatsu', logo: '/images/brands/daihatsu.svg' },
+      { name: 'Hino', logo: '/images/brands/hino.svg' },
+      { name: 'UD Trucks', logo: '/images/brands/udtrucks.svg' },
+      { name: 'Fuso', logo: '/images/brands/fuso.svg' },
     ],
-    ctaLabel: 'Visit Blog',
-    ctaHref: '/blog',
+  },
+  homequote: {
+    quote: 'When you trust your car to Golden Shine Trading, we promise to provide the best customer service and highest quality of service available anywhere.',
+    author: 'Golden Shine Trading',
+    ctaLabel: 'Get in Touch',
+    ctaHref: '/contact',
   },
   abouthero: {
-    heading: 'A Creative Partner for the Ambitious',
+    heading: 'About Golden Shine Trading',
     description:
-      'At KarFamSoft Agency, we create digital experiences that help brands grow, adapt, and thrive in a changing world.',
-    ctaLabel: 'Contact Us',
-    ctaHref: '/contact',
-    videoUrl: '/videos/agency.mp4',
-    videoPoster: '',
+      'Your trusted partner for Japanese used automobile parts — serving Malaysia and the world since 1992.',
+    imageUrl: '/images/about/about-preview.jpg',
+    ctaLabel: '',
+    ctaHref: '',
   },
-  story: {
-    heading: 'Who We Are',
+  aboutstory: {
+    heading: 'Our Story',
     paragraphOne:
-      'KarFamSoft Agency is a team of strategists, designers, and developers who believe in the power of purposeful creativity. We blend aesthetics with functionality to deliver digital solutions that are both visually compelling and strategically sound.',
+      'Golden Shine Trading was established in the year 1992. We specialize in import, export, and wholesale of Japanese used automobile engines and spare parts. With over three decades of experience, we have built a reputation for reliability, quality, and exceptional service.',
     paragraphTwo:
-      "Whether we're building a product from scratch or refining a platform, we bring full ownership, deep collaboration, and real curiosity to every project.",
-    imageUrl: '',
-    imageAlt: 'KarFamSoft team collaborating in a creative workspace',
+      'Our comprehensive product range includes used Japanese car engines (diesel and gasoline), truck engines, cabin, half cuts, transmissions, and spare parts. When you trust your vehicle to Golden Shine Trading, we promise the best customer service and highest quality available anywhere.',
+    imageUrl: '/images/about/about-preview.jpg',
+    imageAlt: 'Golden Shine Trading operations',
   },
-  values: {
-    heading: 'What We Stand For',
-    description:
-      "At KarFamSoft Agency, we're guided by values that shape our work and relationships.",
-    values: [
-      {
-        title: 'Craftsmanship',
-        description: 'We obsess over the details that elevate good work to great experiences.',
-      },
-      {
-        title: 'Clarity',
-        description: 'We value honest, simple communication - no fluff, no jargon.',
-      },
-      {
-        title: 'Agility',
-        description: 'We adapt fast and build lean - because that is what real impact requires.',
-      },
-      {
-        title: 'Long-Term Vision',
-        description: 'We care about growth that lasts - in your brand, and our relationship.',
-      },
+  aboutfeatures: {
+    heading: 'Why Choose Golden Shine Trading',
+    description: 'The reasons our customers trust us for their auto parts needs.',
+    features: [
+      { title: 'History & Reputation', description: 'Over 30 years of trusted service in the auto parts industry since 1992.' },
+      { title: 'High Stock Level', description: '20,000+ units of used engines in stock to meet customer requirements immediately.' },
+      { title: 'Wide Range of Models', description: 'Specialized in Japanese models with comprehensive coverage across all major brands.' },
+      { title: 'Fast Preparation', description: 'Able to prepare shipments within short periods with sufficient quality materials.' },
+      { title: 'Professional Workmanship', description: 'Knowledgeable and experienced team delivering consistent quality and precision.' },
+      { title: 'Prompt Service', description: 'Friendly, efficient, and trustworthy service with responsive customer support.' },
+      { title: 'Expert Staff', description: 'Our trained staff will assist and advise you across all areas of auto parts selection.' },
+      { title: 'Container Loading', description: 'On-site container loading facilities with worldwide shipping knowledge and expertise.' },
     ],
+  },
+  aboutreach: {
+    heading: 'Worldwide Distribution',
+    description:
+      'We have full facilities and expertise to prepare shipments and load containers. Our wide international network currently exports to more than 30 countries covering Asia, Middle East, Africa, USA, Australia, New Zealand, South America, and Europe. All engines and parts are carefully selected and inspected prior to shipment.',
   },
   process: {
     heading: 'Our Approach',
@@ -923,57 +946,62 @@ const DEFAULT_SECTION_CONTENT_BY_KIND = {
 };
 
 const DEFAULT_SECTION_CONTENT_BY_PAGE_AND_KIND = {
-  home: {
-    process: {
-      heading: 'Our Process',
+  products: {
+    productshero: {
+      heading: 'Our Products',
       description:
-        'Our process merges strategy, design, and development into one seamless journey.',
-      steps: [
-        {
-          title: 'Discover',
-          description: 'We listen, align on goals, and explore opportunities.',
-        },
-        {
-          title: 'Design',
-          description: 'We craft intuitive, elegant, and user-focused visuals.',
-        },
-        {
-          title: 'Develop',
-          description: 'We build clean, scalable, and responsive digital products.',
-        },
-        {
-          title: 'Deliver & Evolve',
-          description: 'We launch, measure, and improve continuously.',
-        },
+        'Explore our comprehensive range of Japanese used automobile parts — engines, transmissions, cabins, half cuts, and spare parts.',
+      imageUrl: '/images/about/about-preview.jpg',
+      ctaLabel: '',
+      ctaHref: '',
+    },
+    productcategories: {
+      heading: 'Our Products',
+      description: 'Browse our full range of Japanese used automobile parts.',
+      categories: [
+        'Used Japanese Car Engines',
+        'Used Japanese Truck Engines',
+        'Used Cabin',
+        'Used Half Cuts',
+        'Used Transmissions',
+        'Used Spare Parts',
+      ],
+      products: [
+        { title: 'Toyota 1NZ-FE Engine', category: 'Used Japanese Car Engines', image: '/images/products/engine.jpg', description: 'Reliable 1.5L petrol engine widely used in Toyota Vios and Yaris.', content: 'The Toyota 1NZ-FE is a 1.5-liter inline-four petrol engine renowned for its durability and fuel efficiency.\n\nEach engine is compression-tested, leak-checked, and inspected by our trained technicians prior to shipment.' },
+        { title: 'Honda L15A Engine', category: 'Used Japanese Car Engines', image: '/images/products/engine.jpg', description: 'Efficient 1.5L VTEC engine for Honda City, Jazz, and Fit.', content: 'The Honda L15A is a 1.5-liter SOHC VTEC engine celebrated for its smooth power delivery and fuel economy.' },
+        { title: 'Isuzu 4HK1 Truck Engine', category: 'Used Japanese Truck Engines', image: '/images/products/truck-engine.jpg', description: 'Heavy-duty 5.2L diesel engine for Isuzu trucks and commercial vehicles.', content: 'The Isuzu 4HK1 is a 5.2-liter turbocharged diesel engine built for commercial and heavy-duty applications.' },
+        { title: 'Hino J08E Truck Engine', category: 'Used Japanese Truck Engines', image: '/images/products/truck-engine.jpg', description: 'Proven 7.7L diesel engine powering Hino trucks across Malaysia.', content: 'The Hino J08E is a 7.7-liter diesel engine known for its exceptional reliability and fuel efficiency.' },
+        { title: 'Toyota Hilux Cabin', category: 'Used Cabin', image: '/images/products/cabin.jpg', description: 'Complete cabin assembly for Toyota Hilux with panels and interior.', content: 'Complete Toyota Hilux cabin assembly including dashboard, seats, door panels, and wiring harness.' },
+        { title: 'Toyota Vios Half Cut', category: 'Used Half Cuts', image: '/images/products/halfcut.jpg', description: 'Front half cut with engine, transmission, and suspension.', content: 'Toyota Vios front half cut containing the complete engine, transmission, suspension, brakes, and wiring harness.' },
+        { title: 'Toyota Aisin Automatic Transmission', category: 'Used Transmissions', image: '/images/products/transmission.jpg', description: 'Smooth-shifting 4-speed automatic transmission for Toyota models.', content: 'Genuine Toyota Aisin 4-speed automatic transmission, tested for smooth shifting.' },
+        { title: 'Alternator (Various Models)', category: 'Used Spare Parts', image: '/images/products/spareparts.jpg', description: 'High-output alternators for popular Japanese car and truck models.', content: 'Wide selection of used alternators for Japanese vehicles, bench-tested for proper charging output.' },
       ],
     },
-    faq: {
-      heading: 'Frequently Asked Questions',
-      description: 'Quick answers to common questions about working with us.',
-      faqs: [
-        {
-          question: 'What services does KarFamSoft offer?',
-          answer: 'We provide web development, UI/UX design, digital strategy, mobile app design, SEO optimization, and brand identity services.',
-        },
-        {
-          question: 'How long does a typical project take?',
-          answer: 'Timelines vary depending on scope, but most projects range from 4 to 12 weeks from discovery to launch.',
-        },
-        {
-          question: 'Do you work with startups and small businesses?',
-          answer: 'Yes. We work with businesses of all sizes — from early-stage startups to established brands looking to refresh their digital presence.',
-        },
-        {
-          question: 'What is your design process like?',
-          answer: 'We follow a structured process: discover, design, develop, and deliver. Every phase includes collaboration and feedback loops to ensure alignment.',
-        },
-      ],
-    },
-    cta: {
-      heading: 'Ready to bring your vision to life?',
-      description: "Let's collaborate on something impactful and innovative.",
-      ctaLabel: 'Start a Project',
+    productscta: {
+      heading: "Can't Find What You Need?",
+      description: 'Contact our team for availability, pricing, and bulk order inquiries.',
+      ctaLabel: 'Contact Us',
       ctaHref: '/contact',
+    },
+  },
+  photos: {
+    photoshero: {
+      heading: 'Photo Gallery',
+      description:
+        'A look inside our warehouse, products, and day-to-day operations at Golden Shine Trading.',
+      imageUrl: '/images/about/about-preview.jpg',
+    },
+    photogallery: {
+      heading: 'Gallery',
+      description: 'Explore our facilities and products through photos.',
+      images: [
+        { image: '/images/products/engine.jpg', caption: 'Used Japanese engines in stock' },
+        { image: '/images/products/truck-engine.jpg', caption: 'Truck engines ready for shipment' },
+        { image: '/images/products/cabin.jpg', caption: 'Complete cabin assemblies' },
+        { image: '/images/products/halfcut.jpg', caption: 'Front and rear half cuts' },
+        { image: '/images/products/transmission.jpg', caption: 'Tested automatic transmissions' },
+        { image: '/images/products/spareparts.jpg', caption: 'Wide range of spare parts' },
+      ],
     },
   },
   services: {
@@ -1027,179 +1055,209 @@ const DEFAULT_SECTION_CONTENT_BY_PAGE_AND_KIND = {
     },
   },
   about: {
-    cta: {
-      heading: "Let's Build Something Meaningful Together",
+    abouthero: {
+      heading: 'About Golden Shine Trading',
       description:
-        "Whether you're launching a new brand, building a product, or reimagining your digital experience - KarFamSoft Agency is ready to partner with you.",
-      ctaLabel: 'Contact Us',
-      ctaHref: '/contact',
+        'Your trusted partner for Japanese used automobile parts — serving Malaysia and the world since 1992.',
+      imageUrl: '/images/about/about-preview.jpg',
+      ctaLabel: '',
+      ctaHref: '',
     },
-  },
-  portfolio: {
-    portfoliohero: {
-      heading: 'Our Work',
-      description:
-        'Real results, creative execution, and scalable design - here\'s what we\'ve built for brands that trust us.',
+    aboutstory: {
+      heading: 'Our Story',
+      paragraphOne:
+        'Golden Shine Trading was established in the year 1992. We specialize in import, export, and wholesale of Japanese used automobile engines and spare parts. With over three decades of experience, we have built a reputation for reliability, quality, and exceptional service.',
+      paragraphTwo:
+        'Our comprehensive product range includes used Japanese car engines (diesel and gasoline), truck engines, cabin, half cuts, transmissions, and spare parts.',
+      imageUrl: '/images/about/about-preview.jpg',
+      imageAlt: 'Golden Shine Trading operations',
     },
-    projectsgallery: {
-      projects: [
-        {
-          title: 'TechNova Redesign',
-          image: '/images/1.jpg',
-          description:
-            'Full website redesign + SEO optimization. Increased engagement by 48%.',
-        },
-        {
-          title: 'GlowCare App UI',
-          image: '/images/2.jpg',
-          description:
-            'Mobile app design for a wellness startup. Built with Figma + React Native.',
-        },
-        {
-          title: 'NovaFin Dashboard',
-          image: '/images/3.jpg',
-          description:
-            'Custom dashboard UI with Tailwind and chart integrations for a fintech product.',
-        },
-        {
-          title: 'Brand Identity for Clover',
-          image: '/images/4.jpg',
-          description:
-            'Logo, typography, and print collateral for a sustainable clothing brand.',
-        },
-        {
-          title: 'Analytics Dashboard for InsightPro',
-          image: '/images/5.jpg',
-          description:
-            'Custom admin panel with live data integration and KPIs for executives.',
-        },
-        {
-          title: 'UX Collaboration Platform',
-          image: '/images/6.jpg',
-          description:
-            'Built a real-time interface for designers and PMs to co-edit mockups.',
-        },
+    aboutfeatures: {
+      heading: 'Why Choose Golden Shine Trading',
+      description: 'The reasons our customers trust us for their auto parts needs.',
+      features: [
+        { title: 'History & Reputation', description: 'Over 30 years of trusted service in the auto parts industry.' },
+        { title: 'High Stock Level', description: '20,000+ units of used engines in stock.' },
+        { title: 'Wide Range of Models', description: 'Specialized in Japanese models.' },
+        { title: 'Fast Preparation', description: 'Short lead times with quality materials.' },
+        { title: 'Professional Workmanship', description: 'Knowledgeable and experienced team.' },
+        { title: 'Prompt Service', description: 'Friendly, efficient, and trustworthy service.' },
+        { title: 'Expert Staff', description: 'Trained staff to assist in all areas.' },
+        { title: 'Container Loading', description: 'On-site loading with worldwide shipping.' },
       ],
     },
-    cta: {
-      heading: 'Impressed by Our Work?',
+    aboutreach: {
+      heading: 'Worldwide Distribution',
       description:
-        "Let's collaborate to turn your ideas into reality. KarFamSoft Agency is ready to build with you.",
-      ctaLabel: 'Start a Project',
+        'We have full facilities and expertise to prepare shipments and load containers. Our wide international network currently exports to more than 30 countries.',
+    },
+    aboutcta: {
+      heading: "Let's Work Together",
+      description: 'Get in touch with our team to discuss your auto parts requirements.',
+      ctaLabel: 'Contact Us',
       ctaHref: '/contact',
     },
   },
   blog: {
     bloghero: {
-      heading: 'Insights & Ideas',
+      heading: 'Latest News',
       description:
-        'Discover thoughts, tips, and strategies from the KarFamSoft team - where design meets innovation.',
+        'Company announcements, new arrivals, and industry updates from Golden Shine Trading.',
     },
     blogposts: {
       posts: [
         {
-          title: 'The Power of Purposeful Design',
-          image: '/blogs/1.jpg',
-          date: 'May 2025',
-          link: '/blog/the-power-of-purposeful-design',
-          excerpt:
-            'How intentional design choices improve user engagement and brand trust.',
-          content:
-            'Intentional design creates clarity, reduces friction, and builds trust across every step of the customer journey. When design is purposeful, users complete tasks faster and feel more confident about your brand.',
-          keyInsights:
-            'Align visual choices with business goals\nDesign for clarity before decoration\nContinuously test and refine key user flows',
-          nextSteps:
-            'Audit your top conversion journeys, simplify key interactions, and iterate based on measurable outcomes.',
+          title: 'New Shipment of Japanese Engines Arrived',
+          image: '/images/products/engine.jpg',
+          date: 'August 2026',
+          link: '/blog/new-shipment-of-japanese-engines-arrived',
+          excerpt: 'A fresh container of low-mileage used Japanese engines has just arrived at our Klang warehouse.',
+          content: 'We are pleased to announce the arrival of a new shipment of low-mileage used Japanese engines. This batch includes popular Toyota and Honda petrol engines, all compression-tested and inspected by our trained technicians.',
+          keyInsights: 'Fresh stock of Toyota and Honda engines\nAll units compression-tested and inspected\nStart-up videos available on request',
+          nextSteps: 'Contact our sales team to check availability and reserve your engine today.',
         },
         {
-          title: 'Top 5 Tools We Use to Build Scalable Websites',
-          image: '/blogs/2.jpg',
-          date: 'April 2025',
-          link: '/blog/top-5-tools-we-use-to-build-scalable-websites',
-          excerpt: 'From design to deployment, here is our go-to tech stack in 2025.',
-          content:
-            'Scalability is less about one magic tool and more about combining the right stack with disciplined engineering practices. Our toolchain prioritizes reliability, maintainability, and delivery speed.',
-          keyInsights:
-            'Choose tools that fit your team skill set\nAutomate quality checks early\nStandardize architecture patterns across projects',
-          nextSteps:
-            'Review your stack bottlenecks, document standards, and automate repetitive workflows first.',
+          title: 'Expanding Our Truck Engine Range',
+          image: '/images/products/truck-engine.jpg',
+          date: 'July 2026',
+          link: '/blog/expanding-our-truck-engine-range',
+          excerpt: 'We have added more Isuzu and Hino truck engines to meet growing commercial demand.',
+          content: 'To better serve our commercial customers, we have expanded our range of used Japanese truck engines. The new stock includes Isuzu 4HK1 and Hino J08E engines.',
+          keyInsights: 'New Isuzu and Hino truck engines in stock\nDyno-tested with limited warranty\nIdeal for fleet operators',
+          nextSteps: 'Reach out to discuss compatibility with your truck model and current availability.',
         },
         {
-          title: 'Why Every Brand Needs a Design System',
-          image: '/blogs/3.jpg',
-          date: 'March 2025',
-          link: '/blog/why-every-brand-needs-a-design-system',
-          excerpt:
-            'A design system is more than visuals - it is your brand\'s operating manual.',
-          content:
-            'A strong design system improves consistency, speeds delivery, and helps teams scale without losing quality. It aligns product, design, and engineering around reusable standards.',
-          keyInsights:
-            'Consistency builds trust\nReusable patterns reduce delivery time\nShared standards improve cross-team collaboration',
-          nextSteps:
-            'Start with core UI tokens and components, then document usage rules and governance workflows.',
-        },
-        {
-          title: 'Dark Mode Design: Tips for Better UX',
-          image: '/blogs/4.jpg',
-          date: 'February 2025',
-          link: '/blog/dark-mode-design-tips-for-better-ux',
-          excerpt:
-            'How to design inclusive, legible, and stylish dark interfaces in 2025.',
-          content:
-            'Dark interfaces require careful contrast management, typography tuning, and semantic color mapping to remain readable and comfortable.',
-          keyInsights:
-            'Use semantic color roles\nValidate accessibility contrast ratios\nTest across device brightness levels',
-          nextSteps:
-            'Run accessibility audits in both light and dark themes and fix low-contrast patterns first.',
-        },
-        {
-          title: 'How We Approach Mobile-First Design',
-          image: '/blogs/5.jpg',
-          date: 'January 2025',
-          link: '/blog/how-we-approach-mobile-first-design',
-          excerpt:
-            'Learn why starting with mobile changes the way we build for the web.',
-          content:
-            'Mobile-first pushes teams to focus on essentials. It improves hierarchy, forces clarity, and often leads to better desktop experiences too.',
-          keyInsights:
-            'Prioritize essential actions\nDesign for touch ergonomics\nProgressively enhance for larger screens',
-          nextSteps:
-            'Map your mobile critical path and remove low-value UI distractions from early screens.',
-        },
-        {
-          title: 'Web Performance in 2025: What Actually Matters',
-          image: '/blogs/6.jpg',
-          date: 'December 2024',
-          link: '/blog/web-performance-in-2025-what-actually-matters',
-          excerpt:
-            'Speed, accessibility, and user flow - the new performance checklist.',
-          content:
-            'Performance today is user-perceived responsiveness across the full journey. Fast rendering, stable layouts, and smooth interactions all contribute to conversion and retention.',
-          keyInsights:
-            'Track real-user metrics, not only lab scores\nOptimize critical rendering path\nEliminate layout shifts and interaction delays',
-          nextSteps:
-            'Measure Core Web Vitals in production and prioritize fixes by business impact.',
+          title: 'Now Exporting to 30+ Countries',
+          image: '/images/products/spareparts.jpg',
+          date: 'June 2026',
+          link: '/blog/now-exporting-to-30-plus-countries',
+          excerpt: 'Our international network keeps growing — now serving customers across five continents.',
+          content: 'Golden Shine Trading has reached a new milestone, now exporting to more than 30 countries across Asia, the Middle East, Africa, the USA, Australia, New Zealand, South America, and Europe.',
+          keyInsights: 'Exporting to 30+ countries worldwide\nCovering five continents\nFull container loading capabilities',
+          nextSteps: 'For international orders, contact our export team for a quotation.',
         },
       ],
     },
     cta: {
-      heading: "Let's Talk Strategy",
-      description:
-        "Whether you're building from scratch or scaling up - KarFamSoft Agency is ready to partner with you. Let's create something impactful.",
+      heading: 'Need Auto Parts?',
+      description: 'Contact our team for availability, pricing, and bulk order inquiries.',
       ctaLabel: 'Contact Us',
       ctaHref: '/contact',
     },
   },
 };
 
+const ES_PHRASES = {
+  'Our Products': 'Nuestros Productos',
+  'Product Categories': 'Categorías de Productos',
+  "Can't Find What You Need?": '¿No Encuentra lo que Necesita?',
+  'Contact Us': 'Contáctenos',
+  'Latest News': 'Últimas Noticias',
+  'Need Auto Parts?': '¿Necesita Repuestos?',
+  'About Golden Shine Trading': 'Acerca de Golden Shine Trading',
+  'Our Story': 'Nuestra Historia',
+  'Why Choose Golden Shine Trading': 'Por Qué Elegir Golden Shine Trading',
+  'Worldwide Distribution': 'Distribución Mundial',
+  "Let's Work Together": 'Trabajemos Juntos',
+  'Photo Gallery': 'Galería de Fotos',
+  'Gallery': 'Galería',
+  'Satisfaction Priority': 'Prioridad de Satisfacción',
+  'Ultimate Used Automobile Parts': 'Repuestos de Automóvil Usados Definitivos',
+  'Our Brands': 'Nuestras Marcas',
+  'Golden Shine Trading': 'Golden Shine Trading',
+  'Read More': 'Leer Más',
+  'Get in Touch': 'Contáctenos',
+  'View All Products': 'Ver Todos los Productos',
+  'Browse our full range of Japanese used automobile parts.': 'Explore nuestra gama completa de repuestos de automóviles japoneses usados.',
+  'The reasons our customers trust us for their auto parts needs.': 'Las razones por las que nuestros clientes confían en nosotros para sus necesidades de repuestos.',
+  'We have full facilities and expertise to prepare shipments and load containers. Our wide international network currently exports to more than 30 countries.': 'Contamos con instalaciones completas y experiencia para preparar envíos y cargar contenedores. Nuestra amplia red internacional actualmente exporta a más de 30 países.',
+  'Get in touch with our team to discuss your auto parts requirements.': 'Póngase en contacto con nuestro equipo para analizar sus necesidades de repuestos de automóviles.',
+  'Company announcements, new arrivals, and industry updates from Golden Shine Trading.': 'Anuncios de la empresa, nuevas llegadas y novedades de la industria de Golden Shine Trading.',
+  'Contact our team for availability, pricing, and bulk order inquiries.': 'Contacte a nuestro equipo para disponibilidad, precios y consultas de pedidos al por mayor.',
+  'Explore our comprehensive range of Japanese used automobile parts — engines, transmissions, cabins, half cuts, and spare parts.': 'Explore nuestra amplia gama de repuestos de automóviles japoneses usados: motores, transmisiones, cabinas, medios cortes y repuestos.',
+  'A look inside our warehouse, products, and day-to-day operations at Golden Shine Trading.': 'Un vistazo a nuestro almacén, productos y operaciones diarias en Golden Shine Trading.',
+  'Explore our facilities and products through photos.': 'Explore nuestras instalaciones y productos a través de fotos.',
+  'Your trusted partner for Japanese used automobile parts — serving Malaysia and the world since 1992.': 'Su socio de confianza para repuestos de automóviles japoneses usados: al servicio de Malasia y el mundo desde 1992.',
+  'We specialize in import, export, and wholesale of Japanese used automobile engines and spare parts.': 'Nos especializamos en la importación, exportación y venta al por mayor de motores y repuestos de automóviles japoneses usados.',
+  'The reason that we are trusted by our customers:': 'La razón por la que nuestros clientes confían en nosotros:',
+  'Golden Shine Trading was established in year 1992. We are specialized in import, export, and wholesale Japanese used automobile engines and spare parts. We have wide international network and currently export to more than 30 countries covering Asia, Middle East, Africa, USA, Australia, New Zealand, South America, and Europe.': 'Golden Shine Trading fue fundada en 1992. Nos especializamos en la importación, exportación y venta al por mayor de motores y repuestos de automóviles japoneses usados. Contamos con una amplia red internacional y actualmente exportamos a más de 30 países en Asia, Medio Oriente, África, EE. UU., Australia, Nueva Zelanda, Sudamérica y Europa.',
+  'Golden Shine Trading was established in the year 1992. We specialize in import, export, and wholesale of Japanese used automobile engines and spare parts. With over three decades of experience, we have built a reputation for reliability, quality, and exceptional service.': 'Golden Shine Trading fue fundada en 1992. Nos especializamos en la importación, exportación y venta al por mayor de motores y repuestos de automóviles japoneses usados. Con más de tres décadas de experiencia, hemos construido una reputación de confiabilidad, calidad y servicio excepcional.',
+  'Our comprehensive product range includes used Japanese car engines (diesel and gasoline), truck engines, cabin, half cuts, transmissions, and spare parts.': 'Nuestra amplia gama de productos incluye motores de autos japoneses usados (diésel y gasolina), motores de camiones, cabinas, medios cortes, transmisiones y repuestos.',
+  'When you trust your car to Golden Shine Trading, we promise to provide the best customer service and highest quality of service available anywhere.': 'Cuando confía su automóvil a Golden Shine Trading, prometemos brindar el mejor servicio al cliente y la más alta calidad de servicio disponible en cualquier lugar.',
+  'Used Japanese Car Engines': 'Motores de Autos Japoneses Usados',
+  'Used Japanese Truck Engines': 'Motores de Camiones Japoneses Usados',
+  'Used Cabin': 'Cabinas Usadas',
+  'Used Half Cuts': 'Medios Cortes Usados',
+  'Used Transmissions': 'Transmisiones Usadas',
+  'Used Spare Parts': 'Repuestos Usados',
+  'Diesel & Gasoline': 'Diésel y Gasolina',
+  'Front cut / Rear cut': 'Corte delantero / trasero',
+  'History & Reputation': 'Historia y Reputación',
+  'High Stock Level': 'Alto Nivel de Stock',
+  'Wide Range of Models': 'Amplia Gama de Modelos',
+  'Fast Preparation': 'Preparación Rápida',
+  'Professional Workmanship': 'Mano de Obra Profesional',
+  'Prompt Service': 'Servicio Rápido',
+  'Expert Staff': 'Personal Experto',
+  'Container Loading': 'Carga de Contenedores',
+  'High Level of Stock': 'Alto Nivel de Stock',
+  'Local & Worldwide Fast Shipping': 'Envío Rápido Local y Mundial',
+  'Well Trained & Professional Staff': 'Personal Profesional y Capacitado',
+  'Sufficient & Quality Materials': 'Materiales Suficientes y de Calidad',
+  'Container Loading Facilities': 'Instalaciones de Carga de Contenedores',
+  'Over 30 years of trusted service in the auto parts industry.': 'Más de 30 años de servicio confiable en la industria de repuestos.',
+  '20,000+ units of used engines in stock.': 'Más de 20,000 motores usados en stock.',
+  'Specialized in Japanese models.': 'Especializados en modelos japoneses.',
+  'Short lead times with quality materials.': 'Tiempos de entrega cortos con materiales de calidad.',
+  'Knowledgeable and experienced team.': 'Equipo con experiencia y conocimiento.',
+  'Friendly, efficient, and trustworthy service.': 'Servicio amable, eficiente y confiable.',
+  'Trained staff to assist in all areas.': 'Personal capacitado para asistir en todas las áreas.',
+  'On-site loading with worldwide shipping.': 'Carga en el lugar con envío mundial.',
+  'We maintain extensive inventory levels to ensure parts are always available when you need them most.': 'Mantenemos amplios niveles de inventario para asegurar que las piezas estén siempre disponibles cuando más las necesite.',
+  'From passenger cars to heavy-duty trucks, we cover a comprehensive range of Japanese vehicle models and makes.': 'Desde autos de pasajeros hasta camiones de carga pesada, cubrimos una amplia gama de modelos y marcas japonesas.',
+  'Reliable logistics network delivering orders promptly across Peninsular Malaysia, East Malaysia, and globally.': 'Red logística confiable que entrega pedidos puntualmente en Malasia Peninsular, Malasia Oriental y a nivel global.',
+  'Our knowledgeable team ensures accurate part matching, quality inspection, and responsive customer support.': 'Nuestro equipo experto garantiza la correspondencia precisa de piezas, inspección de calidad y atención al cliente receptiva.',
+  'Every component undergoes rigorous quality checks to meet international standards before reaching our customers.': 'Cada componente pasa por rigurosos controles de calidad para cumplir con los estándares internacionales antes de llegar a nuestros clientes.',
+  'On-site container loading capabilities for bulk export orders with secure packing and efficient turnaround.': 'Capacidad de carga de contenedores en el lugar para pedidos de exportación a granel con embalaje seguro y entrega eficiente.',
+};
+
+const translateTextToSpanish = (value) => {
+  if (typeof value !== 'string') return value;
+  const trimmed = value.trim();
+  if (ES_PHRASES[trimmed] != null) return ES_PHRASES[trimmed];
+  return value;
+};
+
+const translateContentToSpanish = (content) => {
+  if (Array.isArray(content)) {
+    return content.map((item) => translateContentToSpanish(item));
+  }
+  if (content && typeof content === 'object') {
+    const result = {};
+    for (const [key, value] of Object.entries(content)) {
+      result[key] = translateContentToSpanish(value);
+    }
+    return result;
+  }
+  return translateTextToSpanish(content);
+};
+
 const getDefaultContentForKind = (kind, pageSlug = '') => {
   const pageTemplate = DEFAULT_SECTION_CONTENT_BY_PAGE_AND_KIND[pageSlug]?.[kind];
   const template = pageTemplate || DEFAULT_SECTION_CONTENT_BY_KIND[kind];
-  return template ? JSON.parse(JSON.stringify(template)) : {};
+  if (!template) return {};
+  const english = JSON.parse(JSON.stringify(template));
+  const spanish = translateContentToSpanish(english);
+  return { en: english, es: spanish };
 };
 
 const mergeContentWithDefaults = (defaultContent, incomingContent) => {
   const incoming = incomingContent && typeof incomingContent === 'object' ? incomingContent : {};
+
+  if (isLocalizedContent(incoming)) {
+    return incoming;
+  }
+
   const merged = {
     ...defaultContent,
     ...incoming,
@@ -1260,16 +1318,22 @@ const FIELD_GROUP_LABELS = {
 const SECTION_LIBRARY_LABELS = {
   homehero: 'Home Hero',
   homeheroslider: 'Home Hero Slider',
-  homeservices: 'Services Preview',
+  homeservices: 'Our Products',
+  homeabout: 'About Us',
+  homebrands: 'Our Brands',
+  homequote: 'Trust Quote',
   features: 'Why Choose Us / Features',
   process: 'Process',
-  homeportfolio: 'Portfolio Teaser',
-  homeblog: 'Blog Teaser',
-  homefaq: 'FAQ',
   cta: 'Call To Action',
   abouthero: 'About Hero',
-  story: 'Who We Are Story',
-  values: 'Core Values',
+  aboutstory: 'Our Story',
+  aboutfeatures: 'Why Choose Us',
+  aboutreach: 'Global Reach',
+  productshero: 'Products Hero',
+  productcategories: 'Product Categories',
+  productscta: 'Products CTA',
+  photoshero: 'Photos Hero',
+  photogallery: 'Photo Gallery',
   serviceshero: 'Services Hero',
   serviceslist: 'Services List',
   portfoliohero: 'Portfolio Hero',
@@ -1286,16 +1350,22 @@ const SECTION_LIBRARY_LABELS = {
 const SECTION_LIBRARY_DESCRIPTIONS = {
   homehero: 'Headline, supporting text, and primary/secondary actions.',
   homeheroslider: 'Full-width image slider hero with layered text, CTA actions, and slide stats.',
-  homeservices: 'Service highlights grid with optional CTA.',
+  homeservices: 'Product category cards with images and read-more links.',
+  homeabout: 'Company introduction with image and read-more button.',
+  homebrands: 'Brand logo showcase with grayscale-to-color hover effect.',
+  homequote: 'Centered trust statement with quote, author, and optional CTA.',
   features: 'Why-choose-us value points and supporting copy.',
   process: 'Step-by-step workflow section.',
-  homeportfolio: 'Featured project cards with links.',
-  homeblog: 'Latest post teaser cards.',
-  homefaq: 'Accordion-style FAQ with editable questions and answers.',
   cta: 'Conversion-focused call to action block.',
   abouthero: 'About page introduction with optional media.',
-  story: 'Who-we-are narrative with image.',
-  values: 'Core values cards.',
+  aboutstory: 'Company history and mission with supporting image.',
+  aboutfeatures: 'Feature cards highlighting why customers choose us.',
+  aboutreach: 'Worldwide distribution network and capabilities.',
+  productshero: 'Products page hero with heading, image, and action.',
+  productcategories: 'Grid of product category cards with images and descriptions.',
+  productscta: 'Call to action for product inquiries.',
+  photoshero: 'Photos page hero with heading and background image.',
+  photogallery: 'Grid of photos with lightbox viewer.',
   serviceshero: 'Services page hero intro and action.',
   serviceslist: 'Structured list of services.',
   portfoliohero: 'Portfolio intro block.',
@@ -1313,15 +1383,21 @@ const SECTION_LIBRARY_PREVIEW_STYLES = {
   homehero: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 26%, white), color-mix(in srgb, var(--theme-secondary) 24%, white))',
   homeheroslider: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 38%, white), color-mix(in srgb, var(--theme-secondary) 34%, white), color-mix(in srgb, var(--theme-accent) 26%, white))',
   homeservices: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 14%, white), color-mix(in srgb, var(--theme-primary) 6%, white))',
+  homeabout: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-secondary) 18%, white), color-mix(in srgb, var(--theme-primary) 12%, white))',
+  homebrands: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 12%, white), color-mix(in srgb, var(--theme-accent) 10%, white))',
+  homequote: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 8%, white), white 50%, color-mix(in srgb, var(--theme-secondary) 6%, white))',
   features: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-secondary) 16%, white), color-mix(in srgb, var(--theme-accent) 14%, white))',
   process: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 16%, white), color-mix(in srgb, var(--theme-secondary) 8%, white))',
-  homeportfolio: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-accent) 16%, white), color-mix(in srgb, var(--theme-secondary) 12%, white))',
-  homeblog: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-secondary) 16%, white), color-mix(in srgb, var(--theme-primary) 10%, white))',
-  homefaq: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-accent) 12%, white), color-mix(in srgb, var(--theme-primary) 14%, white))',
   cta: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 30%, white), color-mix(in srgb, var(--theme-secondary) 25%, white), color-mix(in srgb, var(--theme-accent) 22%, white))',
   abouthero: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 22%, white), color-mix(in srgb, var(--theme-secondary) 16%, white))',
-  story: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-secondary) 14%, white), color-mix(in srgb, var(--theme-primary) 10%, white))',
-  values: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-accent) 15%, white), color-mix(in srgb, var(--theme-primary) 10%, white))',
+  aboutstory: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-secondary) 14%, white), color-mix(in srgb, var(--theme-primary) 10%, white))',
+  aboutfeatures: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-accent) 15%, white), color-mix(in srgb, var(--theme-primary) 10%, white))',
+  aboutreach: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 12%, white), color-mix(in srgb, var(--theme-accent) 8%, white))',
+  productshero: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 20%, white), color-mix(in srgb, var(--theme-secondary) 15%, white))',
+  productcategories: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-accent) 12%, white), color-mix(in srgb, var(--theme-primary) 8%, white))',
+  productscta: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 16%, white), color-mix(in srgb, var(--theme-secondary) 10%, white))',
+  photoshero: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 20%, white), color-mix(in srgb, var(--theme-secondary) 15%, white))',
+  photogallery: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-accent) 12%, white), color-mix(in srgb, var(--theme-primary) 8%, white))',
   serviceshero: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 20%, white), color-mix(in srgb, var(--theme-secondary) 15%, white))',
   serviceslist: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 12%, white), color-mix(in srgb, var(--theme-secondary) 7%, white))',
   portfoliohero: 'linear-gradient(135deg, color-mix(in srgb, var(--theme-accent) 14%, white), color-mix(in srgb, var(--theme-primary) 10%, white))',
@@ -1438,23 +1514,185 @@ const SectionLibraryPreview = ({ kind, previewStyle, isUsed }) => {
           </div>
         </SectionLibraryPreviewShell>
       );
+    case 'homeabout':
+      return (
+        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
+          <div className="grid gap-3 sm:grid-cols-[0.9fr_1.1fr]">
+            <PreviewBlock className="min-h-20 rounded-2xl bg-white/50 p-2">
+              <div className="h-full rounded-xl border border-white/30 bg-white/60" />
+            </PreviewBlock>
+            <div className="space-y-2">
+              <PreviewChip className="h-3 w-16" />
+              <PreviewLine className="w-5/6" />
+              <PreviewLine className="w-4/5" />
+              <PreviewLine className="w-3/5" />
+              <div className="flex gap-2 pt-1">
+                <PreviewBlock className="h-7 w-20 rounded-full bg-slate-950/85" />
+              </div>
+            </div>
+          </div>
+        </SectionLibraryPreviewShell>
+      );
+    case 'homebrands':
+      return (
+        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
+          <div className="space-y-3">
+            <PreviewChip className="h-3 w-16" />
+            <PreviewLine className="w-2/3" />
+            <div className="grid grid-cols-4 gap-2">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+                <PreviewBlock key={item} className="flex flex-col items-center gap-1 rounded-xl bg-white/45 p-2">
+                  <div className="h-6 w-10 rounded bg-white/70" />
+                  <PreviewLine className="w-3/4 bg-slate-900/10" />
+                </PreviewBlock>
+              ))}
+            </div>
+          </div>
+        </SectionLibraryPreviewShell>
+      );
+    case 'homequote':
+      return (
+        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
+          <div className="space-y-3 text-center">
+            <div className="mx-auto h-7 w-7 rounded-xl bg-slate-900/85" />
+            <PreviewLine className="mx-auto w-5/6" />
+            <PreviewLine className="mx-auto w-4/5" />
+            <PreviewLine className="mx-auto w-3/4" />
+            <div className="mx-auto h-0.5 w-10" style={{ background: 'linear-gradient(90deg, var(--theme-primary), var(--theme-accent))' }} />
+            <PreviewChip className="mx-auto h-2.5 w-32" />
+            <div className="flex justify-center pt-1">
+              <PreviewBlock className="h-7 w-24 rounded-full bg-slate-950/85" />
+            </div>
+          </div>
+        </SectionLibraryPreviewShell>
+      );
     case 'features':
       return (
         <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
           <div className="space-y-3">
             <PreviewChip className="h-3 w-24" />
             <PreviewLine className="w-2/3" />
-            <div className="space-y-2">
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/40 bg-white/35 p-3">
-                  <div className="h-8 w-8 rounded-full bg-white/80" />
-                  <div className="flex-1 space-y-1">
-                    <PreviewLine className="w-1/2 bg-slate-900/15" />
-                    <PreviewLine className="w-3/4 bg-slate-900/10" />
-                  </div>
+            <div className="grid grid-cols-3 gap-2">
+              {[1, 2, 3, 4, 5, 6].map((item) => (
+                <div key={item} className="rounded-2xl border border-white/40 bg-white/35 p-2.5">
+                  <div className="h-5 w-5 rounded-lg bg-white/75 mb-2" />
+                  <PreviewLine className="w-4/5 bg-slate-900/15 mb-1" />
+                  <PreviewLine className="w-full bg-slate-900/10" />
                 </div>
               ))}
             </div>
+          </div>
+        </SectionLibraryPreviewShell>
+      );
+    case 'aboutstory':
+      return (
+        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
+          <div className="grid gap-3 sm:grid-cols-[0.9fr_1.1fr]">
+            <PreviewBlock className="min-h-20 rounded-2xl bg-white/50 p-2">
+              <div className="h-full rounded-xl border border-white/30 bg-white/60" />
+            </PreviewBlock>
+            <div className="space-y-2">
+              <PreviewChip className="h-3 w-16" />
+              <PreviewLine className="w-5/6" />
+              <PreviewLine className="w-4/5" />
+              <PreviewLine className="w-3/5" />
+            </div>
+          </div>
+        </SectionLibraryPreviewShell>
+      );
+    case 'aboutfeatures':
+      return (
+        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
+          <div className="space-y-2">
+            <PreviewChip className="h-3 w-20" />
+            <PreviewLine className="w-2/3" />
+            <div className="grid grid-cols-4 gap-1.5">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+                <PreviewBlock key={item} className="rounded-xl bg-white/50 p-1.5">
+                  <div className="h-4 w-4 rounded-md bg-white/75 mb-1" />
+                  <PreviewLine className="w-4/5 bg-slate-900/12 mb-0.5" />
+                  <PreviewLine className="w-full bg-slate-900/8" />
+                </PreviewBlock>
+              ))}
+            </div>
+          </div>
+        </SectionLibraryPreviewShell>
+      );
+    case 'aboutreach':
+      return (
+        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
+          <div className="space-y-3 text-center">
+            <PreviewChip className="mx-auto h-3 w-16" />
+            <PreviewLine className="mx-auto w-2/3" />
+            <div className="grid grid-cols-3 gap-2">
+              {[1, 2, 3].map((item) => (
+                <div key={item} className="flex flex-col items-center rounded-xl bg-white/45 p-2">
+                  <div className="h-7 w-7 rounded-xl bg-white/75 mb-1" />
+                  <PreviewLine className="w-8 bg-slate-900/15" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </SectionLibraryPreviewShell>
+      );
+    case 'photoshero':
+      return (
+        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
+          <div className="space-y-3 text-center">
+            <PreviewChip className="mx-auto h-3 w-16" />
+            <PreviewLine className="mx-auto w-2/3" />
+            <PreviewLine className="mx-auto w-1/2" />
+          </div>
+        </SectionLibraryPreviewShell>
+      );
+    case 'photogallery':
+      return (
+        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
+          <div className="space-y-2">
+            <PreviewChip className="h-3 w-16" />
+            <div className="grid grid-cols-3 gap-1.5">
+              {[1, 2, 3, 4, 5, 6].map((item) => (
+                <PreviewBlock key={item} className="h-12 rounded-lg bg-white/60" />
+              ))}
+            </div>
+          </div>
+        </SectionLibraryPreviewShell>
+      );
+    case 'productshero':
+      return (
+        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
+          <div className="space-y-3 text-center">
+            <PreviewChip className="mx-auto h-3 w-16" />
+            <PreviewLine className="mx-auto w-2/3" />
+            <PreviewLine className="mx-auto w-1/2" />
+          </div>
+        </SectionLibraryPreviewShell>
+      );
+    case 'productcategories':
+      return (
+        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
+          <div className="space-y-2">
+            <PreviewChip className="h-3 w-20" />
+            <PreviewLine className="w-2/3" />
+            <div className="grid grid-cols-3 gap-1.5">
+              {[1, 2, 3, 4, 5, 6].map((item) => (
+                <PreviewBlock key={item} className="space-y-1 rounded-xl bg-white/50 p-1.5">
+                  <div className="h-8 rounded-lg bg-white/75" />
+                  <PreviewLine className="w-4/5 bg-slate-900/15" />
+                  <PreviewLine className="w-full bg-slate-900/8" />
+                </PreviewBlock>
+              ))}
+            </div>
+          </div>
+        </SectionLibraryPreviewShell>
+      );
+    case 'productscta':
+      return (
+        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
+          <div className="space-y-3 text-center">
+            <PreviewLine className="mx-auto w-3/4" />
+            <PreviewLine className="mx-auto w-1/2" />
+            <PreviewBlock className="mx-auto h-7 w-24 rounded-full bg-slate-950/85" />
           </div>
         </SectionLibraryPreviewShell>
       );
@@ -1473,66 +1711,6 @@ const SectionLibraryPreview = ({ kind, previewStyle, isUsed }) => {
                 </PreviewBlock>
               ))}
             </div>
-          </div>
-        </SectionLibraryPreviewShell>
-      );
-    case 'homeportfolio':
-      return (
-        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
-          <div className="space-y-3">
-            <PreviewChip className="h-3 w-20" />
-            <PreviewLine className="w-2/3" />
-            <div className="grid gap-2 sm:grid-cols-3">
-              {[1, 2, 3].map((item) => (
-                <PreviewBlock key={item} className="space-y-2 rounded-xl bg-white/45 p-2">
-                  <div className="h-14 rounded-lg bg-white/75" />
-                  <PreviewLine className="w-3/4 bg-slate-900/15" />
-                  <PreviewLine className="w-5/6 bg-slate-900/10" />
-                </PreviewBlock>
-              ))}
-            </div>
-          </div>
-        </SectionLibraryPreviewShell>
-      );
-    case 'homeblog':
-      return (
-        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
-          <div className="space-y-3">
-            <PreviewChip className="h-3 w-16" />
-            <PreviewLine className="w-1/2" />
-            <div className="grid gap-2 sm:grid-cols-[1.1fr_0.9fr]">
-              <PreviewBlock className="space-y-2 rounded-xl bg-white/50 p-3">
-                <div className="h-16 rounded-lg bg-white/80" />
-                <PreviewLine className="w-4/5 bg-slate-900/15" />
-                <PreviewLine className="w-3/5 bg-slate-900/10" />
-              </PreviewBlock>
-              <div className="space-y-2">
-                {[1, 2].map((item) => (
-                  <PreviewBlock key={item} className="flex gap-3 rounded-xl bg-white/40 p-3">
-                    <div className="h-14 w-14 rounded-lg bg-white/80" />
-                    <div className="flex-1 space-y-2">
-                      <PreviewLine className="w-2/3 bg-slate-900/15" />
-                      <PreviewLine className="w-5/6 bg-slate-900/10" />
-                    </div>
-                  </PreviewBlock>
-                ))}
-              </div>
-            </div>
-          </div>
-        </SectionLibraryPreviewShell>
-      );
-    case 'homefaq':
-      return (
-        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
-          <div className="space-y-2">
-            <PreviewChip className="h-3 w-12" />
-            <PreviewLine className="w-1/2" />
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="flex items-center justify-between rounded-xl border border-white/40 bg-white/40 p-3">
-                <PreviewLine className="w-3/4 bg-slate-900/12" />
-                <div className="h-4 w-4 rounded-full bg-white/70" />
-              </div>
-            ))}
           </div>
         </SectionLibraryPreviewShell>
       );
@@ -1562,37 +1740,6 @@ const SectionLibraryPreview = ({ kind, previewStyle, isUsed }) => {
               <PreviewLine className="w-5/6" />
               <PreviewLine className="w-4/5" />
               <PreviewLine className="w-3/5" />
-            </div>
-          </div>
-        </SectionLibraryPreviewShell>
-      );
-    case 'story':
-      return (
-        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
-          <div className="grid gap-3 sm:grid-cols-[1fr_0.85fr]">
-            <div className="space-y-2">
-              <PreviewChip className="h-3 w-20" />
-              <PreviewLine className="w-4/5" />
-              <PreviewLine className="w-3/4" />
-              <PreviewLine className="w-2/3" />
-            </div>
-            <PreviewBlock className="min-h-24 rounded-[1.4rem] bg-white/55" />
-          </div>
-        </SectionLibraryPreviewShell>
-      );
-    case 'values':
-      return (
-        <SectionLibraryPreviewShell previewStyle={previewStyle} isUsed={isUsed}>
-          <div className="space-y-3">
-            <PreviewChip className="h-3 w-16" />
-            <div className="grid grid-cols-2 gap-2">
-              {[1, 2, 3, 4].map((item) => (
-                <PreviewBlock key={item} className="space-y-2 rounded-xl bg-white/45 p-3">
-                  <div className="h-6 w-6 rounded-lg bg-white/80" />
-                  <PreviewLine className="w-1/2 bg-slate-900/15" />
-                  <PreviewLine className="w-4/5 bg-slate-900/10" />
-                </PreviewBlock>
-              ))}
             </div>
           </div>
         </SectionLibraryPreviewShell>
@@ -1891,6 +2038,23 @@ const createSectionFromKind = ({
     content: getDefaultContentForKind(kind, pageSlug),
   };
 };
+
+const EDIT_LOCALES = ['en', 'es'];
+
+function isLocalizedContent(content) {
+  if (!content || typeof content !== 'object' || Array.isArray(content)) return false;
+  const keys = Object.keys(content);
+  if (!keys.length) return false;
+  return keys.some((key) => EDIT_LOCALES.includes(key));
+}
+
+function getContentForLang(content, lang) {
+  if (!content || typeof content !== 'object' || Array.isArray(content)) return {};
+  if (isLocalizedContent(content)) {
+    return content[lang] != null ? content[lang] : content.en || {};
+  }
+  return content;
+}
 
 const PageEditor = ({ page }) => {
   const { language } = useLanguage();
@@ -2341,6 +2505,7 @@ const PageEditor = ({ page }) => {
   const [isLibraryPreviewOpen, setIsLibraryPreviewOpen] = useState(false);
   const [draggedSectionIndex, setDraggedSectionIndex] = useState(null);
   const [dragOverSectionIndex, setDragOverSectionIndex] = useState(null);
+  const [editLanguage, setEditLanguage] = useState('en');
   const previewHref = page.slug === 'home' ? '/?preview=1' : `/${page.slug}?preview=1`;
   const liveHref = page.slug === 'home' ? '/' : `/${page.slug}`;
   const previewFrameHref = previewRefreshKey
@@ -2371,17 +2536,14 @@ const PageEditor = ({ page }) => {
 
   const updateSectionContentField = (index, key, value) => {
     setSections((current) =>
-      current.map((section, idx) =>
-        idx === index
-          ? {
-              ...section,
-              content: {
-                ...section.content,
-                [key]: value,
-              },
-            }
-          : section
-      )
+      current.map((section, idx) => {
+        if (idx !== index) return section;
+        const raw = section.content || {};
+        const base = isLocalizedContent(raw) ? { ...raw } : { en: { ...raw } };
+        const langContent = base[editLanguage] && typeof base[editLanguage] === 'object' ? base[editLanguage] : {};
+        base[editLanguage] = { ...langContent, [key]: value };
+        return { ...section, content: base };
+      })
     );
   };
 
@@ -2395,9 +2557,11 @@ const PageEditor = ({ page }) => {
       current.map((section, idx) => {
         if (idx !== sectionIndex) return section;
 
-        const currentItems = Array.isArray(section.content?.[arrayKey])
-          ? section.content[arrayKey]
-          : [];
+        const raw = section.content || {};
+        const base = isLocalizedContent(raw) ? { ...raw } : { en: { ...raw } };
+        const langContent = base[editLanguage] && typeof base[editLanguage] === 'object' ? base[editLanguage] : {};
+
+        const currentItems = Array.isArray(langContent[arrayKey]) ? langContent[arrayKey] : [];
 
         const nextItems = currentItems.map((item, i) =>
           i === itemIndex
@@ -2408,13 +2572,9 @@ const PageEditor = ({ page }) => {
             : item
         );
 
-        return {
-          ...section,
-          content: {
-            ...section.content,
-            [arrayKey]: nextItems,
-          },
-        };
+        base[editLanguage] = { ...langContent, [arrayKey]: nextItems };
+
+        return { ...section, content: base };
       })
     );
   };
@@ -2424,17 +2584,14 @@ const PageEditor = ({ page }) => {
       current.map((section, idx) => {
         if (idx !== sectionIndex) return section;
 
-        const currentItems = Array.isArray(section.content?.[arrayKey])
-          ? section.content[arrayKey]
-          : [];
+        const raw = section.content || {};
+        const base = isLocalizedContent(raw) ? { ...raw } : { en: { ...raw } };
+        const langContent = base[editLanguage] && typeof base[editLanguage] === 'object' ? base[editLanguage] : {};
+        const currentItems = Array.isArray(langContent[arrayKey]) ? langContent[arrayKey] : [];
 
-        return {
-          ...section,
-          content: {
-            ...section.content,
-            [arrayKey]: [...currentItems, createEmptyItem(itemType)],
-          },
-        };
+        base[editLanguage] = { ...langContent, [arrayKey]: [...currentItems, createEmptyItem(itemType)] };
+
+        return { ...section, content: base };
       })
     );
   };
@@ -2444,17 +2601,14 @@ const PageEditor = ({ page }) => {
       current.map((section, idx) => {
         if (idx !== sectionIndex) return section;
 
-        const currentItems = Array.isArray(section.content?.[arrayKey])
-          ? section.content[arrayKey]
-          : [];
+        const raw = section.content || {};
+        const base = isLocalizedContent(raw) ? { ...raw } : { en: { ...raw } };
+        const langContent = base[editLanguage] && typeof base[editLanguage] === 'object' ? base[editLanguage] : {};
+        const currentItems = Array.isArray(langContent[arrayKey]) ? langContent[arrayKey] : [];
 
-        return {
-          ...section,
-          content: {
-            ...section.content,
-            [arrayKey]: currentItems.filter((_, i) => i !== itemIndex),
-          },
-        };
+        base[editLanguage] = { ...langContent, [arrayKey]: currentItems.filter((_, i) => i !== itemIndex) };
+
+        return { ...section, content: base };
       })
     );
   };
@@ -2483,26 +2637,6 @@ const PageEditor = ({ page }) => {
       setStatus('');
     } catch {
       setStatus(copy.statuses.invalidJson(fieldKey));
-    }
-  };
-
-  const applyRawContentDraft = (index) => {
-    const draftKey = `${index}:__raw`;
-    const draft = jsonDrafts[draftKey];
-    if (draft === undefined) return;
-
-    try {
-      const parsed = JSON.parse(draft);
-      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
-        setStatus(copy.statuses.rawMustBeObject);
-        return;
-      }
-
-      updateSectionField(index, 'content', parsed);
-      clearDraft(draftKey);
-      setStatus(copy.statuses.rawApplied);
-    } catch {
-      setStatus(copy.statuses.rawInvalid);
     }
   };
 
@@ -2639,6 +2773,23 @@ const PageEditor = ({ page }) => {
 
     setSections(nextSections);
     setStatus(copy.statuses.defaultsRestored);
+  };
+
+  const removeUnmappedSections = () => {
+    const expectedKinds = [
+      ...(EXPECTED_SECTION_KINDS_BY_SLUG[page.slug] || []),
+      ...(OPTIONAL_SECTION_LIBRARY_KINDS_BY_SLUG[page.slug] || []),
+    ];
+    const cleaned = sections.filter((section) => {
+      const kind = getSectionKindForPage(section, page.slug);
+      return kind === 'default' || expectedKinds.includes(kind);
+    });
+    if (cleaned.length === sections.length) {
+      setStatus(copy.statuses.noChange || 'No unmapped sections to remove.');
+      return;
+    }
+    setSections(cleaned.map((s, i) => ({ ...s, orderIndex: i + 1 })));
+    setStatus(`Removed ${sections.length - cleaned.length} unmapped section(s). Save to persist changes.`);
   };
 
   const savePageMeta = async () => {
@@ -3174,16 +3325,46 @@ const PageEditor = ({ page }) => {
               {ui.sectionsEditorSubtitle}
             </p>
 
+            <div className="mt-3 flex items-center gap-2">
+              <span className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Language:</span>
+              {EDIT_LOCALES.map((code) => (
+                <button
+                  key={code}
+                  type="button"
+                  onClick={() => setEditLanguage(code)}
+                  className="rounded-full px-3 py-1 text-xs font-semibold uppercase transition-all duration-200"
+                  style={{
+                    backgroundColor: editLanguage === code ? 'var(--theme-primary)' : 'transparent',
+                    color: editLanguage === code ? '#ffffff' : 'var(--theme-primary)',
+                    border: `1px solid ${editLanguage === code ? 'var(--theme-primary)' : 'color-mix(in srgb, var(--theme-primary) 25%, transparent)'}`,
+                  }}
+                >
+                  {code === 'en' ? 'English' : 'Español'}
+                </button>
+              ))}
+            </div>
+
             {sectionMismatchWarnings.length ? (
               <div className="mt-4 rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50 dark:bg-amber-950/30 p-3">
-                <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">
-                  {ui.sectionWarnings}
-                </p>
-                <ul className="mt-2 list-disc space-y-1 pl-5 text-xs text-amber-800 dark:text-amber-300">
-                  {sectionMismatchWarnings.map((warning) => (
-                    <li key={warning}>{warning}</li>
-                  ))}
-                </ul>
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">
+                      {ui.sectionWarnings}
+                    </p>
+                    <ul className="mt-2 list-disc space-y-1 pl-5 text-xs text-amber-800 dark:text-amber-300">
+                      {sectionMismatchWarnings.map((warning) => (
+                        <li key={warning}>{warning}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={removeUnmappedSections}
+                    className="shrink-0 rounded-lg border border-amber-300 dark:border-amber-700 px-3 py-1.5 text-xs font-semibold text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition"
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
             ) : null}
 
@@ -3202,7 +3383,22 @@ const PageEditor = ({ page }) => {
               ))}
             </div>
 
-            {sectionLibraryItems.length ? (
+            {(page.slug === 'home' || page.slug === 'about' || page.slug === 'products' || page.slug === 'photos') && (
+              <div className="mt-3 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={restoreDefaultSections}
+                  className="rounded-lg border border-amber-400 dark:border-amber-700 px-4 py-2 text-xs font-semibold text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-950/30 transition-all duration-200"
+                >
+                  {ui.restoreDefaults}
+                </button>
+                <span className="text-xs text-slate-400 dark:text-slate-500">
+                  Resets to the {page.slug === 'home' ? '6' : page.slug === 'about' ? '5' : page.slug === 'products' ? '3' : '2'} default {page.slug} page sections.
+                </span>
+              </div>
+            )}
+
+            {page.slug !== 'home' && page.slug !== 'about' && page.slug !== 'products' && page.slug !== 'photos' && sectionLibraryItems.length ? (
               <div className="mt-4 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-4">
                 <p className="text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-300">
                   {ui.sectionLibrary}
@@ -3324,6 +3520,7 @@ const PageEditor = ({ page }) => {
                 const sectionFieldSchema = getSectionFieldSchema(section, page.slug);
                 const isDragTarget = dragOverSectionIndex === index;
                 const isDragging = draggedSectionIndex === index;
+                const editContent = getContentForLang(section.content, editLanguage);
 
                 return (
                 <details
@@ -3434,7 +3631,7 @@ const PageEditor = ({ page }) => {
 
                   <div className="mt-4 grid gap-3 md:grid-cols-2">
                     {sectionFieldSchema.map((field, fieldIndex) => {
-                      const fieldValue = section.content?.[field.key];
+                      const fieldValue = editContent[field.key];
                       const draftKey = `${index}:${field.key}`;
                       const group = getFieldGroup(field);
                       const previousGroup =
@@ -3573,27 +3770,9 @@ const PageEditor = ({ page }) => {
                                             className="space-y-1 text-xs font-medium uppercase tracking-wide text-gray-600 dark:text-gray-300"
                                           >
                                             <span>{localizeFieldLabel(itemField.label)}</span>
-                                            <input
+                                            <select
                                               className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-950"
                                               value={itemValue}
-                                              onChange={(event) =>
-                                                updateSectionItemField(
-                                                  index,
-                                                  field.key,
-                                                  itemIndex,
-                                                  itemField.key,
-                                                  event.target.value
-                                                )
-                                              }
-                                              placeholder={ui.pasteOrPickMedia}
-                                            />
-                                            <select
-                                              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-xs dark:border-gray-700 dark:bg-gray-950"
-                                              value={
-                                                mediaOptions.some((asset) => asset.url === itemValue)
-                                                  ? itemValue
-                                                  : ''
-                                              }
                                               onChange={(event) =>
                                                 updateSectionItemField(
                                                   index,
@@ -3612,6 +3791,59 @@ const PageEditor = ({ page }) => {
                                               ))}
                                             </select>
                                           </div>
+                                        );
+                                      }
+
+                                      if (itemField.type === 'select') {
+                                        const optionsKey = itemField.selectOptionsKey;
+                                        const rawOptions = optionsKey ? editContent[optionsKey] : null;
+                                        const selectOptions = Array.isArray(rawOptions)
+                                          ? rawOptions.map((o) => String(o).trim()).filter(Boolean)
+                                          : [];
+                                        const currentValue = String(item[itemField.key] || '');
+                                        return (
+                                          <label
+                                            key={itemField.key}
+                                            className="space-y-1 text-xs font-medium uppercase tracking-wide text-gray-600 dark:text-gray-300"
+                                          >
+                                            <span>{localizeFieldLabel(itemField.label)}</span>
+                                            {selectOptions.length ? (
+                                              <select
+                                                className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-950"
+                                                value={currentValue}
+                                                onChange={(event) =>
+                                                  updateSectionItemField(
+                                                    index,
+                                                    field.key,
+                                                    itemIndex,
+                                                    itemField.key,
+                                                    event.target.value
+                                                  )
+                                                }
+                                              >
+                                                <option value="">Select category</option>
+                                                {selectOptions.map((option) => (
+                                                  <option key={option} value={option}>
+                                                    {option}
+                                                  </option>
+                                                ))}
+                                              </select>
+                                            ) : (
+                                              <input
+                                                className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-950"
+                                                value={currentValue}
+                                                onChange={(event) =>
+                                                  updateSectionItemField(
+                                                    index,
+                                                    field.key,
+                                                    itemIndex,
+                                                    itemField.key,
+                                                    event.target.value
+                                                  )
+                                                }
+                                              />
+                                            )}
+                                          </label>
                                         );
                                       }
 
@@ -3677,6 +3909,7 @@ const PageEditor = ({ page }) => {
                         const mediaOptions = mediaAssets.filter((asset) =>
                           mediaAssetMatchesType(asset, field.mediaType)
                         );
+                        const currentAsset = mediaAssets.find((asset) => asset.url === stringValue);
 
                         return (
                           <Fragment key={field.key}>
@@ -3685,21 +3918,9 @@ const PageEditor = ({ page }) => {
                               className="space-y-1 text-xs font-medium uppercase tracking-wide text-gray-600 dark:text-gray-300"
                             >
                               <span>{localizeFieldLabel(field.label)}</span>
-                              <input
+                              <select
                                 className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-900"
                                 value={stringValue}
-                                onChange={(event) =>
-                                  updateSectionContentField(index, field.key, event.target.value)
-                                }
-                                placeholder={ui.pasteOrPickMedia}
-                              />
-                              <select
-                                className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-xs dark:border-gray-700 dark:bg-gray-900"
-                                value={
-                                  mediaOptions.some((asset) => asset.url === stringValue)
-                                    ? stringValue
-                                    : ''
-                                }
                                 onChange={(event) =>
                                   updateSectionContentField(index, field.key, event.target.value)
                                 }
@@ -3711,6 +3932,15 @@ const PageEditor = ({ page }) => {
                                   </option>
                                 ))}
                               </select>
+                              {currentAsset ? (
+                                <p className="text-[11px] text-gray-400 dark:text-gray-500 truncate">
+                                  {currentAsset.name} ({currentAsset.mimeType || 'image'})
+                                </p>
+                              ) : stringValue ? (
+                                <p className="text-[11px] text-gray-400 dark:text-gray-500 truncate">
+                                  {stringValue}
+                                </p>
+                              ) : null}
                             </div>
                           </Fragment>
                         );
@@ -3734,27 +3964,6 @@ const PageEditor = ({ page }) => {
                           </Fragment>
                       );
                     })}
-
-                    <details className="md:col-span-2">
-                      <summary className="cursor-pointer text-xs font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300">
-                        {ui.advancedRaw}
-                      </summary>
-                      <div className="mt-2 space-y-2">
-                        <textarea
-                          rows={8}
-                          className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 font-mono text-sm dark:border-gray-700 dark:bg-gray-900"
-                          value={jsonDrafts[`${index}:__raw`] ?? stringifyJsonValue(section.content || {})}
-                          onChange={(event) => setDraft(`${index}:__raw`, event.target.value)}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => applyRawContentDraft(index)}
-                          className="rounded-md bg-slate-700 px-3 py-1.5 text-xs font-semibold text-white hover:bg-slate-800"
-                        >
-                          {ui.applyRaw}
-                        </button>
-                      </div>
-                    </details>
                   </div>
 
                   <div className="mt-4 flex justify-end">

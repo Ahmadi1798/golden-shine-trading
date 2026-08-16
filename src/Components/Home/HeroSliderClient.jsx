@@ -51,7 +51,7 @@ const slideData = [
 function StatBadge({ value, label }) {
   return (
     <div className="text-center">
-      <div className="text-2xl font-bold text-white sm:text-3xl">{value}</div>
+      <div className="text-2xl font-bold sm:text-3xl" style={{ color: 'var(--theme-accent)' }}>{value}</div>
       <div className="mt-0.5 text-[11px] font-medium uppercase tracking-wider text-white/50">{label}</div>
     </div>
   );
@@ -93,6 +93,12 @@ export default function HeroSliderClient({ slides: customSlides, autoplayDelay =
                   background: 'radial-gradient(ellipse 50% 60% at 20% 40%, var(--theme-primary) 0%, transparent 70%)',
                 }}
               />
+              <div
+                className="absolute inset-0 opacity-[0.08]"
+                style={{
+                  background: 'radial-gradient(ellipse 40% 50% at 80% 60%, var(--theme-accent) 0%, transparent 70%)',
+                }}
+              />
 
               <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-4 sm:px-8 lg:px-12">
                 <motion.div
@@ -103,7 +109,7 @@ export default function HeroSliderClient({ slides: customSlides, autoplayDelay =
                 >
                   <span
                     className="inline-block text-xs font-semibold uppercase tracking-[0.22em]"
-                    style={{ color: 'var(--theme-primary)' }}
+                    style={{ color: 'var(--theme-accent)' }}
                   >
                     {slide.eyebrow}
                   </span>
@@ -174,7 +180,7 @@ export default function HeroSliderClient({ slides: customSlides, autoplayDelay =
         }
         .hero-pagination .swiper-pagination-bullet-active {
           width: 24px;
-          background: var(--theme-primary);
+          background: var(--theme-accent);
         }
       `}</style>
     </>

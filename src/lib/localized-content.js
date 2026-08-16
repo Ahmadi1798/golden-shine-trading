@@ -1,4 +1,4 @@
-const SUPPORTED_LOCALES = ['en', 'fa', 'ps'];
+const SUPPORTED_LOCALES = ['en', 'es'];
 
 function isPlainObject(value) {
   return Object.prototype.toString.call(value) === '[object Object]';

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -10,85 +12,29 @@ const BlogHero = ({ content = {} }) => {
     if (typeof value !== 'string' || !value.trim()) return fallback;
     return hasArabicScript(value) ? value : fallback;
   };
-  const copy = {
-    en: {
-      heading: 'Insights & Ideas',
-      description: 'Discover thoughts, tips, and strategies from the KarFamSoft team - where design meets innovation.',
-      sectionLabel: 'Blog',
-      eyebrow: 'Blog',
-    },
-    fa: {
-      heading: 'بینش ها و ایده ها',
-      description: 'نگاه ها، نکته ها و استراتژی های تیم کارفم سافت را بخوانید؛ جایی که طراحی با نوآوری تلاقی می کند.',
-      sectionLabel: 'بلاگ',
-      eyebrow: 'بلاگ',
-    },
-    ps: {
-      heading: 'لیدلوري او نظریات',
-      description: 'د KarFamSoft ټیم نظرونه، لارښوونې او ستراتیژۍ ولولئ - هلته چې ډیزاین له نوښت سره یوځای کېږي.',
-      sectionLabel: 'بلاګ',
-      eyebrow: 'بلاګ',
-    },
-  }[language] || {};
 
-  const heading = pickText(content.heading, copy.heading || 'Insights & Ideas');
-  const description =
-    pickText(content.description, copy.description || 'Discover thoughts, tips, and strategies from the KarFamSoft team - where design meets innovation.');
+  const heading = pickText(content.heading, 'Latest News');
+  const description = pickText(
+    content.description,
+    'Company announcements, new arrivals, and industry updates from Golden Shine Trading.',
+  );
+  const imageUrl = content.imageUrl || '/images/about/about-preview.jpg';
 
   return (
-    <section className="relative pt-28 lg:pt-32 pb-16 px-4 overflow-hidden bg-white dark:bg-[#0f172a]" aria-label={copy.sectionLabel || 'Blog'}>
-      {/* Radial glow backgrounds */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: `
-          radial-gradient(ellipse 70% 50% at 25% 35%, color-mix(in srgb, var(--theme-primary) 5%, transparent) 0%, transparent 70%),
-          radial-gradient(ellipse 60% 60% at 75% 65%, color-mix(in srgb, var(--theme-accent) 3%, transparent) 0%, transparent 60%)
-        `,
-      }} />
+    <section className="relative flex min-h-[40vh] md:min-h-[50vh] items-center overflow-hidden bg-[#080810]">
+      <img src={imageUrl} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080810]/70 via-[#080810]/40 to-[#080810]/90" />
+      <div className="absolute inset-0 opacity-[0.12]" style={{ background: 'radial-gradient(ellipse 60% 50% at 30% 50%, var(--theme-primary) 0%, transparent 70%)' }} />
+      <div className="absolute inset-0 opacity-[0.08]" style={{ background: 'radial-gradient(ellipse 40% 40% at 70% 50%, var(--theme-accent) 0%, transparent 70%)' }} />
 
-      <div className="relative max-w-4xl mx-auto text-center">
-        {/* Label */}
-        <motion.span
-          className="inline-block text-xs font-semibold uppercase tracking-[0.2em] mb-5"
-          style={{ color: 'var(--theme-primary)' }}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-        >
-          {copy.eyebrow || 'Blog'}
+      <div className="relative z-10 mx-auto max-w-4xl px-4 py-16 md:py-24 text-center">
+        <motion.span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] mb-5" style={{ color: 'var(--theme-accent)' }} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          News & Updates
         </motion.span>
-
-        {/* Heading */}
-        <motion.h1
-          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight tracking-tight"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-        >
+        <motion.h1 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
           {heading}
         </motion.h1>
-
-        {/* Gradient accent bar */}
-        <motion.div
-          className="w-16 h-1 rounded-full mx-auto mb-6"
-          style={{
-            background: 'linear-gradient(90deg, var(--theme-primary), var(--theme-secondary))',
-          }}
-          initial={{ opacity: 0, scaleX: 0 }}
-          whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-        />
-
-        {/* Description */}
-        <motion.p
-          className="text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-        >
+        <motion.p className="text-base md:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
           {description}
         </motion.p>
       </div>

@@ -9,15 +9,19 @@ import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 import BrandMark from './ui/BrandMark';
 
-const Navbar = ({ navigationItems = [], brandName = 'Golden Shine', logoUrl = null }) => {
+const Navbar = ({ navigationItems = [], brandName = 'Golden Shine', logoUrl = null, logoSize = 'md' }) => {
   const pathname = usePathname();
   const { isDark, toggleTheme } = useTheme();
-  const { language, languages, setLanguage, isRTL, t, translateNavLabel } = useLanguage();
+  const { language, languages, setLanguage, t, translateNavLabel } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef(null);
   const isHomePage = pathname === '/';
+  const isAboutPage = pathname === '/about';
+  const isProductsPage = pathname === '/products' || pathname?.startsWith('/products/');
+  const isPhotosPage = pathname === '/photos';
+  const isBlogPage = pathname === '/blog';
 
   const navItems = navigationItems.length
     ? navigationItems.map((item) => ({ text: translateNavLabel(item.label, item.href), path: item.href }))
@@ -35,17 +39,16 @@ const Navbar = ({ navigationItems = [], brandName = 'Golden Shine', logoUrl = nu
     return () => document.removeEventListener('mousedown', h);
   }, []);
 
-  const atTop = !scrolled && isHomePage;
+  const atTop = !scrolled && (isHomePage || isAboutPage || isProductsPage || isPhotosPage || isBlogPage);
 
   return (
     <>
-      {/* Main Navbar */}
       <header className={`fixed top-0 left-0 right-0 z-[140] w-full transition-all duration-300 ${
         atTop ? 'bg-transparent' : 'bg-white/90 shadow-sm backdrop-blur-xl dark:bg-[#0a0a14]/90'
       }`} aria-label="Main Navigation">
         <div className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex shrink-0 items-center">
-            <BrandMark logoUrl={logoUrl} brandName={brandName} size="sm" />
+            <BrandMark logoUrl={logoUrl} brandName={brandName} size={logoSize} light={atTop} />
           </Link>
 
           <nav className="hidden items-center gap-1 md:flex">
@@ -53,7 +56,7 @@ const Navbar = ({ navigationItems = [], brandName = 'Golden Shine', logoUrl = nu
               const isActive = pathname === path;
               return (
                 <Link key={text} href={path}
-                  className={`relative px-3.5 py-2 text-[13px] font-medium transition-colors ${atTop ? 'text-white/80 hover:text-white' : 'hover:text-[var(--theme-primary)]'}`}
+                  className={`relative px-3.5 py-2 text-[13px] font-medium transition-colors ${atTop ? 'text-white/80 hover:text-white' : 'text-gray-700 dark:text-gray-300 hover:text-[var(--theme-primary)]'}`}
                   style={!atTop && isActive ? { color: 'var(--theme-primary)' } : undefined}
                 >
                   {text}
@@ -66,13 +69,13 @@ const Navbar = ({ navigationItems = [], brandName = 'Golden Shine', logoUrl = nu
           <div className="flex items-center gap-1">
             <div className="relative" ref={langRef}>
               <button onClick={() => setLangOpen((prev) => !prev)}
-                className={`flex items-center gap-1 rounded-full p-1.5 transition md:flex ${atTop ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-[var(--theme-primary)] dark:text-gray-300'}`}>
+                className={`flex items-center gap-1 rounded-full p-1.5 transition ${atTop ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-[var(--theme-primary)] dark:text-gray-300'}`}>
                 <Globe size={15} />
                 <span className="text-[11px] font-semibold uppercase">{language}</span>
                 <ChevronDown size={10} className={`transition-transform ${langOpen ? 'rotate-180' : ''}`} />
               </button>
               {langOpen && (
-                <div className={`absolute top-full mt-1.5 min-w-[130px] rounded-xl border bg-white p-1.5 shadow-lg dark:bg-[#111] ${isRTL ? 'left-0' : 'right-0'}`}
+                <div className="absolute top-full right-0 mt-1.5 min-w-[130px] rounded-xl border bg-white p-1.5 shadow-lg dark:bg-[#111]"
                   style={{ borderColor: 'color-mix(in srgb, var(--theme-primary) 18%, #e5e7eb)' }}>
                   {languages.map((lang) => (
                     <button key={lang.code} onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
@@ -118,12 +121,12 @@ const Navbar = ({ navigationItems = [], brandName = 'Golden Shine', logoUrl = nu
                 );
               })}
             </div>
-            <div className="mt-3 flex items-center gap-3">
+            <div className="mt-3 flex items-center gap-3 border-t border-gray-100 dark:border-gray-800 pt-3">
               {languages.map((lang) => (
                 <button key={lang.code} onClick={() => { setLanguage(lang.code); setIsMenuOpen(false); }}
                   className="rounded-lg px-3 py-1.5 text-xs font-semibold uppercase"
                   style={{ color: language === lang.code ? 'var(--theme-primary)' : undefined }}>
-                  {lang.code}
+                  {lang.native}
                 </button>
               ))}
             </div>

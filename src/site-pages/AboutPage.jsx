@@ -1,31 +1,32 @@
 'use client';
 
 import AboutHero from '../Components/About/AboutHero';
-import WhoWeAre from '../Components/About/whoWeAre';
-import CoreValues from '../Components/About/CoreValues';
-import OurApproach from '../Components/About/OurApproach';
+import AboutStory from '../Components/About/AboutStory';
+import AboutFeatures from '../Components/About/AboutFeatures';
+import AboutReach from '../Components/About/AboutReach';
 import AboutCTA from '../Components/About/AboutCTA';
 import { useLanguage } from '../context/LanguageContext';
 import { resolveLocalizedContent } from '../lib/localized-content';
 
 const sectionRegistry = {
   abouthero: AboutHero,
-  whoweare: WhoWeAre,
-  corevalues: CoreValues,
-  ourapproach: OurApproach,
+  aboutstory: AboutStory,
+  aboutfeatures: AboutFeatures,
+  aboutreach: AboutReach,
   aboutcta: AboutCTA,
 };
 
 const sectionAliases = {
   hero: 'abouthero',
-  abouthero: 'abouthero',
   about: 'abouthero',
-  whowearesection: 'whoweare',
-  values: 'corevalues',
+  story: 'aboutstory',
+  whoweare: 'aboutstory',
+  features: 'aboutfeatures',
+  reach: 'aboutreach',
   cta: 'aboutcta',
 };
 
-const defaultOrder = ['abouthero', 'whoweare', 'corevalues', 'ourapproach', 'aboutcta'];
+const defaultOrder = ['abouthero', 'aboutstory', 'aboutfeatures', 'aboutreach', 'aboutcta'];
 
 const normalizeSectionId = (value = '') => {
   const normalized = String(value).toLowerCase().replace(/[^a-z0-9]+/g, '');

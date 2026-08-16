@@ -1,5 +1,9 @@
 # Environment
 .env
+.env.*.local
+
+# Vercel
+.vercel
 
 # AI agent config
 .claude/

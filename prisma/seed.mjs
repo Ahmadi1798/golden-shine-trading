@@ -7,7 +7,8 @@ const TENANT_SLUG = 'golden-shine-default';
 const pages = [
   { slug: 'home', title: 'Home', seoTitle: 'Golden Shine Trading | Premium Trading Solutions', seoDescription: 'Golden Shine Trading — your trusted partner for wholesale distribution and trading solutions across Malaysia.' },
   { slug: 'about', title: 'About', seoTitle: 'Golden Shine Trading | About Us', seoDescription: 'Learn about Golden Shine Trading — our mission, values, and commitment to quality trading services.' },
-  { slug: 'portfolio', title: 'Products', seoTitle: 'Golden Shine Trading | Our Products', seoDescription: 'Explore Golden Shine Trading\'s diverse product portfolio — quality goods for every industry.' },
+  { slug: 'products', title: 'Products', seoTitle: 'Golden Shine Trading | Our Products', seoDescription: 'Explore Golden Shine Trading\'s range of Japanese used automobile parts — engines, transmissions, cabins, and spare parts.' },
+  { slug: 'photos', title: 'Photos', seoTitle: 'Golden Shine Trading | Photo Gallery', seoDescription: 'Browse our photo gallery — warehouse, products, and operations at Golden Shine Trading.' },
   { slug: 'blog', title: 'Latest News', seoTitle: 'Golden Shine Trading | Latest News', seoDescription: 'Stay updated with the latest news, announcements, and industry insights from Golden Shine Trading.' },
   { slug: 'contact', title: 'Contact', seoTitle: 'Golden Shine Trading | Contact Us', seoDescription: 'Get in touch with Golden Shine Trading for inquiries, partnerships, and quotations.' },
 ];
@@ -71,11 +72,19 @@ async function main() {
     { pageSlug: 'about', sectionKey: 'ourapproach', sectionType: 'process', orderIndex: 4, content: { heading: 'How We Work', steps: [{ title: 'Source', description: 'We identify and vet premium suppliers to ensure consistent quality.' }, { title: 'Quality Check', description: 'Every shipment is inspected and verified before dispatch.' }, { title: 'Distribute', description: 'Efficient logistics deliver your orders on time, every time.' }, { title: 'Support', description: 'Ongoing after-sales support and account management.' }] } },
     { pageSlug: 'about', sectionKey: 'aboutcta', sectionType: 'cta', orderIndex: 5, content: { heading: 'Let\'s Build Something Together', ctaPrimary: { label: 'Get in Touch', href: '/contact' } } },
 
-    // PRODUCTS (portfolio slug)
-    { pageSlug: 'portfolio', sectionKey: 'projects-gallery', sectionType: 'Portfolio', orderIndex: 1, content: { heading: 'Our Product Range', description: 'Explore our comprehensive range of quality products across multiple categories.', projects: [{ title: 'Consumer Goods', description: 'Household essentials, personal care, and everyday consumables.' }, { title: 'Food & Beverage', description: 'Packaged foods, beverages, and specialty ingredients.' }, { title: 'Industrial Supplies', description: 'Raw materials, packaging, and operational supplies.' }, { title: 'Electronics', description: 'Consumer electronics and accessories at wholesale pricing.' }] } },
+    // PRODUCTS
+    { pageSlug: 'products', sectionKey: 'productshero', sectionType: 'productshero', orderIndex: 1, content: { heading: 'Our Products', description: 'Explore our comprehensive range of Japanese used automobile parts — engines, transmissions, cabins, half cuts, and spare parts.' } },
+    { pageSlug: 'products', sectionKey: 'productcategories', sectionType: 'productcategories', orderIndex: 2, content: { heading: 'Product Categories', description: 'Browse our full range of Japanese used automobile parts.', categories: [{ title: 'Used Japanese Car Engines', subtitle: 'Diesel & Gasoline', description: 'High-quality used car engines imported directly from Japan.', image: '/images/products/engine.jpg' }, { title: 'Used Japanese Truck Engines', subtitle: '', description: 'Durable truck engines built to handle heavy loads.', image: '/images/products/truck-engine.jpg' }, { title: 'Used Cabin', subtitle: '', description: 'Complete cabins in excellent condition.', image: '/images/products/cabin.jpg' }, { title: 'Used Half Cuts', subtitle: 'Front cut / Rear cut', description: 'Front and rear half cuts containing major components.', image: '/images/products/halfcut.jpg' }, { title: 'Used Transmissions', subtitle: '', description: 'Automatic and manual transmissions tested for reliability.', image: '/images/products/transmission.jpg' }, { title: 'Used Spare Parts', subtitle: '', description: 'Wide range of spare parts.', image: '/images/products/spareparts.jpg' }] } },
+    { pageSlug: 'products', sectionKey: 'productscta', sectionType: 'productscta', orderIndex: 3, content: { heading: "Can't Find What You Need?", description: 'Contact our team for availability, pricing, and bulk order inquiries.', ctaLabel: 'Contact Us', ctaHref: '/contact' } },
+
+    // PHOTOS
+    { pageSlug: 'photos', sectionKey: 'photoshero', sectionType: 'photoshero', orderIndex: 1, content: { heading: 'Photo Gallery', description: 'A look inside our warehouse, products, and day-to-day operations at Golden Shine Trading.' } },
+    { pageSlug: 'photos', sectionKey: 'photogallery', sectionType: 'photogallery', orderIndex: 2, content: { heading: 'Gallery', description: 'Explore our facilities and products through photos.', images: [{ image: '/images/products/engine.jpg', caption: 'Used Japanese engines in stock' }, { image: '/images/products/truck-engine.jpg', caption: 'Truck engines ready for shipment' }, { image: '/images/products/cabin.jpg', caption: 'Complete cabin assemblies' }, { image: '/images/products/halfcut.jpg', caption: 'Front and rear half cuts' }, { image: '/images/products/transmission.jpg', caption: 'Tested automatic transmissions' }, { image: '/images/products/spareparts.jpg', caption: 'Wide range of spare parts' }] } },
 
     // LATEST NEWS (blog slug)
-    { pageSlug: 'blog', sectionKey: 'blog-posts', sectionType: 'BlogPosts', orderIndex: 1, content: { heading: 'Latest News & Updates', description: 'Stay informed with announcements, industry insights, and company updates.' } },
+    { pageSlug: 'blog', sectionKey: 'bloghero', sectionType: 'bloghero', orderIndex: 1, content: { heading: 'Latest News', description: 'Company announcements, new arrivals, and industry updates from Golden Shine Trading.' } },
+    { pageSlug: 'blog', sectionKey: 'blogposts', sectionType: 'blogposts', orderIndex: 2, content: { posts: [{ title: 'New Shipment of Japanese Engines Arrived', image: '/images/products/engine.jpg', date: 'August 2026', link: '/blog/new-shipment-of-japanese-engines-arrived', excerpt: 'A fresh container of low-mileage used Japanese engines has just arrived.', content: 'We are pleased to announce the arrival of a new shipment of low-mileage used Japanese engines.', keyInsights: 'Fresh stock of Toyota and Honda engines\nAll units inspected', nextSteps: 'Contact our sales team to reserve your engine today.' }, { title: 'Expanding Our Truck Engine Range', image: '/images/products/truck-engine.jpg', date: 'July 2026', link: '/blog/expanding-our-truck-engine-range', excerpt: 'We have added more Isuzu and Hino truck engines.', content: 'To better serve our commercial customers, we have expanded our range of used Japanese truck engines.', keyInsights: 'New Isuzu and Hino engines in stock\nDyno-tested', nextSteps: 'Reach out to discuss compatibility with your truck model.' }, { title: 'Now Exporting to 30+ Countries', image: '/images/products/spareparts.jpg', date: 'June 2026', link: '/blog/now-exporting-to-30-plus-countries', excerpt: 'Our international network keeps growing.', content: 'Golden Shine Trading has reached a new milestone, now exporting to more than 30 countries.', keyInsights: 'Exporting to 30+ countries\nCovering five continents', nextSteps: 'For international orders, contact our export team.' }] } },
+    { pageSlug: 'blog', sectionKey: 'blogcta', sectionType: 'cta', orderIndex: 3, content: { heading: 'Need Auto Parts?', description: 'Contact our team for availability, pricing, and bulk order inquiries.', ctaLabel: 'Contact Us', ctaHref: '/contact' } },
   ];
 
   for (const row of sectionRows) {
@@ -131,8 +140,9 @@ async function main() {
   const navItems = [
     { label: 'Home', href: '/', orderIndex: 1 },
     { label: 'About', href: '/about', orderIndex: 2 },
-    { label: 'Products', href: '/portfolio', orderIndex: 3 },
-    { label: 'Latest News', href: '/blog', orderIndex: 4 },
+    { label: 'Products', href: '/products', orderIndex: 3 },
+    { label: 'Photos', href: '/photos', orderIndex: 4 },
+    { label: 'Latest News', href: '/blog', orderIndex: 5 },
   ];
   for (const item of navItems) {
     await prisma.navigationItem.create({
@@ -143,11 +153,15 @@ async function main() {
   // Footer
   await prisma.footerItem.deleteMany({ where: { tenantId: tenant.id } });
   const footerItems = [
-    { columnKey: 'company', label: 'About', href: '/about', orderIndex: 1 },
-    { columnKey: 'company', label: 'Products', href: '/services', orderIndex: 2 },
-    { columnKey: 'company', label: 'Photos', href: '/portfolio', orderIndex: 3 },
-    { columnKey: 'connect', label: 'Latest News', href: '/blog', orderIndex: 1 },
-    { columnKey: 'connect', label: 'Contact', href: '/contact', orderIndex: 2 },
+    { columnKey: 'discover', label: 'Home', href: '/', orderIndex: 1 },
+    { columnKey: 'discover', label: 'About', href: '/about', orderIndex: 2 },
+    { columnKey: 'discover', label: 'Products', href: '/products', orderIndex: 3 },
+    { columnKey: 'discover', label: 'Photos', href: '/photos', orderIndex: 4 },
+    { columnKey: 'discover', label: 'Contact', href: '/contact', orderIndex: 5 },
+    { columnKey: 'information', label: 'Used Engines', href: '/products', orderIndex: 1 },
+    { columnKey: 'information', label: 'Used Half Cuts', href: '/products', orderIndex: 2 },
+    { columnKey: 'information', label: 'Used Transmissions', href: '/products', orderIndex: 3 },
+    { columnKey: 'information', label: 'Used Spare Parts', href: '/products', orderIndex: 4 },
   ];
   for (const item of footerItems) {
     await prisma.footerItem.create({

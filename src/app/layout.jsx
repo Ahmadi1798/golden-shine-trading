@@ -29,9 +29,9 @@ export default async function RootLayout({ children }) {
   const headingFont = normalizeFontStack(siteSettings?.fontHeading, 'sans-serif');
   const bodyFont = normalizeFontStack(siteSettings?.fontBody, 'sans-serif');
   const bodyStyle = {
-    '--theme-primary': siteSettings?.primaryColor || '#4F46E5',
-    '--theme-secondary': siteSettings?.secondaryColor || '#7C3AED',
-    '--theme-accent': siteSettings?.accentColor || '#EC4899',
+    '--theme-primary': '#1E3A8A',
+    '--theme-secondary': '#2563EB',
+    '--theme-accent': '#EAB308',
     '--theme-font-heading': headingFont,
     '--theme-font-body': bodyFont,
     '--font-sans': bodyFont,
@@ -51,8 +51,10 @@ export default async function RootLayout({ children }) {
           footerItems={siteData?.footerItems || []}
           brandName={siteData?.siteSettings?.brandName || siteData?.name || 'Golden Shine'}
           logoUrl={siteSettings?.logoUrl || null}
+          logoSize={siteSettings?.logoSize || 'md'}
           contactEmail={siteSettings?.contactEmail || ''}
           contactPhone={siteSettings?.contactPhone || ''}
+          contactAddress={siteSettings?.contactAddress || ''}
           facebookUrl={siteSettings?.facebookUrl || ''}
           instagramUrl={siteSettings?.instagramUrl || ''}
           twitterUrl={siteSettings?.twitterUrl || ''}

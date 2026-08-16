@@ -51,8 +51,9 @@ export async function PATCH(request) {
     revalidatePath('/', 'layout');
     revalidatePath('/');
     revalidatePath('/about');
+    revalidatePath('/products');
+    revalidatePath('/photos');
     revalidatePath('/services');
-    revalidatePath('/portfolio');
     revalidatePath('/blog');
     revalidatePath('/contact');
     revalidatePath('/team');

@@ -1,3 +1,6 @@
+'use client';
+
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -10,103 +13,79 @@ const AboutHero = ({ content = {} }) => {
     if (typeof value !== 'string' || !value.trim()) return fallback;
     return hasArabicScript(value) ? value : fallback;
   };
-  const copy = {
-    en: {
-      heading: 'A Creative Partner for the Ambitious',
-      description: 'At KarFamSoft Agency, we create digital experiences that help brands grow, adapt, and thrive in a changing world.',
-      ctaLabel: 'Contact Us',
-      ctaAria: 'Contact KarFamSoft Agency',
-      videoUnsupported: 'Your browser does not support the video tag.',
-    },
-    fa: {
-      heading: 'یک شریک خلاق برای برندهای بلندپرواز',
-      description: 'در کارفم سافت، تجربه های دیجیتال می سازیم که به رشد، تطبیق و موفقیت پایدار برندها کمک می کند.',
-      ctaLabel: 'تماس با ما',
-      ctaAria: 'تماس با کارفم سافت',
-      videoUnsupported: 'مرورگر شما از پخش ویدیو پشتیبانی نمی کند.',
-    },
-    ps: {
-      heading: 'د لوړو موخو لپاره یو تخلیقي شریک',
-      description: 'په KarFamSoft Agency کې موږ داسې ډیجیټل تجربې جوړوو چې برانډونو ته د ودې، بدلون او بریا ځواک ورکوي.',
-      ctaLabel: 'موږ سره اړیکه',
-      ctaAria: 'KarFamSoft Agency سره اړیکه',
-      videoUnsupported: 'ستاسو براوزر د ویډیو ټګ ملاتړ نه کوي.',
-    },
-  }[language] || {};
-  const hasField = (key) => Object.prototype.hasOwnProperty.call(content, key);
 
-  const heading = hasField('heading')
-    ? pickText(content.heading, copy.heading || 'A Creative Partner for the Ambitious')
-    : (copy.heading || 'A Creative Partner for the Ambitious');
-  const description = hasField('description')
-    ? pickText(content.description, copy.description || 'At KarFamSoft Agency, we create digital experiences that help brands grow, adapt, and thrive in a changing world.')
-    : (copy.description || 'At KarFamSoft Agency, we create digital experiences that help brands grow, adapt, and thrive in a changing world.');
-  const ctaLabel = hasField('ctaLabel') ? pickText(content.ctaLabel, copy.ctaLabel || 'Contact Us') : (copy.ctaLabel || 'Contact Us');
-  const ctaHref = hasField('ctaHref') ? content.ctaHref : '/contact';
-  const videoUrl = hasField('videoUrl') ? content.videoUrl : '/videos/agency.mp4';
-  const videoPoster = hasField('videoPoster') ? content.videoPoster : '';
+  const heading = pickText(content.heading, 'About Golden Shine Trading');
+  const description = pickText(
+    content.description,
+    'Your trusted partner for Japanese used automobile parts — serving Malaysia and the world since 1992.',
+  );
+  const imageUrl = content.imageUrl || '/images/about/about-preview.jpg';
+  const ctaLabel = pickText(content.ctaLabel, '');
+  const ctaHref = content.ctaHref || '';
 
   return (
-    <section
-      className="relative h-[100vh] overflow-hidden flex items-center justify-center text-center px-4 bg-white dark:bg-[#0f172a] pb-20"
-      role="banner"
-    >
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="absolute w-full h-full object-cover top-0 left-0 z-0"
-        aria-hidden="true"
-        poster={videoPoster || undefined}
-      >
-        <source src={videoUrl} type="video/mp4" />
-        {copy.videoUnsupported || 'Your browser does not support the video tag.'}
-      </video>
+    <section className="relative flex min-h-[50vh] md:min-h-[60vh] items-center overflow-hidden bg-[#080810]">
+      <img
+        src={imageUrl}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover opacity-30"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080810]/70 via-[#080810]/40 to-[#080810]/90" />
+      <div
+        className="absolute inset-0 opacity-[0.15]"
+        style={{
+          background: 'radial-gradient(ellipse 60% 50% at 30% 50%, var(--theme-primary) 0%, transparent 70%)',
+        }}
+      />
+      <div
+        className="absolute inset-0 opacity-[0.08]"
+        style={{
+          background: 'radial-gradient(ellipse 40% 40% at 70% 50%, var(--theme-accent) 0%, transparent 70%)',
+        }}
+      />
 
-      {/* Darker overlay masks video quality loss from compression */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/70 via-black/40 to-black/10" />
-
-      {/* Content */}
-      <motion.div
-        className="relative z-20 max-w-3xl text-white"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-      >
+      <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 md:py-28 text-center">
+        <motion.span
+          className="inline-block text-xs font-semibold uppercase tracking-[0.2em] mb-5"
+          style={{ color: 'var(--theme-accent)' }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          About Us
+        </motion.span>
         <motion.h1
-          className="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-lg"
+          className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         >
           {heading}
         </motion.h1>
         <motion.p
-          className="text-lg md:text-xl mb-8 text-gray-200 drop-shadow"
+          className="text-base md:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           {description}
         </motion.p>
-        <motion.a
-          href={ctaHref}
-          className="inline-block text-white px-8 py-4 rounded-full font-semibold shadow-lg transition focus:outline-none focus:ring-2 text-lg"
-          style={{
-            background: 'linear-gradient(120deg, var(--theme-primary), var(--theme-secondary))',
-            boxShadow: '0 12px 24px color-mix(in srgb, var(--theme-primary) 28%, transparent)',
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-          aria-label={copy.ctaAria || 'Contact KarFamSoft Agency'}
-        >
-          {ctaLabel}
-        </motion.a>
-      </motion.div>
+        {ctaLabel && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Link
+              href={ctaHref}
+              className="inline-flex items-center gap-2 text-white font-semibold px-7 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+              style={{ background: 'linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))' }}
+            >
+              {ctaLabel}
+            </Link>
+          </motion.div>
+        )}
+      </div>
     </section>
   );
 };

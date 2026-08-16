@@ -2,7 +2,10 @@
 
 import dynamic from 'next/dynamic';
 
-const ClientSwiper = dynamic(() => import('./HeroSliderClient'), { ssr: false });
+const ClientSwiper = dynamic(() => import('./HeroSliderClient'), {
+  ssr: false,
+  loading: () => <div className="min-h-screen bg-[#080810]" />,
+});
 
 const fallbackSlides = [
   {

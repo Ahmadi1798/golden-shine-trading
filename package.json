@@ -12,7 +12,8 @@
     "prisma:migrate": "./node_modules/.bin/prisma migrate dev",
     "prisma:push": "./node_modules/.bin/prisma db push",
     "prisma:seed": "./node_modules/.bin/prisma db seed",
-    "postinstall": "./node_modules/.bin/flowbite-react patch"
+    "db:migrate-to-supabase": "node prisma/migrate-to-supabase.mjs",
+    "postinstall": "./node_modules/.bin/flowbite-react patch && ./node_modules/.bin/prisma generate"
   },
   "prisma": {
     "seed": "node prisma/seed.mjs"

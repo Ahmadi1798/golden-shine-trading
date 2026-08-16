@@ -1,48 +1,36 @@
 'use client';
 
 import {
-  Code2,
-  HeartHandshake,
-  Lightbulb,
-  Rocket,
+  Layers3,
+  LayoutGrid,
+  Truck,
+  Users,
   ShieldCheck,
-  Sparkles,
-  Zap,
+  Warehouse,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
-const iconByKeyword = [
-  [/proven|experience|expertis|modern|stack|technology|technical|full.?stack/i, Code2],
-  [/human|centered|design.?first|user.?first|human.?centered|empathy/i, Lightbulb],
-  [/speed|responsiveness|fast|quick|perform|clean.?code|efficien/i, Zap],
-  [/collaborative|transparent|communication|trust|partner/i, HeartHandshake],
-  [/quality|reliable|dependable|robust|stable|enterprise/i, ShieldCheck],
-  [/innov|creative|forward|future|cutting.?edge|modern/i, Sparkles],
-  [/scalable|growth|grow|scale|expand|result|deliver/i, Rocket],
+const defaultFeatures = [
+  { title: 'High Level of Stock', description: 'We maintain extensive inventory levels to ensure parts are always available when you need them most.', icon: Layers3 },
+  { title: 'Wide Range of Models', description: 'From passenger cars to heavy-duty trucks, we cover a comprehensive range of Japanese vehicle models and makes.', icon: LayoutGrid },
+  { title: 'Local & Worldwide Fast Shipping', description: 'Reliable logistics network delivering orders promptly across Peninsular Malaysia, East Malaysia, and globally.', icon: Truck },
+  { title: 'Well Trained & Professional Staff', description: 'Our knowledgeable team ensures accurate part matching, quality inspection, and responsive customer support.', icon: Users },
+  { title: 'Sufficient & Quality Materials', description: 'Every component undergoes rigorous quality checks to meet international standards before reaching our customers.', icon: ShieldCheck },
+  { title: 'Container Loading Facilities', description: 'On-site container loading capabilities for bulk export orders with secure packing and efficient turnaround.', icon: Warehouse },
 ];
-
-const fallbackIcons = [Sparkles, Lightbulb, Zap, HeartHandshake, Code2, ShieldCheck, Rocket];
-
-const getIconForFeature = (text, index) => {
-  if (!text) return fallbackIcons[index % fallbackIcons.length];
-  for (const [pattern, icon] of iconByKeyword) {
-    if (pattern.test(text)) return icon;
-  }
-  return fallbackIcons[index % fallbackIcons.length];
-};
 
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.5, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] },
   }),
 };
 
 const WhyChooseUs = ({ content = {} }) => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const isRTLContentLanguage = language === 'fa' || language === 'ps';
   const hasArabicScript = (value) => typeof value === 'string' && /[\u0600-\u06FF]/.test(value);
   const pickText = (value, fallback) => {
@@ -51,51 +39,46 @@ const WhyChooseUs = ({ content = {} }) => {
     return hasArabicScript(value) ? value : fallback;
   };
 
-  const defaultFeatures = [
-    t('home.whyFeature1', 'Proven experience with modern tech stacks'),
-    t('home.whyFeature2', 'Human-centered, design-first thinking'),
-    t('home.whyFeature3', 'Speed, responsiveness, and clean code'),
-    t('home.whyFeature4', 'Collaborative and transparent communication'),
-  ];
-
-  const heading = pickText(content.heading, t('home.whyHeading', 'Why Choose KarFamSoft?'));
-  const description =
-    pickText(
-      content.description,
-      t(
-        'home.whyDescription',
-        'We bring clarity, design, and code together to help you build experiences that matter.',
-      ),
-    );
-  const points = Array.isArray(content.features) && content.features.length
-    ? content.features.map((feature, index) => pickText(feature, defaultFeatures[index % defaultFeatures.length]))
+  const heading = pickText(content.heading, 'Satisfaction Priority');
+  const description = pickText(
+    content.description,
+    'The reason that we are trusted by our customers:',
+  );
+  const features = Array.isArray(content.features) && content.features.length
+    ? content.features.map((item, index) => {
+        if (typeof item === 'string') {
+          const fallback = defaultFeatures[index % defaultFeatures.length];
+          return { title: pickText(item, fallback.title), description: fallback.description, icon: fallback.icon };
+        }
+        const fallback = defaultFeatures[index % defaultFeatures.length];
+        return {
+          title: pickText(item?.title, fallback.title),
+          description: pickText(item?.description, fallback.description),
+          icon: fallback.icon,
+        };
+      })
     : defaultFeatures;
-
-  const featureCards = points.map((text, i) => ({
-    text,
-    icon: getIconForFeature(text, i),
-  }));
 
   return (
     <motion.section
-      className="relative py-16 px-4 overflow-hidden bg-white dark:bg-[#0f172a]"
+      className="relative py-16 md:py-24 px-4 overflow-hidden bg-white dark:bg-[#0f172a]"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      aria-label={t('home.whyAria', 'Why Choose Us')}
+      aria-label="Why Choose Us"
     >
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: `
-            radial-gradient(ellipse 70% 60% at 85% 30%, color-mix(in srgb, var(--theme-secondary) 6%, transparent) 0%, transparent 70%),
+            radial-gradient(ellipse 70% 60% at 85% 30%, color-mix(in srgb, var(--theme-secondary) 5%, transparent) 0%, transparent 70%),
             radial-gradient(ellipse 60% 50% at 15% 70%, color-mix(in srgb, var(--theme-accent) 4%, transparent) 0%, transparent 70%)
           `,
         }}
       />
 
-      <div className="relative max-w-5xl mx-auto">
+      <div className="relative max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <motion.span
             className="inline-block text-xs font-semibold uppercase tracking-[0.2em] mb-4"
@@ -104,10 +87,10 @@ const WhyChooseUs = ({ content = {} }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.05 }}
           >
-            {t('home.whyLabel', 'Why us')}
+            Why Choose Us
           </motion.span>
           <motion.h2
-            className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6"
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -115,7 +98,7 @@ const WhyChooseUs = ({ content = {} }) => {
             {heading}
           </motion.h2>
           <motion.p
-            className="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -124,8 +107,8 @@ const WhyChooseUs = ({ content = {} }) => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {featureCards.map((feature, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {features.map((feature, i) => (
             <motion.div
               key={i}
               custom={i}
@@ -133,50 +116,37 @@ const WhyChooseUs = ({ content = {} }) => {
               whileInView="visible"
               viewport={{ once: true }}
               variants={cardVariants}
-              className="group relative bg-white dark:bg-gray-950 rounded-2xl p-8 border border-gray-100 dark:border-gray-800 shadow-sm dark:shadow-black/30 hover:shadow-lg dark:hover:shadow-black/60 transition-all duration-300 hover:-translate-y-1"
+              className="group relative bg-white dark:bg-gray-950 rounded-2xl p-6 md:p-8 border border-gray-100 dark:border-gray-800 shadow-sm dark:shadow-black/30 hover:shadow-lg dark:hover:shadow-black/60 transition-all duration-300 hover:-translate-y-1"
             >
               <div
                 className="absolute top-0 left-8 right-8 h-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{ background: 'linear-gradient(90deg, var(--theme-primary), var(--theme-accent))' }}
               />
 
-              <div className="flex items-start gap-5">
+              <div className="flex items-start gap-4">
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
                   style={{
-                    backgroundColor: 'color-mix(in srgb, var(--theme-primary) 10%, transparent)',
-                    color: 'var(--theme-primary)',
+                    backgroundColor: i % 2 === 0
+                      ? 'color-mix(in srgb, var(--theme-primary) 10%, transparent)'
+                      : 'color-mix(in srgb, var(--theme-accent) 12%, transparent)',
+                    color: i % 2 === 0 ? 'var(--theme-primary)' : 'var(--theme-accent)',
                   }}
                 >
                   <feature.icon size={22} strokeWidth={1.5} aria-hidden="true" />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 leading-snug">
-                    {feature.text}
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 dark:text-white mb-2 leading-snug">
+                    {feature.title}
                   </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <a
-            href="/about"
-            className="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:gap-3 focus:outline-none"
-            style={{ color: 'var(--theme-primary)' }}
-          >
-            {t('home.learnMoreAboutUs', 'Learn more about us')}
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 3l5 5-5 5" />
-            </svg>
-          </a>
-        </motion.div>
       </div>
     </motion.section>
   );
