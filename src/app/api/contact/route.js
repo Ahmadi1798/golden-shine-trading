@@ -1,12 +1,17 @@
 /* global process */
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { getSmtpSettings } from '../../../lib/content';
 
-function createTransporter() {
-  const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT) || 587;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
+async function createTransporter() {
+  const dbSmtp = await getSmtpSettings();
+
+  const host = dbSmtp?.smtpHost || process.env.SMTP_HOST;
+  const port = Number(dbSmtp?.smtpPort) || Number(process.env.SMTP_PORT) || 587;
+  const user = String(dbSmtp?.smtpUser || process.env.SMTP_USER || '').trim();
+  // Gmail app passwords are often copied with spaces (e.g. "abcd efgh ijkl mnop").
+  // Strip all whitespace — SMTP auth requires the raw 16-character token.
+  const pass = String(dbSmtp?.smtpPass || process.env.SMTP_PASS || '').replace(/\s+/g, '');
 
   if (!host || !user || !pass) {
     throw new Error('SMTP not configured');
@@ -32,11 +37,13 @@ export async function POST(request) {
       );
     }
 
-    const transporter = createTransporter();
-    const recipient = process.env.ADMIN_EMAIL || process.env.SMTP_USER;
+    const transporter = await createTransporter();
+    const dbSmtp = await getSmtpSettings();
+    const recipient = dbSmtp?.smtpUser || process.env.ADMIN_EMAIL || process.env.SMTP_USER;
+    const fromAddress = dbSmtp?.smtpUser || process.env.SMTP_USER;
 
     await transporter.sendMail({
-      from: `"${fullName}" <${process.env.SMTP_USER}>`,
+      from: `"${fullName}" <${fromAddress}>`,
       replyTo: email,
       to: recipient,
       subject: `[Contact] ${subject}`,
@@ -57,7 +64,13 @@ export async function POST(request) {
     console.error('Contact form error:', error);
     if (error.message === 'SMTP not configured') {
       return NextResponse.json(
-        { error: 'Mail server not configured. Please set SMTP env vars.' },
+        { error: 'Mail server not configured. Please set SMTP settings in the admin panel.' },
+        { status: 500 }
+      );
+    }
+    if (error.code === 'EAUTH') {
+      return NextResponse.json(
+        { error: 'Email authentication failed. Please check your SMTP username and password (and remove any spaces from the app password).' },
         { status: 500 }
       );
     }

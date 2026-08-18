@@ -11,9 +11,9 @@ import 'swiper/css/pagination';
 
 const slideData = [
   {
-    eyebrow: "Malaysia's Trusted Distributor",
+    eyebrow: "Korea's Trusted Distributor",
     heading: 'Premium Products,\nReliable Delivery',
-    description: 'Golden Shine Trading connects quality manufacturers with businesses across Malaysia through efficient wholesale distribution and supply chain management.',
+    description: 'Golden Shine Trading connects quality manufacturers with businesses across Korea through efficient wholesale distribution and supply chain management.',
     ctaLabel: 'Explore Products',
     ctaHref: '/services',
     secondaryCtaLabel: 'Contact Us',
@@ -36,7 +36,7 @@ const slideData = [
   },
   {
     eyebrow: 'Nationwide Reach',
-    heading: 'Delivering Across\nPeninsular & East Malaysia',
+    heading: 'Delivering Across\nKorea',
     description: 'With reliable logistics and strong supplier partnerships, your orders arrive on time — every time, anywhere.',
     ctaLabel: 'Get Started',
     ctaHref: '/contact',

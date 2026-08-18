@@ -9,9 +9,9 @@ const ClientSwiper = dynamic(() => import('./HeroSliderClient'), {
 
 const fallbackSlides = [
   {
-    eyebrow: "Malaysia's Trusted Distributor",
+    eyebrow: "Korea's Trusted Distributor",
     heading: 'Premium Products,\nReliable Delivery',
-    description: 'Golden Shine Trading connects quality manufacturers with businesses across Malaysia.',
+    description: 'Golden Shine Trading connects quality manufacturers with businesses across Korea.',
     imageUrl: '/images/heroImage.webp',
     ctaLabel: 'Explore Products',
     ctaHref: '/services',

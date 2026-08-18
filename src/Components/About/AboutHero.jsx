@@ -14,10 +14,10 @@ const AboutHero = ({ content = {} }) => {
     return hasArabicScript(value) ? value : fallback;
   };
 
-  const heading = pickText(content.heading, 'About Golden Shine Trading');
+  const heading = pickText(content.heading, 'Trust is the Foundation of Every Successful Partnership');
   const description = pickText(
     content.description,
-    'Your trusted partner for Japanese used automobile parts — serving Malaysia and the world since 1992.',
+    'Golden Shine Trading was established in 2014. We are dedicated to building lasting relationships through transparent business practices, reliable products, and exceptional service.',
   );
   const imageUrl = content.imageUrl || '/images/about/about-preview.jpg';
   const ctaLabel = pickText(content.ctaLabel, '');

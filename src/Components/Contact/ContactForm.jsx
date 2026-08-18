@@ -50,7 +50,6 @@ const ContactForm = ({ content = {}, siteSettings = null }) => {
       subjectPlaceholder: 'Tell us what you need',
       messageLabel: 'Project Details',
       messagePlaceholder: 'Share your goals, timeline, and any links that can help us understand your project.',
-      linkedin: 'LinkedIn',
       facebook: 'Facebook',
       instagram: 'Instagram',
       x: 'X',
@@ -65,69 +64,36 @@ const ContactForm = ({ content = {}, siteSettings = null }) => {
       sendSuccess: 'Message sent! We will get back to you soon.',
       sendError: 'Something went wrong. Please try again.',
     },
-    fa: {
-      badge: 'تماس با ما',
-      heading: '  با ما بپیوندید',
-      description: 'پروژه ای در ذهن دارید؟ فرم را پر کنید یا از طریق ایمیل با ما در ارتباط باشید.',
-      formHeading: 'شروع گفتگوی پروژه',
-      formDescription: 'چند جزئیات را ارسال کنید تا تیم ما با گام بعدی شفاف پاسخ دهد.',
-      submitLabel: 'ارسال پیام',
-      fullNameLabel: 'نام کامل',
-      fullNamePlaceholder: 'نام شما',
-      emailLabel: 'ایمیل',
-      emailPlaceholder: 'example@company.com',
-      phoneLabel: 'شماره تماس',
-      phonePlaceholder: '+93 700 000 000',
-      subjectLabel: 'موضوع',
-      subjectPlaceholder: 'نیاز خود را بنویسید',
-      messageLabel: 'جزئیات پروژه',
-      messagePlaceholder: 'هدف ها، زمان بندی و لینک های مرتبط پروژه را با ما به اشتراک بگذارید.',
-      linkedin: 'لینکدین',
-      facebook: 'فیسبوک',
-      instagram: 'اینستاگرام',
-      x: 'ایکس',
-      whatsapp: 'واتساپ',
-      email: 'ایمیل',
-      phone: 'تلفن',
-      office: 'دفتر',
-      followUs: 'ما را دنبال کنید',
-      findUs: 'آدرس ما',
-      officeLocation: 'موقعیت دفتر',
-      sending: 'در حال ارسال...',
-      sendSuccess: 'پیام ارسال شد! به زودی با شما تماس خواهیم گرفت.',
-      sendError: 'مشکلی پیش آمد. لطفاً دوباره تلاش کنید.',
-    },
-    ps: {
-      badge: 'اړیکه ونیسئ',
-      heading: 'راځئ وصل شو',
-      description: 'پروژه لرئ؟ فورمه ډکه کړئ یا د ایمیل له لارې اړیکه ونیسئ - موږ ستاسو د پیغام هرکلی کوو.',
-      formHeading: 'د پروژې خبرې پیل کړئ',
-      formDescription: 'ځینې جزییات شریک کړئ، زموږ ټیم به له روښانه بل ګام سره ځواب درکړي.',
-      submitLabel: 'پیغام ولېږئ',
-      fullNameLabel: 'بشپړ نوم',
-      fullNamePlaceholder: 'ستاسو نوم',
-      emailLabel: 'بریښنالیک',
-      emailPlaceholder: 'example@company.com',
-      phoneLabel: 'د تلیفون شمېره',
-      phonePlaceholder: '+93 700 000 000',
-      subjectLabel: 'موضوع',
-      subjectPlaceholder: 'خپله اړتیا ولیکئ',
-      messageLabel: 'د پروژې جزییات',
-      messagePlaceholder: 'خپل هدفونه، مهالوېش او اړوند لینکونه شریک کړئ څو پروژه ښه درک کړو.',
-      linkedin: 'لینکډاین',
-      facebook: 'فېسبوک',
-      instagram: 'انسټګرام',
+    es: {
+      badge: 'Contáctenos',
+      heading: 'Conectemos',
+      description: '¿Tiene un proyecto en mente? Complete el formulario o contáctenos por correo electrónico; nos encantaría saber de usted.',
+      formHeading: 'Inicie una Conversación',
+      formDescription: 'Comparta algunos detalles y nuestro equipo le responderá con el siguiente paso.',
+      submitLabel: 'Enviar Mensaje',
+      fullNameLabel: 'Nombre Completo',
+      fullNamePlaceholder: 'Su nombre',
+      emailLabel: 'Correo Electrónico',
+      emailPlaceholder: 'ejemplo@empresa.com',
+      phoneLabel: 'Número de Teléfono',
+      phonePlaceholder: '+82 10 0000 0000',
+      subjectLabel: 'Asunto',
+      subjectPlaceholder: 'Cuéntenos qué necesita',
+      messageLabel: 'Detalles del Mensaje',
+      messagePlaceholder: 'Comparta sus objetivos, plazos y cualquier enlace que nos ayude a entender su solicitud.',
+      facebook: 'Facebook',
+      instagram: 'Instagram',
       x: 'X',
-      whatsapp: 'واټساپ',
-      email: 'بریښنالیک',
-      phone: 'تلیفون',
-      office: 'دفتر',
-      followUs: 'موږ تعقیب کړئ',
-      findUs: 'موږ ومومئ',
-      officeLocation: 'د دفتر موقعیت',
-      sending: 'لېږل کېږي...',
-      sendSuccess: 'پیغام ولېږل شو! ژر به مو سره اړیکه ونیسو.',
-      sendError: 'یوه ستونزه رامنځته شوه. بیا هڅه وکړئ.',
+      whatsapp: 'WhatsApp',
+      email: 'Correo',
+      phone: 'Teléfono',
+      office: 'Oficina',
+      followUs: 'Síguenos',
+      findUs: 'Encuéntrenos',
+      officeLocation: 'Ubicación de la Oficina',
+      sending: 'Enviando...',
+      sendSuccess: '¡Mensaje enviado! Le responderemos pronto.',
+      sendError: 'Algo salió mal. Inténtelo de nuevo.',
     },
   }[language] || {};
 
@@ -186,12 +152,10 @@ const ContactForm = ({ content = {}, siteSettings = null }) => {
     pickText(content.messagePlaceholder, copy.messagePlaceholder || 'Share your goals, timeline, and any links that can help us understand your project.');
 
   const googleMapsUrl = content.googleMapsUrl || '';
-  const email =
-    siteSettings?.contactEmail || content.email || 'support@karfamsoft.com';
-  const address =
-    siteSettings?.contactAddress || content.address || '703 Bartley-Chester Rd, Virginia, USA';
-  const phoneDisplay =
-    siteSettings?.contactPhone || content.phone || '+1 (555) 123-4567';
+  const emailRaw = siteSettings?.contactEmail || content.email || '';
+  const emailList = String(emailRaw).split(',').map((e) => e.trim()).filter(Boolean);
+  const address = siteSettings?.contactAddress || content.address || '';
+  const phoneDisplay = siteSettings?.contactPhone || content.phone || '';
   const phoneHref = content.phoneHref || `tel:${String(phoneDisplay).replace(/[^\d+]/g, '')}`;
 
   const socialLinks = [
@@ -202,7 +166,7 @@ const ContactForm = ({ content = {}, siteSettings = null }) => {
   ].filter((item) => Boolean(item.href));
 
   const contactInfo = [
-    { icon: TfiEmail, label: copy.email || 'Email', value: email, href: `mailto:${email}` },
+    ...emailList.map((email) => ({ icon: TfiEmail, label: copy.email || 'Email', value: email, href: `mailto:${email}` })),
     { icon: TfiMobile, label: copy.phone || 'Phone', value: phoneDisplay, href: phoneHref },
     { icon: TfiLocationPin, label: copy.office || 'Office', value: address },
   ];
@@ -272,7 +236,7 @@ const ContactForm = ({ content = {}, siteSettings = null }) => {
                   ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
                   : {};
                 return (
-                  <div key={item.label} className="flex items-start gap-4">
+                  <div key={`${item.label}-${item.value}`} className="flex items-start gap-4">
                     <div
                       className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-sm"
                       style={{

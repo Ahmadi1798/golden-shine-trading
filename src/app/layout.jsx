@@ -2,10 +2,29 @@ import '../index.css';
 import NextLayoutShell from '../Components/NextLayoutShell';
 import { getSiteData } from '../lib/content';
 
-export const metadata = {
-  title: 'Golden Shine Trading | Premium Trading Solutions',
-  description: 'Golden Shine Trading — your trusted partner for wholesale distribution and trading solutions across Malaysia.',
-};
+export async function generateMetadata() {
+  let logoUrl = null;
+  try {
+    const siteData = await getSiteData();
+    logoUrl = siteData?.siteSettings?.logoUrl || null;
+  } catch {
+    logoUrl = null;
+  }
+
+  return {
+    title: 'Golden Shine Trading | Premium Trading Solutions',
+    description: 'Golden Shine Trading — your trusted partner for wholesale distribution and trading solutions across Korea.',
+    ...(logoUrl
+      ? {
+          icons: {
+            icon: logoUrl,
+            shortcut: logoUrl,
+            apple: logoUrl,
+          },
+        }
+      : {}),
+  };
+}
 
 function normalizeFontStack(value, fallback = 'sans-serif') {
   const cleaned = String(value || '').trim();

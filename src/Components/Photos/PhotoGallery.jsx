@@ -6,7 +6,7 @@ import { X } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 const defaultPhotos = [
-  { image: '/images/products/engine.jpg', caption: 'Used Japanese engines in stock' },
+  { image: '/images/products/engine.jpg', caption: 'Used Korean engines in stock' },
   { image: '/images/products/truck-engine.jpg', caption: 'Truck engines ready for shipment' },
   { image: '/images/products/cabin.jpg', caption: 'Complete cabin assemblies' },
   { image: '/images/products/halfcut.jpg', caption: 'Front and rear half cuts' },

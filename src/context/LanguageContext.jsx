@@ -28,7 +28,7 @@ const DICTIONARY = {
       information: 'Information',
       newsletter: 'Subscribe News',
       footerSummary:
-        'Golden Shine Trading specializes in import, export, and wholesale of Japanese used automobile engines and spare parts, serving customers across Malaysia and worldwide.',
+        'Golden Shine Trading specializes in import, export, and wholesale of Korean used automobile engines and spare parts, serving customers across Korea and worldwide.',
       newsletterSummary: 'Please enter your email address to receive updates.',
       yourEmail: 'Your email',
       subscribe: 'Subscribe',
@@ -56,7 +56,7 @@ const DICTIONARY = {
       information: 'Información',
       newsletter: 'Suscríbete',
       footerSummary:
-        'Golden Shine Trading se especializa en la importación, exportación y venta al por mayor de motores y repuestos de automóviles japoneses usados, sirviendo a clientes en Malasia y en todo el mundo.',
+        'Golden Shine Trading se especializa en la importación, exportación y venta al por mayor de motores y repuestos de automóviles coreanos usados, sirviendo a clientes en Corea y en todo el mundo.',
       newsletterSummary: 'Introduce tu correo electrónico para recibir actualizaciones.',
       yourEmail: 'Tu correo',
       subscribe: 'Suscribirse',

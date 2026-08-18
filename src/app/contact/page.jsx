@@ -10,15 +10,15 @@ export async function generateMetadata() {
   try {
     const page = await getPublicPageWithContent('contact');
     return {
-      title: page?.seoTitle || page?.title || 'KarFamSoft | Contact',
+      title: page?.seoTitle || page?.title || 'Golden Shine Trading | Contact',
       description:
         page?.seoDescription ||
-        'Get in touch with KarFamSoft to start your project.',
+        'Get in touch with Golden Shine Trading for inquiries, quotations, and support.',
     };
   } catch {
     return {
-      title: 'KarFamSoft | Contact',
-      description: 'Get in touch with KarFamSoft to start your project.',
+      title: 'Golden Shine Trading | Contact',
+      description: 'Get in touch with Golden Shine Trading.',
     };
   }
 }

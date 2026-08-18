@@ -8,12 +8,12 @@ import { DEFAULT_BLOG_POSTS, resolveBlogPostHref, slugifyBlogTitle } from '../..
 import { useLanguage } from '../../context/LanguageContext';
 
 const defaultPosts = [
-  { title: 'New Shipment of Japanese Engines Arrived', excerpt: 'A fresh container of low-mileage used Japanese engines has just arrived at our Klang warehouse.', image: '/images/products/engine.jpg', date: 'August 2026' },
-  { title: 'Expanding Our Truck Engine Range', excerpt: 'We have added more Isuzu and Hino truck engines to meet growing commercial demand.', image: '/images/products/truck-engine.jpg', date: 'July 2026' },
+  { title: 'New Shipment of Korean Engines Arrived', excerpt: 'A fresh container of low-mileage used Korean engines has just arrived at our Klang warehouse.', image: '/images/products/engine.jpg', date: 'August 2026' },
+  { title: 'Expanding Our Truck Engine Range', excerpt: 'We have added more Hyundai and Daewoo truck engines to meet growing commercial demand.', image: '/images/products/truck-engine.jpg', date: 'July 2026' },
   { title: 'Now Exporting to 30+ Countries', excerpt: 'Our international network keeps growing — now serving customers across five continents.', image: '/images/products/spareparts.jpg', date: 'June 2026' },
   { title: 'Container Loading Facility Upgrade', excerpt: 'We have upgraded our container loading facilities for faster turnaround on bulk orders.', image: '/images/products/halfcut.jpg', date: 'May 2026' },
   { title: 'Quality Inspection Process Explained', excerpt: 'A look at how every engine and part is inspected before it reaches our customers.', image: '/images/products/transmission.jpg', date: 'April 2026' },
-  { title: 'New Half Cuts in Stock', excerpt: 'Fresh front and rear half cuts for popular Toyota and Honda models are now available.', image: '/images/products/cabin.jpg', date: 'March 2026' },
+  { title: 'New Half Cuts in Stock', excerpt: 'Fresh front and rear half cuts for popular Hyundai and Kia models are now available.', image: '/images/products/cabin.jpg', date: 'March 2026' },
 ];
 
 const BlogPosts = ({ content = {} }) => {

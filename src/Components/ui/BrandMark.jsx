@@ -6,9 +6,9 @@ function getInitials(name) {
 
 const LOGO_SIZES = {
   sm: { image: 'h-8 w-auto object-contain', badge: 'h-8 w-8 text-[11px]', text: 'text-sm font-semibold' },
-  md: { image: 'h-10 sm:h-12 w-auto object-contain', badge: 'h-10 w-10 text-sm', text: 'text-base sm:text-lg font-bold' },
-  lg: { image: 'h-14 sm:h-16 w-auto object-contain', badge: 'h-14 w-14 text-base', text: 'text-lg sm:text-xl font-bold' },
-  xl: { image: 'h-16 sm:h-20 w-auto object-contain', badge: 'h-16 w-16 text-lg', text: 'text-xl sm:text-2xl font-extrabold' },
+  md: { image: 'h-12 sm:h-14 w-auto object-contain', badge: 'h-12 w-12 text-base', text: 'text-lg sm:text-xl font-bold' },
+  lg: { image: 'h-16 sm:h-20 w-auto object-contain', badge: 'h-16 w-16 text-lg', text: 'text-xl sm:text-2xl font-bold' },
+  xl: { image: 'h-20 sm:h-24 w-auto object-contain', badge: 'h-20 w-20 text-xl', text: 'text-2xl sm:text-3xl font-extrabold' },
 };
 
 export default function BrandMark({ logoUrl, brandName, size = 'md', light = false }) {

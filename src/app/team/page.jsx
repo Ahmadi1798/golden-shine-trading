@@ -7,16 +7,15 @@ export async function generateMetadata() {
   try {
     const page = await getPublicPageWithContent('team');
     return {
-      title: page?.seoTitle || page?.title || 'KarFamSoft | Team',
+      title: page?.seoTitle || page?.title || 'Golden Shine Trading | Team',
       description:
         page?.seoDescription ||
-        'Meet the KarFamSoft team of strategists, designers, and engineers building modern digital products.',
+        'Meet the team behind Golden Shine Trading.',
     };
   } catch {
     return {
-      title: 'KarFamSoft | Team',
-      description:
-        'Meet the KarFamSoft team of strategists, designers, and engineers building modern digital products.',
+      title: 'Golden Shine Trading | Team',
+      description: 'Meet the team behind Golden Shine Trading.',
     };
   }
 }

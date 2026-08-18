@@ -392,6 +392,30 @@ export async function getSiteContactSettings(slug = DEFAULT_TENANT_SLUG) {
   }
 }
 
+export async function getSmtpSettings(slug = DEFAULT_TENANT_SLUG) {
+  if (!hasDatabaseUrl) return null;
+
+  try {
+    const tenant = await prisma.tenant.findUnique({
+      where: { slug },
+      select: {
+        siteSettings: {
+          select: {
+            smtpHost: true,
+            smtpPort: true,
+            smtpUser: true,
+            smtpPass: true,
+          },
+        },
+      },
+    });
+
+    return tenant?.siteSettings || null;
+  } catch {
+    return null;
+  }
+}
+
 export async function getPages(slug = DEFAULT_TENANT_SLUG) {
   if (!hasDatabaseUrl) return [];
   try {

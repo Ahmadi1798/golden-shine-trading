@@ -14,7 +14,7 @@ const navItems = [
 
 const copyByLanguage = {
   en: {
-    title: 'KarFamSoft Admin',
+    title: 'Golden Shine Trading Admin',
     signedInAs: 'Signed in as',
     nav: {
       dashboard: 'Dashboard',

@@ -18,7 +18,7 @@ const AboutPreview = ({ content = {} }) => {
   const heading = pickText(content.heading, 'Ultimate Used Automobile Parts');
   const description = pickText(
     content.description,
-    'Golden Shine Trading was established in year 1992. We are specialized in import, export, and wholesale Japanese used automobile engines and spare parts. We have wide international network and currently export to more than 30 countries covering Asia, Middle East, Africa, USA, Australia, New Zealand, South America, and Europe.',
+    'Golden Shine Trading was established in the year 2014. We are a leading provider of quality used spare parts, engines, trucks and machinery. We are committed to delivering reliable, thoroughly inspected products that meet the highest standards, helping our clients achieve efficiency and value. We have a wide international network and currently export to more than 20 countries covering Asia, Middle East, Africa, South America and Europe.',
   );
   const imageUrl = content.imageUrl || '/images/about/about-preview.jpg';
   const imageAlt = content.imageAlt || 'Golden Shine Trading warehouse and operations';

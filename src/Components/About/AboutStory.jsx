@@ -16,11 +16,11 @@ const AboutStory = ({ content = {} }) => {
   const heading = pickText(content.heading, 'Our Story');
   const paragraphOne = pickText(
     content.paragraphOne,
-    'Golden Shine Trading was established in the year 1992. We specialize in import, export, and wholesale of Japanese used automobile engines and spare parts. With over three decades of experience, we have built a reputation for reliability, quality, and exceptional service.',
+    'Golden Shine Trading was established in 2014. We believe trust is the foundation of every successful partnership — built on transparent business practices, reliable products, and exceptional service.',
   );
   const paragraphTwo = pickText(
     content.paragraphTwo,
-    'Our comprehensive product range includes used Japanese car engines (diesel and gasoline), truck engines, cabin, half cuts, transmissions, and spare parts. When you trust your vehicle to Golden Shine Trading, we promise the best customer service and highest quality available anywhere.',
+    'We carefully source every vehicle, engine, and component from trusted suppliers to ensure quality and performance. Our vision is to become a globally recognized name in the automotive and machinery trading industry.',
   );
   const imageUrl = content.imageUrl || '/images/about/about-preview.jpg';
   const imageAlt = content.imageAlt || 'Golden Shine Trading operations';
@@ -72,7 +72,7 @@ const AboutStory = ({ content = {} }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.15 }}
           >
-            Est. 1992
+            Est. 2014
           </motion.span>
           <motion.h2
             className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight"

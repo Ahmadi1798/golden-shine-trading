@@ -6,7 +6,7 @@ import { useLanguage } from '../../context/LanguageContext';
 
 const stats = [
   { value: '30+', label: 'Countries Served', icon: Globe2 },
-  { value: '1992', label: 'Established', icon: Building2 },
+  { value: '2014', label: 'Established', icon: Building2 },
   { value: '20K+', label: 'Engines in Stock', icon: Ship },
 ];
 

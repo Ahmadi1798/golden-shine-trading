@@ -10,12 +10,12 @@ export async function generateMetadata() {
       title: page?.seoTitle || page?.title || 'Golden Shine Trading | Home',
       description:
         page?.seoDescription ||
-        'Golden Shine Trading — your trusted partner for Japanese used automobile parts.',
+        'Golden Shine Trading — your trusted partner for Korean used automobile parts.',
     };
   } catch {
     return {
       title: 'Golden Shine Trading | Home',
-      description: 'Golden Shine Trading — your trusted partner for Japanese used automobile parts.',
+      description: 'Golden Shine Trading — your trusted partner for Korean used automobile parts.',
     };
   }
 }

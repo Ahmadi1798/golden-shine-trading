@@ -29,28 +29,28 @@ const getSlugFromLink = (value = '') => {
 
 export const DEFAULT_BLOG_POSTS = [
   {
-    slug: 'new-shipment-of-japanese-engines-arrived',
-    title: 'New Shipment of Japanese Engines Arrived',
-    excerpt: 'A fresh container of low-mileage used Japanese engines has just arrived at our Klang warehouse.',
+    slug: 'new-shipment-of-korean-engines-arrived',
+    title: 'New Shipment of Korean Engines Arrived',
+    excerpt: 'A fresh container of low-mileage used Korean engines has just arrived at our Klang warehouse.',
     content:
-      'We are pleased to announce the arrival of a new shipment of low-mileage used Japanese engines. This batch includes popular Toyota and Honda petrol engines, all compression-tested and inspected by our trained technicians.\n\nEach engine comes with a start-up video upon request and is covered by our quality assurance process.',
+      'We are pleased to announce the arrival of a new shipment of low-mileage used Korean engines. This batch includes popular Hyundai and Kia petrol engines, all compression-tested and inspected by our trained technicians.\n\nEach engine comes with a start-up video upon request and is covered by our quality assurance process.',
     keyInsights:
-      'Fresh stock of Toyota and Honda engines\nAll units compression-tested and inspected\nStart-up videos available on request',
+      'Fresh stock of Hyundai and Kia engines\nAll units compression-tested and inspected\nStart-up videos available on request',
     nextSteps:
       'Contact our sales team to check availability and reserve your engine today.',
     image: '/images/products/engine.jpg',
     datePublished: '2026-08-01',
     date: 'August 2026',
-    link: '/blog/new-shipment-of-japanese-engines-arrived',
+    link: '/blog/new-shipment-of-korean-engines-arrived',
   },
   {
     slug: 'expanding-our-truck-engine-range',
     title: 'Expanding Our Truck Engine Range',
-    excerpt: 'We have added more Isuzu and Hino truck engines to meet growing commercial demand.',
+    excerpt: 'We have added more Hyundai and Daewoo truck engines to meet growing commercial demand.',
     content:
-      'To better serve our commercial customers, we have expanded our range of used Japanese truck engines. The new stock includes Isuzu 4HK1 and Hino J08E engines, both known for their durability and fuel efficiency.\n\nAll truck engines are dyno-tested and come with a limited warranty for your peace of mind.',
+      'To better serve our commercial customers, we have expanded our range of used Korean truck engines. The new stock includes Hyundai and Daewoo truck engines, both known for their durability and fuel efficiency.\n\nAll truck engines are dyno-tested and come with a limited warranty for your peace of mind.',
     keyInsights:
-      'New Isuzu and Hino truck engines in stock\nDyno-tested with limited warranty\nIdeal for fleet operators and heavy-duty use',
+      'New Hyundai and Daewoo truck engines in stock\nDyno-tested with limited warranty\nIdeal for fleet operators and heavy-duty use',
     nextSteps:
       'Reach out to discuss compatibility with your truck model and current availability.',
     image: '/images/products/truck-engine.jpg',
@@ -106,11 +106,11 @@ export const DEFAULT_BLOG_POSTS = [
   {
     slug: 'new-half-cuts-in-stock',
     title: 'New Half Cuts in Stock',
-    excerpt: 'Fresh front and rear half cuts for popular Toyota and Honda models are now available.',
+    excerpt: 'Fresh front and rear half cuts for popular Hyundai and Kia models are now available.',
     content:
-      'We have received a new batch of front and rear half cuts for popular Toyota and Honda models.\n\nEach half cut includes the complete engine, transmission, suspension, and wiring harness — everything you need for an engine conversion.',
+      'We have received a new batch of front and rear half cuts for popular Hyundai and Kia models.\n\nEach half cut includes the complete engine, transmission, suspension, and wiring harness — everything you need for an engine conversion.',
     keyInsights:
-      'Toyota and Honda half cuts available\nComplete engine, transmission, and suspension\nIdeal for engine conversions',
+      'Hyundai and Kia half cuts available\nComplete engine, transmission, and suspension\nIdeal for engine conversions',
     nextSteps:
       'Browse our products page or contact us to check availability.',
     image: '/images/products/cabin.jpg',
@@ -309,7 +309,16 @@ export const extractBlogPostsFromSections = (sections = []) => {
 
     if (!isBlogPostsSection) continue;
 
-    const posts = section?.content?.content?.posts;
+    const content = section?.content?.content;
+    let posts;
+    if (content && Array.isArray(content.posts)) {
+      posts = content.posts;
+    } else if (content?.en && Array.isArray(content.en.posts)) {
+      posts = content.en.posts;
+    } else if (content?.es && Array.isArray(content.es.posts)) {
+      posts = content.es.posts;
+    }
+
     if (Array.isArray(posts) && posts.length) {
       sectionWithPosts = posts;
       break;

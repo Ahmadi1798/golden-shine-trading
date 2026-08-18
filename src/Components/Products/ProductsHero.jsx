@@ -17,7 +17,7 @@ const ProductsHero = ({ content = {} }) => {
   const heading = pickText(content.heading, 'Our Products');
   const description = pickText(
     content.description,
-    'Explore our comprehensive range of Japanese used automobile parts — engines, transmissions, cabins, half cuts, and spare parts.',
+    'Explore our comprehensive range of Korean used automobile parts — engines, transmissions, cabins, half cuts, and spare parts.',
   );
   const imageUrl = content.imageUrl || '/images/about/about-preview.jpg';
   const ctaLabel = pickText(content.ctaLabel, '');

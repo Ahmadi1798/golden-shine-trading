@@ -29,7 +29,7 @@ const ProductsList = ({ content = {} }) => {
   const [activeCategory, setActiveCategory] = useState('All');
 
   const heading = pickText(content.heading, 'Our Products');
-  const description = pickText(content.description, 'Browse our full range of Japanese used automobile parts.');
+  const description = pickText(content.description, 'Browse our full range of Korean used automobile parts.');
 
   const products = Array.isArray(content.products) && content.products.length
     ? content.products.map((item, index) => ({

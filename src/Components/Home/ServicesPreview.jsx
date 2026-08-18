@@ -7,37 +7,43 @@ import { useLanguage } from '../../context/LanguageContext';
 
 const defaultProducts = [
   {
-    title: 'Used Japanese Car Engines',
+    title: 'Used Korean Car Engines',
     subtitle: 'Diesel & Gasoline',
     image: '/images/products/engine.jpg',
     href: '/products',
   },
   {
-    title: 'Used Japanese Truck Engines',
+    title: 'Used Korean Truck Engines',
     subtitle: '',
     image: '/images/products/truck-engine.jpg',
     href: '/products',
   },
   {
-    title: 'Used Cabin',
+    title: 'Used Korean Whole Truck',
     subtitle: '',
     image: '/images/products/cabin.jpg',
     href: '/products',
   },
   {
-    title: 'Used Half Cuts',
+    title: 'Used Korean Machineries',
+    subtitle: '',
+    image: '/images/products/truck-engine.jpg',
+    href: '/products',
+  },
+  {
+    title: 'Used Korean Half Cuts',
     subtitle: 'Front cut / Rear cut',
     image: '/images/products/halfcut.jpg',
     href: '/products',
   },
   {
-    title: 'Used Transmissions',
+    title: 'Used Korean Transmission',
     subtitle: '',
     image: '/images/products/transmission.jpg',
     href: '/products',
   },
   {
-    title: 'Used Spare Parts',
+    title: 'Used Korean Auto Parts',
     subtitle: '',
     image: '/images/products/spareparts.jpg',
     href: '/products',
@@ -66,7 +72,7 @@ const ServicesPreview = ({ content = {} }) => {
   const sectionHeading = pickText(content.heading, 'Our Products');
   const sectionDescription = pickText(
     content.description,
-    'We specialize in import, export, and wholesale of Japanese used automobile engines and spare parts.',
+    'We specialize in import, export, and wholesale of Korean used automobile engines and spare parts.',
   );
   const products = Array.isArray(content.services) && content.services.length
     ? content.services.map((item, index) => {

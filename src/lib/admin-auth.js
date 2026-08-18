@@ -8,10 +8,10 @@ const RESET_TOKEN_TTL_SECONDS = 60 * 15;
 const HASH_KEY_LEN = 64;
 const HASH_SALT_LEN = 16;
 
-const DEFAULT_TENANT_SLUG = 'karfamsoft-default';
+const DEFAULT_TENANT_SLUG = 'golden-shine-default';
 
 function getAdminEmail() {
-  return globalThis.process?.env?.ADMIN_EMAIL || 'admin@karfamsoft.local';
+  return globalThis.process?.env?.ADMIN_EMAIL || 'admin@goldenshine.com';
 }
 
 function getAdminPassword() {
@@ -72,12 +72,15 @@ async function getTenantSettings() {
 
 export async function validateAdminCredentials(email, password) {
   const normalizedEmail = String(email || '').trim().toLowerCase();
-  const normalizedAdminEmail = String(getAdminEmail() || '').trim().toLowerCase();
 
-  if (normalizedEmail !== normalizedAdminEmail) return false;
+  const settings = await getTenantSettings();
+  const effectiveAdminEmail = String(settings?.adminEmail || getAdminEmail() || '')
+    .trim()
+    .toLowerCase();
+
+  if (normalizedEmail !== effectiveAdminEmail) return false;
 
   // Check DB-stored hash first
-  const settings = await getTenantSettings();
   if (settings?.adminPasswordHash) {
     return verifyHash(password, settings.adminPasswordHash);
   }
@@ -113,9 +116,41 @@ export async function changeAdminPassword(currentPassword, newPassword) {
   return { ok: true };
 }
 
+export async function changeAdminEmail(currentPassword, newEmail) {
+  const settings = await getTenantSettings();
+  if (!settings) return { ok: false, error: 'Site settings not found' };
+
+  // Verify current password
+  if (settings.adminPasswordHash) {
+    if (!verifyHash(currentPassword, settings.adminPasswordHash)) {
+      return { ok: false, error: 'Current password is incorrect' };
+    }
+  } else {
+    const envPassword = String(getAdminPassword() || '');
+    if (currentPassword !== envPassword) {
+      return { ok: false, error: 'Current password is incorrect' };
+    }
+  }
+
+  const normalizedEmail = String(newEmail || '').trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
+    return { ok: false, error: 'Please enter a valid email address' };
+  }
+
+  await prisma.siteSettings.update({
+    where: { id: settings.id },
+    data: { adminEmail: normalizedEmail },
+  });
+
+  return { ok: true };
+}
+
 export async function requestPasswordReset(email, recoveryCode) {
   const normalizedEmail = String(email || '').trim().toLowerCase();
-  const normalizedAdminEmail = String(getAdminEmail() || '').trim().toLowerCase();
+  const settingsForEmail = await getTenantSettings();
+  const normalizedAdminEmail = String(
+    settingsForEmail?.adminEmail || getAdminEmail() || ''
+  ).trim().toLowerCase();
 
   if (normalizedEmail !== normalizedAdminEmail) return { ok: false, error: 'Email not found' };
 

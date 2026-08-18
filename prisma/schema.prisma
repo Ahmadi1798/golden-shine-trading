@@ -40,6 +40,11 @@ model SiteSettings {
   instagramUrl     String?
   twitterUrl       String?
   whatsappUrl      String?
+  adminEmail       String?
+  smtpHost         String?
+  smtpPort         Int?
+  smtpUser         String?
+  smtpPass         String?
   adminPasswordHash         String?
   adminPasswordResetToken   String?
   adminPasswordResetExpires DateTime?

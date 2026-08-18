@@ -6,8 +6,8 @@ import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 const defaultCategories = [
-  { title: 'Used Japanese Car Engines', subtitle: 'Diesel & Gasoline', description: 'High-quality used car engines imported directly from Japan, thoroughly inspected for performance and reliability.', image: '/images/products/engine.jpg' },
-  { title: 'Used Japanese Truck Engines', subtitle: '', description: 'Durable truck engines built to handle heavy loads and demanding commercial use.', image: '/images/products/truck-engine.jpg' },
+  { title: 'Used Korean Car Engines', subtitle: 'Diesel & Gasoline', description: 'High-quality used car engines imported directly from Korea, thoroughly inspected for performance and reliability.', image: '/images/products/engine.jpg' },
+  { title: 'Used Korean Truck Engines', subtitle: '', description: 'Durable truck engines built to handle heavy loads and demanding commercial use.', image: '/images/products/truck-engine.jpg' },
   { title: 'Used Cabin', subtitle: '', description: 'Complete cabins with panels, seats, and interior components in excellent condition.', image: '/images/products/cabin.jpg' },
   { title: 'Used Half Cuts', subtitle: 'Front cut / Rear cut', description: 'Front and rear half cuts containing engine, transmission, suspension, and body parts.', image: '/images/products/halfcut.jpg' },
   { title: 'Used Transmissions', subtitle: '', description: 'Automatic and manual transmissions tested for smooth shifting and reliability.', image: '/images/products/transmission.jpg' },
@@ -34,7 +34,7 @@ const ProductCategories = ({ content = {} }) => {
   };
 
   const heading = pickText(content.heading, 'Product Categories');
-  const description = pickText(content.description, 'Browse our full range of Japanese used automobile parts.');
+  const description = pickText(content.description, 'Browse our full range of Korean used automobile parts.');
 
   const categories = Array.isArray(content.categories) && content.categories.length
     ? content.categories.map((item, index) => {

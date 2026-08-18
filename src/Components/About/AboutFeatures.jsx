@@ -1,18 +1,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Layers3, LayoutGrid, Truck, Users, ShieldCheck, Warehouse, Globe2, Award } from 'lucide-react';
+import { Globe2, ShieldCheck, Tags, Truck, Users, Award } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 const defaultFeatures = [
-  { title: 'History & Reputation', description: 'Over 30 years of trusted service in the auto parts industry since 1992.', icon: Award },
-  { title: 'High Stock Level', description: '20,000+ units of used engines in stock to meet customer requirements immediately.', icon: Layers3 },
-  { title: 'Wide Range of Models', description: 'Specialized in Japanese models with comprehensive coverage across all major brands.', icon: LayoutGrid },
-  { title: 'Fast Preparation', description: 'Able to prepare shipments within short periods with sufficient quality materials.', icon: Truck },
-  { title: 'Professional Workmanship', description: 'Knowledgeable and experienced team delivering consistent quality and precision.', icon: Users },
-  { title: 'Prompt Service', description: 'Friendly, efficient, and trustworthy service with responsive customer support.', icon: ShieldCheck },
-  { title: 'Expert Staff', description: 'Our trained staff will assist and advise you across all areas of auto parts selection.', icon: Users },
-  { title: 'Container Loading', description: 'On-site container loading facilities with worldwide shipping knowledge and expertise.', icon: Warehouse },
+  { title: 'Global Import and Export Expertise', description: 'Extensive international network with proven expertise in importing and exporting across global markets.', icon: Globe2 },
+  { title: 'Premium Quality Products', description: 'Every part is carefully sourced and inspected to ensure premium quality and dependable performance.', icon: ShieldCheck },
+  { title: 'Competitive Pricing', description: 'Direct sourcing keeps our pricing competitive without ever compromising on quality.', icon: Tags },
+  { title: 'Fast & Secure Worldwide Shipping', description: 'Reliable logistics deliver your orders quickly and securely, anywhere in the world.', icon: Truck },
+  { title: 'Professional Customer Support', description: 'Our knowledgeable team provides responsive guidance and support at every step.', icon: Users },
+  { title: 'Trusted Business Partner', description: 'We build lasting relationships through integrity, transparency, and exceptional service.', icon: Award },
 ];
 
 const cardVariants = {

@@ -112,7 +112,7 @@ const Footer = ({
             <p className="text-sm leading-relaxed max-w-sm text-gray-400">
               {t(
                 'footer.footerSummary',
-                'Golden Shine Trading specializes in import, export, and wholesale of Japanese used automobile engines and spare parts, serving customers across Malaysia and worldwide.',
+                'Golden Shine Trading specializes in import, export, and wholesale of Korean used automobile engines and spare parts, serving customers across Korea and worldwide.',
               )}
             </p>
 
@@ -127,16 +127,21 @@ const Footer = ({
                   {contactPhone}
                 </a>
               )}
-              {contactEmail && (
-                <a
-                  href={`mailto:${contactEmail}`}
-                  dir="ltr"
-                  className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-white transition-colors duration-200"
-                >
-                  <Mail size={14} strokeWidth={1.5} className="shrink-0" style={{ color: 'var(--theme-primary)' }} />
-                  {contactEmail}
-                </a>
-              )}
+              {contactEmail && String(contactEmail).split(',').map((email) => {
+                const trimmed = email.trim();
+                if (!trimmed) return null;
+                return (
+                  <a
+                    key={trimmed}
+                    href={`mailto:${trimmed}`}
+                    dir="ltr"
+                    className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  >
+                    <Mail size={14} strokeWidth={1.5} className="shrink-0" style={{ color: 'var(--theme-primary)' }} />
+                    {trimmed}
+                  </a>
+                );
+              })}
               {contactAddress && (
                 <p className="flex items-start gap-2.5 text-sm text-gray-400" dir="ltr">
                   <MapPin size={14} strokeWidth={1.5} className="shrink-0 mt-0.5" style={{ color: 'var(--theme-primary)' }} />

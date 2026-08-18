@@ -2,22 +2,22 @@
 
 import {
   Layers3,
-  LayoutGrid,
+  Globe2,
+  Tags,
   Truck,
   Users,
   ShieldCheck,
-  Warehouse,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
 const defaultFeatures = [
-  { title: 'High Level of Stock', description: 'We maintain extensive inventory levels to ensure parts are always available when you need them most.', icon: Layers3 },
-  { title: 'Wide Range of Models', description: 'From passenger cars to heavy-duty trucks, we cover a comprehensive range of Japanese vehicle models and makes.', icon: LayoutGrid },
-  { title: 'Local & Worldwide Fast Shipping', description: 'Reliable logistics network delivering orders promptly across Peninsular Malaysia, East Malaysia, and globally.', icon: Truck },
-  { title: 'Well Trained & Professional Staff', description: 'Our knowledgeable team ensures accurate part matching, quality inspection, and responsive customer support.', icon: Users },
-  { title: 'Sufficient & Quality Materials', description: 'Every component undergoes rigorous quality checks to meet international standards before reaching our customers.', icon: ShieldCheck },
-  { title: 'Container Loading Facilities', description: 'On-site container loading capabilities for bulk export orders with secure packing and efficient turnaround.', icon: Warehouse },
+  { title: 'Genuine Products', description: 'We supply only authentic, thoroughly inspected parts sourced directly from trusted Korean suppliers, ensuring quality and reliability you can count on.', icon: ShieldCheck },
+  { title: 'Global Import & Export', description: 'With a wide international network, we import and export quality auto parts across Asia, the Middle East, Africa, South America, and Europe.', icon: Globe2 },
+  { title: 'Competitive Prices', description: 'Direct sourcing and efficient operations allow us to offer competitive pricing without compromising on quality or service.', icon: Tags },
+  { title: 'Fast Worldwide Shipping', description: 'Our efficient logistics network ensures your orders are prepared and delivered promptly, wherever you are in the world.', icon: Truck },
+  { title: 'Professional Support', description: 'Our experienced team is always ready to assist with part selection, technical guidance, and responsive customer service.', icon: Users },
+  { title: 'Extensive Inventory', description: 'We maintain a large and diverse stock of quality used Korean parts and engines, ready for immediate dispatch.', icon: Layers3 },
 ];
 
 const cardVariants = {
