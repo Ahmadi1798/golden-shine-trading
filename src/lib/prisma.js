@@ -9,6 +9,6 @@ export const prisma =
     log: isDev ? ['warn', 'error'] : ['error'],
   });
 
-if (isDev) {
+if (globalForPrisma.prisma !== prisma) {
   globalForPrisma.prisma = prisma;
 }
