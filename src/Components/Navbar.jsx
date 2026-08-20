@@ -102,7 +102,7 @@ const Navbar = ({ navigationItems = [], brandName = 'Golden Shine', logoUrl = nu
               {t('nav.contact', 'Contact')}
             </Link>
 
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`rounded-full p-1.5 md:hidden ${atTop ? 'text-white' : ''}`}>
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`rounded-full p-1.5 md:hidden ${atTop ? 'text-white' : 'text-gray-700 hover:text-[var(--theme-primary)] dark:text-gray-200 dark:hover:text-white'}`}>
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
@@ -114,7 +114,7 @@ const Navbar = ({ navigationItems = [], brandName = 'Golden Shine', logoUrl = nu
               {navItems.map(({ text, path }) => {
                 const isActive = pathname === path;
                 return (
-                  <Link key={text} href={path} className="block rounded-lg px-4 py-2.5 text-sm font-medium"
+                  <Link key={text} href={path} className="block rounded-lg px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-200"
                     style={isActive ? { color: 'var(--theme-primary)', backgroundColor: 'color-mix(in srgb, var(--theme-primary) 8%, transparent)' } : {}}>
                     {text}
                   </Link>
@@ -124,7 +124,7 @@ const Navbar = ({ navigationItems = [], brandName = 'Golden Shine', logoUrl = nu
             <div className="mt-3 flex items-center gap-3 border-t border-gray-100 dark:border-gray-800 pt-3">
               {languages.map((lang) => (
                 <button key={lang.code} onClick={() => { setLanguage(lang.code); setIsMenuOpen(false); }}
-                  className="rounded-lg px-3 py-1.5 text-xs font-semibold uppercase"
+                  className="rounded-lg px-3 py-1.5 text-xs font-semibold uppercase text-gray-600 dark:text-gray-300"
                   style={{ color: language === lang.code ? 'var(--theme-primary)' : undefined }}>
                   {lang.native}
                 </button>

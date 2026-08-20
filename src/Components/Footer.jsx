@@ -109,7 +109,7 @@ const Footer = ({
               <BrandMark logoUrl={logoUrl} brandName={brandName} size={logoSize} />
             </Link>
 
-            <p className="text-sm leading-relaxed max-w-sm text-gray-400">
+            <p className="text-sm leading-relaxed max-w-sm text-gray-300">
               {t(
                 'footer.footerSummary',
                 'Golden Shine Trading specializes in import, export, and wholesale of Korean used automobile engines and spare parts, serving customers across Korea and worldwide.',
@@ -121,9 +121,9 @@ const Footer = ({
                 <a
                   href={`tel:${contactPhone}`}
                   dir="ltr"
-                  className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                  className="flex items-center gap-2.5 text-sm text-gray-300 hover:text-white transition-colors duration-200"
                 >
-                  <Phone size={14} strokeWidth={1.5} className="shrink-0" style={{ color: 'var(--theme-primary)' }} />
+                  <Phone size={15} strokeWidth={1.5} className="shrink-0" style={{ color: 'var(--theme-accent)' }} />
                   {contactPhone}
                 </a>
               )}
@@ -135,16 +135,16 @@ const Footer = ({
                     key={trimmed}
                     href={`mailto:${trimmed}`}
                     dir="ltr"
-                    className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                    className="flex items-center gap-2.5 text-sm text-gray-300 hover:text-white transition-colors duration-200"
                   >
-                    <Mail size={14} strokeWidth={1.5} className="shrink-0" style={{ color: 'var(--theme-primary)' }} />
+                    <Mail size={15} strokeWidth={1.5} className="shrink-0" style={{ color: 'var(--theme-accent)' }} />
                     {trimmed}
                   </a>
                 );
               })}
               {contactAddress && (
-                <p className="flex items-start gap-2.5 text-sm text-gray-400" dir="ltr">
-                  <MapPin size={14} strokeWidth={1.5} className="shrink-0 mt-0.5" style={{ color: 'var(--theme-primary)' }} />
+                <p className="flex items-start gap-2.5 text-sm text-gray-300" dir="ltr">
+                  <MapPin size={15} strokeWidth={1.5} className="shrink-0 mt-0.5" style={{ color: 'var(--theme-accent)' }} />
                   {contactAddress}
                 </p>
               )}
@@ -152,18 +152,32 @@ const Footer = ({
 
             {socialLinks.length > 0 && (
               <nav aria-label="Social Media">
-                <ul dir="ltr" className="flex items-center gap-2">
+                <ul dir="ltr" className="flex items-center gap-3 pt-1">
                   {socialLinks.map(({ href, label, icon: Icon }) => (
                     <li key={label}>
                       <a
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:bg-white/10"
-                        style={{ color: 'color-mix(in srgb, var(--theme-primary) 70%, #9ca3af)' }}
+                        className="group inline-flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:scale-110 hover:-translate-y-0.5"
+                        style={{
+                          color: 'var(--theme-accent)',
+                          borderColor: 'color-mix(in srgb, var(--theme-accent) 45%, transparent)',
+                          backgroundColor: 'transparent',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = '#1a1a1a';
+                          e.currentTarget.style.borderColor = 'transparent';
+                          e.currentTarget.style.backgroundColor = 'var(--theme-accent)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = 'var(--theme-accent)';
+                          e.currentTarget.style.borderColor = 'color-mix(in srgb, var(--theme-accent) 45%, transparent)';
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                        }}
                         aria-label={label}
                       >
-                        <Icon size={14} />
+                        <Icon size={15} className="transition-transform duration-300 group-hover:scale-110" />
                       </a>
                     </li>
                   ))}
@@ -174,7 +188,7 @@ const Footer = ({
 
           {['discover', 'information'].map((columnKey) => (
             <div key={columnKey} className={`${columnKey === 'discover' ? 'lg:col-span-2' : 'lg:col-span-2'} ${isRTL ? 'text-right' : 'text-left'}`}>
-              <h4 className="mb-5 text-xs font-bold uppercase tracking-[0.12em] text-gray-300">
+              <h4 className="mb-5 text-xs font-bold uppercase tracking-[0.12em] text-gray-100">
                 {t(`footer.${columnKey}`, columnTitles[columnKey])}
               </h4>
               <ul className="space-y-3">
@@ -182,8 +196,9 @@ const Footer = ({
                   <li key={`${columnKey}-${item.label}`}>
                     <Link
                       href={item.href}
-                      className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                      className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors duration-200"
                     >
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--theme-accent)]" />
                       {item.label}
                     </Link>
                   </li>
@@ -193,10 +208,10 @@ const Footer = ({
           ))}
 
           <div className={`lg:col-span-4 ${isRTL ? 'text-right' : 'text-left'}`}>
-            <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.12em] text-gray-300">
+            <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.12em] text-gray-100">
               {t('footer.newsletter', 'Subscribe News')}
             </h4>
-            <p className="mb-4 text-sm text-gray-400">
+            <p className="mb-4 text-sm text-gray-300">
               {t('footer.newsletterSummary', 'Please enter your email address to receive updates.')}
             </p>
             <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
@@ -207,7 +222,7 @@ const Footer = ({
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t('footer.yourEmail', 'Your email')}
                   required
-                  className="w-full min-w-0 bg-white/5 border border-white/10 px-3 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:border-white/20 rounded-l-lg"
+                  className="w-full min-w-0 bg-white/5 border border-white/10 px-3 py-2.5 text-sm text-gray-100 placeholder:text-gray-400 focus:outline-none focus:border-white/20 rounded-l-lg"
                   aria-label={t('footer.yourEmail', 'Email address')}
                 />
                 <button
@@ -223,7 +238,7 @@ const Footer = ({
                 </button>
               </div>
               {status && (
-                <p className="text-xs text-gray-400">{status}</p>
+                <p className="text-xs text-gray-300">{status}</p>
               )}
             </form>
           </div>
@@ -231,7 +246,7 @@ const Footer = ({
 
         <div className="mx-auto mt-12 w-full h-px bg-white/5" />
 
-        <p className="mt-6 text-center text-xs text-gray-500">
+        <p className="mt-6 text-center text-xs text-gray-400">
           &copy; {new Date().getFullYear()} {brandName}. {t('footer.rightsReserved', 'All rights reserved.')}
         </p>
       </div>
