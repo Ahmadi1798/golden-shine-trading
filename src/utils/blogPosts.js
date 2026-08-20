@@ -299,7 +299,7 @@ const normalizePostItem = (item, index) => {
 export const extractBlogPostsFromSections = (sections = []) => {
   if (!Array.isArray(sections)) return [];
 
-  let sectionWithPosts = null;
+  let sectionContent = null;
 
   for (const section of sections) {
     const key = normalizeSectionToken(section?.sectionKey || '');
@@ -310,27 +310,28 @@ export const extractBlogPostsFromSections = (sections = []) => {
     if (!isBlogPostsSection) continue;
 
     const content = section?.content?.content;
-    let posts;
-    if (content && Array.isArray(content.posts)) {
-      posts = content.posts;
-    } else if (content?.en && Array.isArray(content.en.posts)) {
-      posts = content.en.posts;
-    } else if (content?.es && Array.isArray(content.es.posts)) {
-      posts = content.es.posts;
-    }
+    const hasPosts =
+      (content && Array.isArray(content.posts)) ||
+      (content?.en && Array.isArray(content.en.posts)) ||
+      (content?.es && Array.isArray(content.es.posts));
 
-    if (Array.isArray(posts) && posts.length) {
-      sectionWithPosts = posts;
+    if (hasPosts) {
+      sectionContent = content;
       break;
     }
   }
 
-  if (!sectionWithPosts) {
-    sectionWithPosts = DEFAULT_BLOG_POSTS;
-  }
+  const plainRaw =
+    sectionContent && Array.isArray(sectionContent.posts) ? sectionContent.posts : null;
+  const enRaw =
+    sectionContent?.en && Array.isArray(sectionContent.en.posts) ? sectionContent.en.posts : null;
+  const esRaw =
+    sectionContent?.es && Array.isArray(sectionContent.es.posts) ? sectionContent.es.posts : null;
+
+  const raw = plainRaw || enRaw || esRaw || DEFAULT_BLOG_POSTS;
 
   const usedSlugs = new Set();
-  return sectionWithPosts.map((item, index) => {
+  return raw.map((item, index) => {
     const normalized = normalizePostItem(item, index);
     let uniqueSlug = normalized.slug;
 
@@ -342,9 +343,17 @@ export const extractBlogPostsFromSections = (sections = []) => {
 
     usedSlugs.add(uniqueSlug);
 
+    const enItem = enRaw ? enRaw[index] : null;
+    const esItem = esRaw ? esRaw[index] : null;
+
+    const localized = {};
+    if (enItem) localized.en = { ...normalizePostItem(enItem, index), slug: uniqueSlug };
+    if (esItem) localized.es = { ...normalizePostItem(esItem, index), slug: uniqueSlug };
+
     return {
       ...normalized,
       slug: uniqueSlug,
+      localized,
     };
   });
 };
@@ -369,4 +378,11 @@ export const findBlogPostBySlug = (sections = [], slug = '') => {
     posts.find((post) => post.slug === normalizedSlug || getSlugFromLink(post.link) === normalizedSlug) ||
     null
   );
+};
+
+export const localizePost = (post = {}, locale = 'en') => {
+  if (!post || typeof post !== 'object' || locale === 'en') return post;
+  const variant = post.localized && post.localized[locale];
+  if (!variant) return post;
+  return { ...post, ...variant };
 };

@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { resolveLocalizedContent } from '../lib/localized-content';
-import { applyLocalizedBlogPostFallback } from '../utils/blogPosts';
+import { applyLocalizedBlogPostFallback, localizePost } from '../utils/blogPosts';
 
 const BlogPostPage = ({ post }) => {
   const { language } = useLanguage();
@@ -92,7 +91,7 @@ const BlogPostPage = ({ post }) => {
     },
   }[language] || {};
 
-  const localizedPost = applyLocalizedBlogPostFallback(resolveLocalizedContent(post || {}, language), language);
+  const localizedPost = applyLocalizedBlogPostFallback(localizePost(post || {}, language), language);
 
   const title = pickText(localizedPost?.title, copy.defaultTitle || 'Blog Post');
   const excerpt = pickText(localizedPost?.excerpt || localizedPost?.description, copy.defaultExcerpt || '');

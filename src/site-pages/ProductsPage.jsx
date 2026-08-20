@@ -5,6 +5,7 @@ import ProductsList from '../Components/Products/ProductsList';
 import ProductsCTA from '../Components/Products/ProductsCTA';
 import { useLanguage } from '../context/LanguageContext';
 import { resolveLocalizedContent } from '../lib/localized-content';
+import { resolveLocalizedProducts } from '../utils/products';
 
 const sectionRegistry = {
   productshero: ProductsHero,
@@ -32,7 +33,12 @@ const ProductsPage = ({ sections = [] }) => {
   const contentMap = Array.isArray(sections)
     ? sections.reduce((acc, section) => {
         const id = normalizeSectionId(section.sectionKey || section.sectionType);
-        acc[id] = resolveLocalizedContent(section.content?.content || {}, language);
+        const rawContent = section.content?.content || {};
+        const localized = resolveLocalizedContent(rawContent, language);
+        if (id === 'productcategories' && localized && typeof localized === 'object') {
+          localized.products = resolveLocalizedProducts(rawContent, language);
+        }
+        acc[id] = localized;
         return acc;
       }, {})
     : {};

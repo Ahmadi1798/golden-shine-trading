@@ -141,39 +141,65 @@ export const extractProductsFromSections = (sections = []) => {
     const type = normalizeSectionToken(section.sectionType);
     if (!PRODUCT_SECTION_TOKENS.has(key) && !PRODUCT_SECTION_TOKENS.has(type)) continue;
 
-    const content = section.content?.content;
-    let raw;
-    if (content && Array.isArray(content.products)) {
-      raw = content.products;
-    } else if (content?.en && Array.isArray(content.en.products)) {
-      raw = content.en.products;
-    } else if (content?.es && Array.isArray(content.es.products)) {
-      raw = content.es.products;
-    }
+    const content = section.content?.content || {};
+    const plainRaw = Array.isArray(content.products) ? content.products : null;
+    const enRaw = content.en && Array.isArray(content.en.products) ? content.en.products : null;
+    const esRaw = content.es && Array.isArray(content.es.products) ? content.es.products : null;
 
-    if (!Array.isArray(raw) || raw.length === 0) continue;
+    const raw = plainRaw || enRaw || esRaw;
+    if (!raw || raw.length === 0) continue;
 
     return raw.map((item, index) => {
-      if (typeof item === 'string') {
-        const fallback = DEFAULT_PRODUCTS[index % DEFAULT_PRODUCTS.length];
-        return {
-          ...fallback,
-          title: item,
-          slug: slugifyProductTitle(item) || fallback.slug,
-          content: fallback.content || '',
-        };
-      }
       const fallback = DEFAULT_PRODUCTS[index % DEFAULT_PRODUCTS.length];
-      const resolvedTitle = item.title || fallback.title;
-      const sanitizedItemSlug = slugifyProductTitle(item.slug || '');
-      return {
+      const enItem = enRaw ? enRaw[index] : null;
+      const esItem = esRaw ? esRaw[index] : null;
+
+      const toObject = (value) => (typeof value === 'string' ? { title: value } : value || {});
+      const itemObj = toObject(item);
+      const enObj = enItem ? toObject(enItem) : null;
+      const esObj = esItem ? toObject(esItem) : null;
+
+      // The slug is a canonical, language-independent identifier. It is always
+      // derived from the English title (or an explicit slug) so URLs stay the
+      // same across languages; only the display text is localized.
+      const canonicalTitle = (enObj && enObj.title) || itemObj.title || fallback.title;
+      const resolvedTitle = itemObj.title || canonicalTitle || fallback.title;
+
+      const slug =
+        slugifyProductTitle(itemObj.slug || '') ||
+        (enObj && slugifyProductTitle(enObj.slug || '')) ||
+        slugifyProductTitle(canonicalTitle) ||
+        fallback.slug;
+
+      const product = {
         title: resolvedTitle,
-        slug: sanitizedItemSlug || slugifyProductTitle(resolvedTitle) || fallback.slug,
-        category: item.category || fallback.category || '',
-        image: item.image || fallback.image,
-        description: item.description || '',
-        content: item.content || fallback.content || '',
+        slug,
+        category: itemObj.category || (enObj && enObj.category) || fallback.category || '',
+        image: itemObj.image || (enObj && enObj.image) || fallback.image,
+        description: itemObj.description || (enObj && enObj.description) || '',
+        content: itemObj.content || (enObj && enObj.content) || fallback.content || '',
       };
+
+      product.localized = {
+        en: {
+          title: (enObj && enObj.title) || canonicalTitle,
+          category: (enObj && enObj.category) || product.category,
+          image: (enObj && enObj.image) || product.image,
+          description: (enObj && enObj.description) || product.description,
+          content: (enObj && enObj.content) || product.content,
+        },
+        es: esObj
+          ? {
+              title: esObj.title || canonicalTitle,
+              category: esObj.category || product.category,
+              image: esObj.image || product.image,
+              description: esObj.description || product.description,
+              content: esObj.content || product.content,
+            }
+          : null,
+      };
+
+      return product;
     });
   }
 
@@ -191,4 +217,38 @@ export const resolveProductHref = (product) => {
   }
   const slug = slugifyProductTitle(product.slug || '') || slugifyProductTitle(product.title) || 'product';
   return `/products/${slug}`;
+};
+
+export const localizeProduct = (product = {}, locale = 'en') => {
+  if (!product || typeof product !== 'object' || locale === 'en') return product;
+  const variant = product.localized && product.localized[locale];
+  if (!variant) return product;
+  return { ...product, ...variant };
+};
+
+export const resolveLocalizedProducts = (content = {}, locale = 'en') => {
+  const canonicalSource = content?.en || content?.es || content || {};
+  const displaySource = (locale && content && content[locale]) || canonicalSource;
+
+  const canonicalProducts = Array.isArray(canonicalSource?.products)
+    ? canonicalSource.products
+    : [];
+  const displayProducts = Array.isArray(displaySource?.products)
+    ? displaySource.products
+    : canonicalProducts;
+
+  return displayProducts.map((item, index) => {
+    const canonicalItem = canonicalProducts[index] || {};
+    const canonicalTitle =
+      typeof canonicalItem === 'string' ? canonicalItem : canonicalItem?.title;
+
+    const slug =
+      (item && typeof item === 'object' && item.slug) ||
+      (canonicalItem && typeof canonicalItem === 'object' && canonicalItem.slug) ||
+      slugifyProductTitle(canonicalTitle || '') ||
+      slugifyProductTitle(typeof item === 'string' ? item : item?.title || '');
+
+    if (typeof item === 'string') return { title: item, slug };
+    return { ...item, slug: slug || '' };
+  });
 };
